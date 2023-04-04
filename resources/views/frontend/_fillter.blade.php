@@ -134,6 +134,13 @@
                                 <img src="{{ asset('uploads/' . $item->image) }}" class="img-fluid" alt="">
                             </div>
                             <div class="member-info">
+                                <div class="social">
+                                    <a @if(check_login() != 1) class="loginalert" @else target="_blank" href="https://wa.me/{{ $item->whataspp_number }}" @endif><i
+                                        class="bi bi-whatsapp"></i></a>
+                                    <a href="{{ asset('uploads/' . $item->cv) }}" target="_blank"><i
+                                            class="bi bi-file-person-fill"></i></a>
+    
+                                </div>
                                 <h4>{{ $item->name }}</h4>
                                 <span>{{ $item->country }}</span>
                                 <span>{{ $item->education_level }}</span>

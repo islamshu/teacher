@@ -4,30 +4,37 @@
 
         <div class="section-header">
             <h2>Our Teacher</h2>
-            
+
         </div>
 
 
         <div class="row gy-5">
-            @foreach (App\Models\Teacher::orderby('id','desc')->take(6)->get() as $item)
-            <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="200">
-                <div class="team-member">
-                    <div class="member-img">
-                        <img src="{{ asset('uploads/'.$item->image) }}" class="img-fluid" alt="">
-                    </div>
-                    <div class="member-info">
-                        <h4>{{ $item->name }}</h4>
-                        <span>{{ $item->country }}</span>
-                        <span>{{ $item->education_level }}</span>
-                        <span>{{ $item->educational_material }}</span>
+            @foreach (App\Models\Teacher::orderby('id', 'desc')->take(6)->get() as $item)
+                <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="team-member">
+                        <div class="member-img">
+                            <img src="{{ asset('uploads/' . $item->image) }}" class="img-fluid" alt="">
+                        </div>
+                        <div class="member-info">
+                            <div class="social">
+                                <a @if(check_login() != 1) class="loginalert" @else target="_blank" href="https://wa.me/{{ $item->whataspp_number }}" @endif><i
+                                        class="bi bi-whatsapp"></i></a>
+                                <a href="{{ asset('uploads/' . $item->cv) }}" target="_blank"><i
+                                        class="bi bi-file-person-fill"></i></a>
 
+                            </div>
+                            <h4>{{ $item->name }}</h4>
+                            <span>{{ $item->country }}</span>
+                            <span>{{ $item->education_level }}</span>
+                            <span>{{ $item->educational_material }}</span>
+
+                        </div>
                     </div>
                 </div>
-            </div>
             @endforeach
             <!-- End Team Member -->
 
- 
+
 
 
         </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use App\Models\Teacher;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Validator;
@@ -13,6 +14,9 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
+    public function contact_us(Request $request){
+        dd($request);
+    }
     public function company_register(Request $request)
     {
 
@@ -72,8 +76,9 @@ class UserController extends Controller
                     return $query->whereNull('deleted_at');
                 }),
             ],
+            'whataspp_number'=>'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            'cv' => 'required',
+            'cv' => 'required|mimes:pdf',
             'country' => 'required',
             'country' => 'required',
             'education_level' => 'required',
@@ -89,6 +94,7 @@ class UserController extends Controller
         $taecher = new Teacher();
         $taecher->name = $request->teacherName;
         $taecher->email = $request->teacherEmail;
+        $taecher->whataspp_number = $request->whataspp_number;
         $taecher->password = Hash::make($request->input('teachePassword'));
         $taecher->country = $request->country;
         $taecher->education_level = $request->education_level;
@@ -99,11 +105,68 @@ class UserController extends Controller
         Auth::guard('teacher')->login($taecher);
         return response()->json(['success' => 'true'], 200);
     }
+    public function teacher_update(Request $request)
+    {
+        $taecher = auth('teacher')->user();
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                Rule::unique('teachers', 'email')->where(function ($query) use($taecher) {
+                    return $query->whereNull('deleted_at')->where('id','!=',$taecher->id);
+                }),
+                Rule::unique('companies', 'email')->where(function ($query) {
+                    return $query->whereNull('deleted_at');
+                }),
+                Rule::unique('users', 'email')->where(function ($query) {
+                    return $query->whereNull('deleted_at');
+                }),
+            ],
+            'whataspp_number'=>'required',
+            'country' => 'required',
+            'education_level' => 'required',
+            'educational_material' => 'required',
+        ]);
+        if($request->image != null){
+            $request->validate([
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            ]);
+        }
+        if($request->cv != null){
+            $request->validate([
+                'cv' => 'required|mimes:pdf',
+            ]);
+        }
+
+        // If validation fails, return the errors as JSON
+        
+        $taecher->name = $request->name;
+        $taecher->email = $request->email;
+        $taecher->whataspp_number = $request->whataspp_number;
+        // $taecher->password = Hash::make($request->input('teachePassword'));
+        $taecher->country = $request->country;
+        $taecher->education_level = $request->education_level;
+        $taecher->educational_material = $request->educational_material;
+        if($request->cv != null){
+            $taecher->cv = $request->cv->store('teacher_cv');
+        }
+        if($request->image != null){
+            $taecher->image = $request->image->store('teacher');
+        }
+        $taecher->save();
+        return redirect()->back()->with(['success'=>'تم التعديل بنجاح']);
+        
+
+    }
     public function login_user(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'emailUser' => 'required|email',
-            'passwordUser' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
 
         // If validation fails, return the errors as JSON
@@ -111,15 +174,25 @@ class UserController extends Controller
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        $credentials = $request->only('email', 'passowrd');
+        $credentials = $request->only('email', 'password');
 
         if (Auth::guard('company')->attempt($credentials)) {
             // Authentication was successful
-            $user = Company::where('email', $request->emailUser)->first();
+            $user = Company::where('email', $request->email)->first();
             Auth::guard('company')->login($user);
             return response()->json(['success' => 'true'], 200);
-        } else {
+        } elseif(Auth::guard('teacher')->attempt($credentials)) {
             // Authentication failed
+            $user = Teacher::where('email', $request->email)->first();
+            Auth::guard('teacher')->login($user);
+            return response()->json(['success' => 'true'], 200);
+
+        }elseif(Auth::attempt($credentials)){
+            $user = User::where('email', $request->email)->first();
+            Auth::guard('web')->login($user);
+            return response()->json(['success' => 'true'], 200);
+
+        }else{
             return response()->json(['errors' => 'email or password error'], 422);
         }
     }
@@ -131,6 +204,10 @@ class UserController extends Controller
             if (auth('company')->check()) {
                 $user = auth('company')->user();
                 return view('frontend.profile')->with('user', $user);
+            }
+            if (auth('teacher')->check()) {
+                $user = auth('teacher')->user();
+                return view('frontend.profile_teacher')->with('user', $user);
             }
             return redirect('/');
         }
@@ -152,8 +229,21 @@ class UserController extends Controller
     }
     public function logout_user()
     {
-        $user = auth('company')->user();
-        Auth::guard('company')->logout();
+        if( auth('company')->check()){
+            Auth::guard('company')->logout();
+            return redirect('/');
+
+        }elseif(auth()->check()){
+            Auth::guard('web')->logout();
+            return redirect('/');
+
+        }elseif(auth('teacher')->check()){
+            Auth::guard('teacher')->logout();
+            return redirect('/');
+
+        }else{
+            return redirect('/');
+        }
 
 
 

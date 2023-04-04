@@ -1,0 +1,203 @@
+@extends('layouts.index')
+
+@section('content')
+<div class="container " style="margin-top: 10%;margin-bottom: 10%">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card mb-3">
+                <div class="card-body text-center">
+                    <img src="{{ asset('uploads/'.$user->image) }}" alt="{{ $user->name }}" class="img-fluid rounded-circle mb-2" style="max-width: 100px;">
+                    <h5 class="card-title">{{ $user->name }}</h5>
+                    <p class="card-text">{{ $user->email }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Profile Information</h5>
+                    @include('dashboard.parts._error')
+                    @include('dashboard.parts._success')
+
+                    <form method="POST" action="{{ route('teacher_update') }}" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $user->name) }}" required>
+                            @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $user->email) }}" required>
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="whataspp_number" class="form-label">Whataspp number</label>
+                            <input type="text" name="whataspp_number" id="whataspp_number" class="form-control @error('whataspp_number') is-invalid @enderror" value="{{ old('whataspp_number', $user->whataspp_number) }}" required>
+
+                            <div class="invalid-feedback">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="avatar">Avatar</label>
+                            <div class="custom-file">
+                                <input type="file" name="image" id="image" class="custom-file-input @error('image') is-invalid @enderror" accept="image/*">
+                                <label class="custom-file-label" for="image">Choose file</label>
+                            </div>
+                            @error('image')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="avatar">CV</label>
+                            <div class="custom-file">
+                                <input type="file" name="cv" id="avatar" class="custom-file-input @error('cv') is-invalid @enderror" >
+                                <label class="custom-file-label" for="cv">Choose file</label>
+                            </div>
+                            @error('cv')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                       
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <select id="country" class="form-control" required name="country">
+                                <option value="" >اختر دولتك</option>
+                                <option value="الجزائر" @if ($user->country == 'الجزائر') selected @endif>الجزائر</option>
+                                <option value="البحرين" @if ($user->country == 'البحرين') selected @endif>البحرين</option>
+                                <option value="جزر القمر" @if ($user->country == 'جزر القمر') selected @endif>جزر القمر</option>
+                                <option value="جيبوتي" @if ($user->country == 'جيبوتي') selected @endif>جيبوتي</option>
+                                <option value="مصر" @if ($user->country == 'مصر') selected @endif>مصر</option>
+                                <option value="العراق" @if ($user->country == 'العراق') selected @endif>العراق</option>
+                                <option value="الأردن" @if ($user->country == 'الأردن') selected @endif>الأردن</option>
+                                <option value="الكويت" @if ($user->country == 'الكويت') selected @endif>الكويت</option>
+                                <option value="لبنان" @if ($user->country == 'لبنان') selected @endif>لبنان</option>
+                                <option value="ليبيا" @if ($user->country == 'ليبيا') selected @endif>ليبيا</option>
+                                <option value="موريتانيا" @if ($user->country == 'موريتانيا') selected @endif>موريتانيا</option>
+                                <option value="المغرب" @if ($user->country == 'المغرب') selected @endif>المغرب</option>
+                                <option value="عُمان" @if ($user->country == 'عُمان') selected @endif>عُمان</option>
+                                <option value="فلسطين" @if ($user->country == 'فلسطين') selected @endif>فلسطين</option>
+                                <option value="قطر" @if ($user->country == 'قطر') selected @endif>قطر</option>
+                                <option value="المملكة العربية السعودية" @if ($user->country == 'المملكة العربية السعودية') selected @endif>
+                                    المملكة العربية السعودية</option>
+                                <option value="الصومال" @if ($user->country == 'الصومال') selected @endif>الصومال</option>
+                                <option value="السودان" @if ($user->country == 'السودان') selected @endif>السودان</option>
+                                <option value="سوريا" @if ($user->country == 'سوريا') selected @endif>السودان</option>
+                                <option value="تونس" @if ($user->country == 'تونس') selected @endif>السودان</option>
+                                <option value="الإمارات العربية المتحدة" @if ($user->country == 'الإمارات العربية المتحدة') selected @endif>
+                                    السودان</option>
+                                <option value="اليمن" @if ($user->country == 'اليمن') selected @endif>السودان</option>
+                            </select>
+                             
+                            @error('country')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="country">المادة التعليمية</label>
+                            <select id="educational_material" required name="educational_material" class="form-control">
+                                <option value="">يرجى الاختيار</option>
+                                <option value="الرياضيات" @if ($user->educational_material == 'الرياضيات') selected @endif>الرياضيات</option>
+                                <option value="اللغة العربية" @if ($user->educational_material == 'اللغة العربية') selected @endif>اللغة العربية
+                                </option>
+                                <option value="اللغة الإنجليزية" @if ($user->educational_material == 'اللغة الإنجليزية') selected @endif>اللغة
+                                    الإنجليزية</option>
+                                <option value="العلوم" @if ($user->educational_material == 'العلوم') selected @endif>العلوم</option>
+                                <option value="التاريخ" @if ($user->educational_material == 'التاريخ') selected @endif>التاريخ</option>
+                                <option value="الجغرافيا" @if ($user->educational_material == 'الجغرافيا') selected @endif>الجغرافيا</option>
+                                <option value="الفلسفة" @if ($user->educational_material == 'الفلسفة') selected @endif>الفلسفة</option>
+                                <option value="الاجتماعيات" @if ($user->educational_material == 'الاجتماعيات') selected @endif>الاجتماعيات
+                                </option>
+                                <option value="الاقتصاد" @if ($user->educational_material == 'الاقتصاد') selected @endif>الاقتصاد</option>
+                                <option value="التربية الدينية" @if ($user->educational_material == 'التربية الدينية') selected @endif>التربية
+                                    الدينية</option>
+                                <option value="التربية الفنية" @if ($user->educational_material == 'التربية الفنية') selected @endif>التربية
+                                    الفنية</option>
+                                <option value="التربية المدنية" @if ($user->educational_material == 'التربية المدنية') selected @endif>التربية
+                                    المدنية</option>
+                                <option value="التربية الرياضية" @if ($user->educational_material == 'التربية الرياضية') selected @endif>التربية
+                                    الرياضية</option>
+                                <option value="الإعلام والاتصال" @if ($user->educational_material == 'الإعلام والاتصال') selected @endif>الإعلام
+                                    والاتصال</option>
+                                <option value="اللغة الفرنسية" @if ($user->educational_material == 'اللغة الفرنسية') selected @endif>اللغة
+                                    الفرنسية</option>
+                                <option value="اللغة الألمانية" @if ($user->educational_material == 'اللغة الألمانية') selected @endif>اللغة
+                                    الألمانية</option>
+                                <option value="اللغة الإسبانية" @if ($user->educational_material == 'اللغة الإسبانية') selected @endif>اللغة
+                                    الإسبانية</option>
+                                <!-- يمكن إضافة المزيد من المواد التعليمية -->
+                            </select>
+                             
+                            @error('educational_material')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="country">المرحلة التعليمية</label>
+                            <select id="education_level" required name="education_level" class="form-control">
+                                <option value="">اختر مستوى التعليم</option>
+                                <optgroup label="المرحلة الابتدائية">
+                                    <option value="الصف الأول الابتدائي" @if ($user->education_level == 'الصف الأول الابتدائي') selected @endif>
+                                        الصف الأول الابتدائي</option>
+                                    <option value="الصف الثاني الابتدائي" @if ($user->education_level == 'الصف الثاني الابتدائي') selected @endif>
+                                        الصف الثاني الابتدائي</option>
+                                    <option value="الصف الثالث الابتدائي" @if ($user->education_level == 'الصف الثالث الابتدائي') selected @endif>
+                                        الصف الثالث الابتدائي</option>
+                                    <option value="الصف الرابع الابتدائي" @if ($user->education_level == 'الصف الرابع الابتدائي') selected @endif>
+                                        الصف الرابع الابتدائي</option>
+                                    <option value="الصف الخامس الابتدائي" @if ($user->education_level == 'الصف الخامس الابتدائي') selected @endif>
+                                        الصف الخامس الابتدائي</option>
+                                    <option value="الصف السادس الابتدائي" @if ($user->education_level == 'الصف السادس الابتدائي') selected @endif>
+                                        الصف السادس الابتدائي</option>
+                                </optgroup>
+                                <optgroup label="المرحلة المتوسطة">
+                                    <option value="الصف الأول المتوسط" @if ($user->education_level == 'الصف الأول المتوسط') selected @endif>الصف
+                                        الأول المتوسط</option>
+                                    <option value="الصف الثاني المتوسط" @if ($user->education_level == 'الصف الثاني المتوسط') selected @endif>الصف
+                                        الثاني المتوسط</option>
+                                    <option value="الصف الثالث المتوسط" @if ($user->education_level == 'الصف الثالث المتوسط') selected @endif>الصف
+                                        الثالث المتوسط</option>
+                                </optgroup>
+                                <optgroup label="المرحلة الثانوية">
+                                    <option value="الصف الأول الثانوي" @if ($user->education_level == 'الصف الأول الثانوي') selected @endif>الصف
+                                        الأول الثانوي</option>
+                                    <option value="الصف الثاني الثانوي"@if ($user->education_level == 'الصف الثاني الثانوي') selected @endif>الصف
+                                        الثاني الثانوي</option>
+                                    <option value="الصف الثالث الثانوي"@if ($user->education_level == 'الصف الثالث الثانوي') selected @endif>الصف
+                                        الثالث الثانوي</option>
+                                </optgroup>
+                                <!-- Add more options as needed -->
+                            </select>
+                             
+                            @error('education_level')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

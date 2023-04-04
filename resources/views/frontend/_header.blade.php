@@ -10,20 +10,20 @@
         <nav id="navbar" class="navbar d-flex justify-content-center">
             <ul>
 
-                <li><a class="nav-link scrollto" href="">Home</a></li>
+                <li><a class="nav-link scrollto" href="/">Home</a></li>
 
                 @if(check_login() != 1)
-                <li><a class="nav-link scrollto" data-bs-toggle="modal" data-bs-target="#companyModal">Register Company</a></li>
+                <li><a class="nav-link scrollto" data-bs-toggle="modal" data-bs-target="#companyModal">Register School</a></li>
                 <li><a class="nav-link scrollto" data-bs-toggle="modal" data-bs-target="#tacherModal">Register Teacher</a></li>
 
                 <li><a class="nav-link scrollto" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
 
                 @endif
-                <li><a class="nav-link scrollto" href="#team">Teams</a></li>
+                <li><a class="nav-link scrollto" href="/#team">Teachers</a></li>
 
-                <li><a class="nav-link scrollto" href="#services">Services</a></li>
+                <li><a class="nav-link scrollto" href="/#services">Services</a></li>
 
-                <li style="margin-right: 350px"><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                <li  @if(check_login() == 1) style="margin-right: 350px" @endif><a class="nav-link scrollto" href="/#contact">Contact</a></li>
             
                 @if(check_login() == 1)
 

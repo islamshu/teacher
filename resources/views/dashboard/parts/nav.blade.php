@@ -7,7 +7,7 @@
                         href="#"><i class="ft-menu font-large-1"></i></a></li>
                 <li class="nav-item">
                     <a class="navbar-brand" href="{{ route('dashboard') }}">
-                        <h2>Arabi Podcast </h2>
+                        <h2>{{ get_general_value('title') }} </h2>
                     </a>
                 </li>
                 <li class="nav-item d-md-none">
@@ -38,7 +38,7 @@
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="{{ route('edit_profile') }}"><i class="ft-user"></i> تعديل
                                 الملف الشخصي</a>
-                            <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ route('logout') }}"><i
+                            <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ route('logout_user') }}"><i
                                     class="ft-power"></i> @lang('تسجيل خروج')</a>
                         </div>
                     </li>

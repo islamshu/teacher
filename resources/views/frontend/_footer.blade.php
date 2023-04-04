@@ -6,37 +6,26 @@
 
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-info">
-                        <h3>HeroBiz</h3>
+                        <h3>{{ get_general_value('title') }}</h3>
                         <p>
-                            A108 Adam Street <br>
-                            NY 535022, USA<br><br>
-                            <strong>Phone:</strong> +1 5589 55488 55<br>
-                            <strong>Email:</strong> info@example.com<br>
+                         
+                            <strong>Phone:</strong>{{ get_general_value('phone_number') }}<br>
+                            <strong>Email:</strong> {{ get_general_value('email') }}<br>
                         </p>
                     </div>
                 </div>
 
-                <div class="col-lg-2 col-md-6 footer-links">
+                <div class="col-lg-5 col-md-6 footer-links">
                     <h4>Useful Links</h4>
                     <ul>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="/">Home</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="/#services">Service</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="/#team">Teachers</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="/#contact">Contact</a></li>
                     </ul>
                 </div>
 
-                <div class="col-lg-3 col-md-6 footer-links">
-                    <h4>Our Services</h4>
-                    <ul>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Product Management</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Marketing</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Graphic Design</a></li>
-                    </ul>
-                </div>
+               
 
                 <div class="col-lg-4 col-md-6 footer-newsletter">
                     <h4>Our Newsletter</h4>
@@ -122,7 +111,7 @@
                 $('form').find('.is-invalid').removeClass('is-invalid');
                 var errors = response.responseJSON.errors;
                 $.each(errors, function(field, messages) {
-                    var input = $('#submit-form').find('[name="' + field + '"]');
+                    var input = $('#teacher-form').find('[name="' + field + '"]');
                     input.addClass('is-invalid');
                     input.next('.invalid-feedback').html(messages[0]);
                 });
@@ -131,10 +120,67 @@
     }
     
     function LoginForm() {
+        $('#error-id').empty();
         $.ajax({
             type: 'POST',
             url: $('#login-form').attr('action'),
             data: new FormData($('#login-form')[0]),
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login successful!',
+                    text: 'You have successfully registered.'
+                }).then((result) => {
+                    // refresh the page
+                    location.reload();
+                });
+            },
+            error: function(response) {
+                // If form submission fails, display validation errors in the modal
+               $('<p>' + response.responseJSON.errors + '</p>').appendTo('#error-id');
+            }
+        });
+    }
+    function contacntForm() {
+        $.ajax({
+            type: 'POST',
+            url: $('#contact-form').attr('action'),
+            data: new FormData($('#contact-form')[0]),
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Send successful!'
+                })
+                $("#contact-form").trigger('reset');
+
+            },
+            error: function(response) {
+                $('.invalid-feedback').empty();
+                $('form').find('.is-invalid').removeClass('is-invalid');
+                var errors = response.responseJSON.errors;
+                $.each(errors, function(field, messages) {
+                    var input = $('#contact-form').find('[name="' + field + '"]');
+                    input.addClass('is-invalid');
+                    input.next('.invalid-feedback').html(messages[0]);
+                });                // If form submission fails, display validation errors in the modal
+            //    $('<p>' + response.responseJSON.errors + '</p>').appendTo('#error-id');
+            }
+        });
+    }
+    
+
+   
+$( "#submit-form" ).submit(function( event ) {
+    event.preventDefault();
+
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('company_register') }}",
+            data: new FormData($('#submit-form')[0]),
             processData: false,
             contentType: false,
             success: function(response) {
@@ -159,32 +205,12 @@
                 });
             }
         });
-    }
-   
-$( "#submit-form" ).submit(function( event ) {
-    event.preventDefault();
-
-        $.ajax({
-            type: 'POST',
-            url: "{{ route('company_register') }}",
-            data: new FormData($('#submit-form')[0]),
-            processData: false,
-            contentType: false,
-            success: function(response) {
-                
-            },
-            error: function(response) {
-                // If form submission fails, display validation errors in the modal
-                $('.invalid-feedback').empty();
-                $('form').find('.is-invalid').removeClass('is-invalid');
-                var errors = response.responseJSON.errors;
-                $.each(errors, function(field, messages) {
-                    var input = $('#submit-form').find('[name="' + field + '"]');
-                    input.addClass('is-invalid');
-                    input.next('.invalid-feedback').html(messages[0]);
-                });
-            }
-        });
+    });
+    $('.loginalert').click(function(){
+        Swal.fire({
+                    icon: 'error',
+                    title: ' You need to login!',
+                })
     });
 
     

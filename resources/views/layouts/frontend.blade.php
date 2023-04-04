@@ -27,7 +27,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="companyModalLabel">Company Information</h5>
+                <h5 class="modal-title" id="companyModalLabel">School Information</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -37,11 +37,10 @@
                             alt="Company Logo">
                     </div>
                 </div>
-                <form id="submit-form" method="post" 
-                    enctype="multipart/form-data" >
+                <form id="submit-form" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <label for="companyName" class="form-label">Company Name</label>
+                        <label for="companyName" class="form-label">School Name</label>
                         <input type="text" class="form-control" id="companyName" name="companyName" required>
                         <div class="invalid-feedback">
                         </div>
@@ -75,7 +74,7 @@
                     </div>
                     <div class="mb-3" style="text-align: center">
 
-                        <button type="submit"  class="btn btn-success" style="width: 40%">Submit Request</button>
+                        <button type="submit" class="btn btn-success" style="width: 40%">Submit Request</button>
                     </div>
                 </form>
             </div>
@@ -96,28 +95,29 @@
                             alt="Company Logo">
                     </div>
                 </div>
-                <form id="login-form" method="post"  action="{{ route('login_user') }}"
-                enctype="multipart/form-data" onsubmit="LoginForm(); return false;">
-                @csrf                    
-                    
+                <div id="error-id" style="text-align: center;color: red;font-size: 20px;"></div>
+                <form id="login-form" method="post" action="{{ route('login_user') }}" enctype="multipart/form-data"
+                    onsubmit="LoginForm(); return false;">
+                    @csrf
+
                     <div class="mb-3">
                         <label for="companyEmail" class="form-label">Email address</label>
-                        <input type="emailUser" class="form-control" id="emailUser" name="emailUser" required>
+                        <input type="emailUser" class="form-control" id="emailUser" name="email" required>
                         <div class="invalid-feedback">
                         </div>
                     </div>
-                    
+
                     <div class="mb-3">
-                        <label for="companyPassword" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="passwordUser" name="passwordUser"
-                            minlength="8" required>
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" minlength="8"
+                            required>
                         <div class="invalid-feedback">
                         </div>
                     </div>
-                    
+
                     <div class="mb-3" style="text-align: center">
 
-                        <button type="submit"  class="btn btn-success" style="width: 40%">Submit Request</button>
+                        <button type="submit" class="btn btn-success" style="width: 40%">Submit Request</button>
                     </div>
                 </form>
             </div>
@@ -170,11 +170,20 @@
                     </div>
                     <div class="mb-3">
                         <label for="confirmPassword" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirmPassword" name="teacheConformPassword"
+                        <input type="password" class="form-control" id="confirmPassword"
+                            name="teacheConformPassword" minlength="8" required>
+                        <div class="invalid-feedback">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="whataspp_number" class="form-label">Whataspp number</label>
+                        <input type="string" class="form-control" id="whataspp_number" name="whataspp_number"
                             minlength="8" required>
                         <div class="invalid-feedback">
                         </div>
                     </div>
+
+
                     <div class="mb-3">
                         <label for="country"> Country:</label>
                         <select id="country" class="form-control" required name="country">
@@ -202,8 +211,8 @@
                             <option value="الإمارات العربية المتحدة">الإمارات العربية المتحدة</option>
                             <option value="اليمن">اليمن</option>
                         </select>
-                        
-                        
+
+
                         <div class="invalid-feedback">
                         </div>
                     </div>
@@ -212,68 +221,67 @@
                         <select id="education_level" name="education_level" class="form-control">
                             <option value="">اختر مستوى التعليم</option>
                             <optgroup label="المرحلة الابتدائية">
-                              <option value="الصف الأول الابتدائي">الصف الأول الابتدائي</option>
-                              <option value="الصف الثاني الابتدائي">الصف الثاني الابتدائي</option>
-                              <option value="الصف الثالث الابتدائي">الصف الثالث الابتدائي</option>
-                              <option value="الصف الرابع الابتدائي">الصف الرابع الابتدائي</option>
-                              <option value="الصف الخامس الابتدائي">الصف الخامس الابتدائي</option>
-                              <option value="الصف السادس الابتدائي">الصف السادس الابتدائي</option>
+                                <option value="الصف الأول الابتدائي">الصف الأول الابتدائي</option>
+                                <option value="الصف الثاني الابتدائي">الصف الثاني الابتدائي</option>
+                                <option value="الصف الثالث الابتدائي">الصف الثالث الابتدائي</option>
+                                <option value="الصف الرابع الابتدائي">الصف الرابع الابتدائي</option>
+                                <option value="الصف الخامس الابتدائي">الصف الخامس الابتدائي</option>
+                                <option value="الصف السادس الابتدائي">الصف السادس الابتدائي</option>
                             </optgroup>
                             <optgroup label="المرحلة المتوسطة">
-                              <option value="الصف الأول المتوسط">الصف الأول المتوسط</option>
-                              <option value="الصف الثاني المتوسط">الصف الثاني المتوسط</option>
-                              <option value="الصف الثالث المتوسط">الصف الثالث المتوسط</option>
+                                <option value="الصف الأول المتوسط">الصف الأول المتوسط</option>
+                                <option value="الصف الثاني المتوسط">الصف الثاني المتوسط</option>
+                                <option value="الصف الثالث المتوسط">الصف الثالث المتوسط</option>
                             </optgroup>
                             <optgroup label="المرحلة الثانوية">
-                              <option value="الصف الأول الثانوي">الصف الأول الثانوي</option>
-                              <option value="الصف الثاني الثانوي">الصف الثاني الثانوي</option>
-                              <option value="الصف الثالث الثانوي">الصف الثالث الثانوي</option>
+                                <option value="الصف الأول الثانوي">الصف الأول الثانوي</option>
+                                <option value="الصف الثاني الثانوي">الصف الثاني الثانوي</option>
+                                <option value="الصف الثالث الثانوي">الصف الثالث الثانوي</option>
                             </optgroup>
                             <!-- Add more options as needed -->
-                          </select>
-                                                 
+                        </select>
+
                         <div class="invalid-feedback">
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="educational_material">اختر مادة تعليمية:</label>
                         <select id="educational_material" name="educational_material" class="form-control">
-                          <option value="">يرجى الاختيار</option>
-                          <option value="الرياضيات">الرياضيات</option>
-                          <option value="اللغة العربية">اللغة العربية</option>
-                          <option value="اللغة الإنجليزية">اللغة الإنجليزية</option>
-                          <option value="العلوم">العلوم</option>
-                          <option value="التاريخ">التاريخ</option>
-                          <option value="الجغرافيا">الجغرافيا</option>
-                          <option value="الفلسفة">الفلسفة</option>
-                          <option value="الاجتماعيات">الاجتماعيات</option>
-                          <option value="الاقتصاد">الاقتصاد</option>
-                          <option value="التربية الدينية">التربية الدينية</option>
-                          <option value="التربية الفنية">التربية الفنية</option>
-                          <option value="التربية المدنية">التربية المدنية</option>
-                          <option value="التربية الرياضية">التربية الرياضية</option>
-                          <option value="الإعلام والاتصال">الإعلام والاتصال</option>
-                          <option value="اللغة الفرنسية">اللغة الفرنسية</option>
-                          <option value="اللغة الألمانية">اللغة الألمانية</option>
-                          <option value="اللغة الإسبانية">اللغة الإسبانية</option>
-                          <!-- يمكن إضافة المزيد من المواد التعليمية -->
-                        </select>                     
+                            <option value="">يرجى الاختيار</option>
+                            <option value="الرياضيات">الرياضيات</option>
+                            <option value="اللغة العربية">اللغة العربية</option>
+                            <option value="اللغة الإنجليزية">اللغة الإنجليزية</option>
+                            <option value="العلوم">العلوم</option>
+                            <option value="التاريخ">التاريخ</option>
+                            <option value="الجغرافيا">الجغرافيا</option>
+                            <option value="الفلسفة">الفلسفة</option>
+                            <option value="الاجتماعيات">الاجتماعيات</option>
+                            <option value="الاقتصاد">الاقتصاد</option>
+                            <option value="التربية الدينية">التربية الدينية</option>
+                            <option value="التربية الفنية">التربية الفنية</option>
+                            <option value="التربية المدنية">التربية المدنية</option>
+                            <option value="التربية الرياضية">التربية الرياضية</option>
+                            <option value="الإعلام والاتصال">الإعلام والاتصال</option>
+                            <option value="اللغة الفرنسية">اللغة الفرنسية</option>
+                            <option value="اللغة الألمانية">اللغة الألمانية</option>
+                            <option value="اللغة الإسبانية">اللغة الإسبانية</option>
+                            <!-- يمكن إضافة المزيد من المواد التعليمية -->
+                        </select>
                         <div class="invalid-feedback">
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="country"> CV:</label>
-                        <input type="file" class="form-control" id="cv" name="cv"
-                        required>                        
+                        <input type="file" class="form-control" id="cv" name="cv" required>
                         <div class="invalid-feedback">
                         </div>
                     </div>
 
-         
 
 
-                    
-                    
+
+
+
                     <div class="mb-3" style="text-align: center">
 
                         <button type="submit" class="btn btn-success" style="width: 40%">Submit Request</button>
@@ -308,7 +316,8 @@
 
 
     <!-- ======= Team Section ======= -->
-    @include('frontend._teacher')<!-- End Team Section -->
+    @include('frontend._teacher')
+    <!-- End Team Section -->
 
 
     <!-- ======= Contact Section ======= -->
@@ -337,9 +346,9 @@
 
                     <div class="info">
                         <h3>Get in touch</h3>
-                        
-                        
-                        
+
+
+
                         <div class="info-item d-flex">
                             <i class="bi bi-envelope flex-shrink-0"></i>
                             <div>
@@ -369,29 +378,37 @@
                 </div>
 
                 <div class="col-lg-8">
-                    <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                    <form id="contact-form" class="php-email-form" method="post" action="{{ route('contact_us') }}"
+                        enctype="multipart/form-data" onsubmit="contacntForm(); return false;">
+                        @csrf
                         <div class="row">
-                            <div class="col-md-6 form-group">
-                                <input type="text" name="name" class="form-control" id="name"
-                                    placeholder="Your Name" required>
-                            </div>
-                            <div class="col-md-6 form-group mt-3 mt-md-0">
-                                <input type="email" class="form-control" name="email" id="email"
-                                    placeholder="Your Email" required>
-                            </div>
+
+                                <div class="col-md-6 form-group">
+                                    <input type="text" name="name" class="form-control" id="name"
+                                        placeholder="Your Name" >
+                                        <div class="invalid-feedback">
+                                        </div>
+                                </div>
+
+                                <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    <input type="email" class="form-control" name="email" id="email"
+                                        placeholder="Your Email" >
+                                        <div class="invalid-feedback">
+                                        </div>
+                                </div>
                         </div>
                         <div class="form-group mt-3">
                             <input type="text" class="form-control" name="subject" id="subject"
-                                placeholder="Subject" required>
+                                placeholder="Subject" >
+                                <div class="invalid-feedback">
+                                </div>
                         </div>
                         <div class="form-group mt-3">
-                            <textarea class="form-control" name="message" placeholder="Message" required></textarea>
+                            <textarea class="form-control" name="message" placeholder="Message" ></textarea>
+                            <div class="invalid-feedback">
+                            </div>
                         </div>
-                        <div class="my-3">
-                            <div class="loading">Loading</div>
-                            <div class="error-message"></div>
-                            <div class="sent-message">Your message has been sent. Thank you!</div>
-                        </div>
+                       
                         <div class="text-center"><button type="submit">Send Message</button></div>
                     </form>
                 </div><!-- End Contact Form -->
