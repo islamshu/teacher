@@ -32,7 +32,7 @@
                             <span class="user-name text-bold-700">{{ auth()->user()->name }}</span>
 
                             <span class="avatar avatar-online">
-                                <img src="{{ asset('uploads/'.auth()->user()->image) }}"
+                                <img src="{{ asset('uploads/'.get_general_value('image')) }}"
                                     alt="avatar"><i></i></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
