@@ -75,7 +75,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="education_level">اختر مستوى التعليم:</label>
+                        <label for="education_level">التخصص :</label>
                         <select id="education_level" name="education_level" class="form-control">
                             <option value="">اختر مستوى التعليم</option>
                             <optgroup label="المرحلة الابتدائية">
