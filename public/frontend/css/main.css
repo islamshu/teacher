@@ -1124,6 +1124,7 @@ section {
     transition: all ease-in-out 0.4s;
     background: var(--color-white);
     height: 100%;
+    text-align: center;
 }
 
 .featured-services .service-item .icon {
@@ -3299,4 +3300,13 @@ section {
 .footer .footer-legal .social-links a:hover {
     background: var(--color-primary);
     text-decoration: none;
+}
+
+@media only screen and (max-width: 480px) {
+    .carousel-caption h3 {
+        font-size: 18px;
+    }
+    .carousel-item {
+        height: 350px;
+    }
 }
