@@ -15,7 +15,7 @@
         <div class="col-md-9">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Profile Information</h5>
+                    <h5 class="card-title"> الملف الشخصي</h5>
                     @include('dashboard.parts._error')
                     @include('dashboard.parts._success')
 
@@ -23,7 +23,7 @@
                         @csrf
                         @method('PUT')
                         <div class="form-group">
-                            <label for="name">Name</label>
+                            <label for="name">الاسم</label>
                             <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $user->name) }}" required>
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -32,7 +32,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email">البريد الاكتروني</label>
                             <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $user->email) }}" required>
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -41,7 +41,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="avatar">Avatar</label>
+                            <label for="avatar">الصورة الشخصية</label>
                             <div class="custom-file">
                                 <input type="file" name="image" id="avatar" class="custom-file-input @error('image') is-invalid @enderror" accept="image/*">
                                 <label class="custom-file-label" for="avatar">Choose file</label>
@@ -52,7 +52,7 @@
                                 </span>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                        <button type="submit" class="btn btn-primary"> تعديل الملف الشخصي</button>
                     </form>
                 </div>
             </div>

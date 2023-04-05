@@ -2,7 +2,7 @@
     <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-            <h2>Our Services</h2>
+            <h2> خدماتنا</h2>
         </div>
 
         <div class="row gy-5">

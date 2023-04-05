@@ -15,7 +15,7 @@
         <div class="col-md-9">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Profile Information</h5>
+                    <h5 class="card-title"> الملف الشخصي</h5>
                     @include('dashboard.parts._error')
                     @include('dashboard.parts._success')
 
@@ -23,7 +23,7 @@
                         @csrf
                         @method('PUT')
                         <div class="form-group">
-                            <label for="name">Name</label>
+                            <label for="name">الاسم</label>
                             <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $user->name) }}" required>
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -32,7 +32,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email">البريد الاكتروني</label>
                             <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $user->email) }}" required>
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -41,14 +41,14 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="whataspp_number" class="form-label">Whataspp number</label>
+                            <label for="whataspp_number" class="form-label"> رقم الواتساب</label>
                             <input type="text" name="whataspp_number" id="whataspp_number" class="form-control @error('whataspp_number') is-invalid @enderror" value="{{ old('whataspp_number', $user->whataspp_number) }}" required>
 
                             <div class="invalid-feedback">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="avatar">Avatar</label>
+                            <label for="avatar">الصورة الشخصية</label>
                             <div class="custom-file">
                                 <input type="file" name="image" id="image" class="custom-file-input @error('image') is-invalid @enderror" accept="image/*">
                                 <label class="custom-file-label" for="image">Choose file</label>
@@ -60,7 +60,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="avatar">CV</label>
+                            <label for="avatar">السيرة الذاتية</label>
                             <div class="custom-file">
                                 <input type="file" name="cv" id="avatar" class="custom-file-input @error('cv') is-invalid @enderror" >
                                 <label class="custom-file-label" for="cv">Choose file</label>
@@ -73,7 +73,7 @@
                         </div>
                        
                         <div class="form-group">
-                            <label for="country">Country</label>
+                            <label for="country">الدولة</label>
                             <select id="country" class="form-control" required name="country">
                                 <option value="" >اختر دولتك</option>
                                 <option value="الجزائر" @if ($user->country == 'الجزائر') selected @endif>الجزائر</option>
@@ -109,7 +109,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="country">المادة التعليمية</label>
+                            <label for="country">التخصص </label>
                             <select id="educational_material" required name="educational_material" class="form-control">
                                 <option value="">يرجى الاختيار</option>
                                 <option value="الرياضيات" @if ($user->educational_material == 'الرياضيات') selected @endif>الرياضيات</option>
@@ -193,7 +193,7 @@
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                        <button type="submit" class="btn btn-primary"> تحديث الملف الشخصي</button>
                     </form>
                 </div>
             </div>

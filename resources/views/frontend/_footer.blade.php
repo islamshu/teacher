@@ -9,27 +9,26 @@
                         <h3>{{ get_general_value('title') }}</h3>
                         <p>
                          
-                            <strong>Phone:</strong>{{ get_general_value('phone_number') }}<br>
-                            <strong>Email:</strong> {{ get_general_value('email') }}<br>
+                            <strong>رقم الهاتف:</strong>{{ get_general_value('phone_number') }}<br>
+                            <strong>البريد الاكتروني:</strong> {{ get_general_value('email') }}<br>
                         </p>
                     </div>
                 </div>
 
                 <div class="col-lg-5 col-md-6 footer-links">
-                    <h4>Useful Links</h4>
+                    <h4> روابط سريعة</h4>
                     <ul>
-                        <li><i class="bi bi-chevron-right"></i> <a href="/">Home</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="/#services">Service</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="/#team">Teachers</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="/#contact">Contact</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="/">الرئيسية</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="/#services">الخدمات</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="/#team">المعلمين</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="/#contact">تواصل معنا</a></li>
                     </ul>
                 </div>
 
                
 
                 <div class="col-lg-4 col-md-6 footer-newsletter">
-                    <h4>Our Newsletter</h4>
-                    <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                    <h4>اشترك بالرسائل البريدية </h4>
                     <form action="" method="post">
                         <input type="email" name="email"><input type="submit" value="Subscribe">
                     </form>
@@ -53,7 +52,6 @@
                     <!-- You can delete the links only if you purchased the pro version. -->
                     <!-- Licensing information: https://bootstrapmade.com/license/ -->
                     <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/herobiz-bootstrap-business-template/ -->
-                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
                 </div>
             </div>
 
@@ -98,7 +96,7 @@
             success: function(response) {
                 Swal.fire({
                     icon: 'success',
-                    title: 'Registration successful!',
+                    title: ' تم التسجيل بنجاح!',
                     text: 'You have successfully registered.'
                 }).then((result) => {
                     // refresh the page
@@ -130,7 +128,7 @@
             success: function(response) {
                 Swal.fire({
                     icon: 'success',
-                    title: 'Login successful!',
+                    title: ' تم تسجيل الدخول بنجاح!',
                     text: 'You have successfully registered.'
                 }).then((result) => {
                     // refresh the page
@@ -153,7 +151,7 @@
             success: function(response) {
                 Swal.fire({
                     icon: 'success',
-                    title: 'Send successful!'
+                    title: 'تم الارسال بنجاح!'
                 })
                 $("#contact-form").trigger('reset');
 
@@ -186,7 +184,7 @@ $( "#submit-form" ).submit(function( event ) {
             success: function(response) {
                 Swal.fire({
                     icon: 'success',
-                    title: 'Login successful!',
+                    title: ' تم تسجيل الدخول بنجاح!',
                     text: 'You have successfully registered.'
                 }).then((result) => {
                     // refresh the page
@@ -209,7 +207,7 @@ $( "#submit-form" ).submit(function( event ) {
     $('.loginalert').click(function(){
         Swal.fire({
                     icon: 'error',
-                    title: ' You need to login!',
+                    title: 'يجب تسجيل الدخول اولا !!',
                 })
     });
 

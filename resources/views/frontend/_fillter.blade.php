@@ -1,7 +1,7 @@
 @extends('layouts.index')
 @section('content')
     <div class="container " style="margin-top: 8%">
-        <h1>Teacher</h1>
+        <h1>المعلمين</h1>
         <form method="get">
             <div class="row">
                 <div class="col-md-3">
@@ -38,7 +38,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label for="educational_material"> المادة تعليمية:</label>
+                        <label for="educational_material"> التخصص :</label>
                         <select id="educational_material" name="educational_material" class="form-control">
                             <option value="">يرجى الاختيار</option>
                             <option value="الرياضيات" @if ($request->educational_material == 'الرياضيات') selected @endif>الرياضيات</option>
@@ -122,7 +122,7 @@
         <div class="container" data-aos="fade-up">
 
             <div class="section-header">
-                <h2>Our Teacher</h2>
+                <h2>المعلمين </h2>
 
             </div>
 

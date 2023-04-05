@@ -44,9 +44,9 @@ Route::get('edit_profile', function () {
 Route::get('logout_for_user',[UserController::class,'logout_user'])->name('logout_user');
 Route::put('teacher_update',[UserController::class,'teacher_update'])->name('teacher_update');
 
+Route::put('company_update',[UserController::class,'company_update'])->name('company_update');
 
 Route::group(['middleware' => ['auth:company','auth:web','auth:teacher']], function () {
-    Route::put('company_update',[UserController::class,'company_update'])->name('company_update');
 
     
 

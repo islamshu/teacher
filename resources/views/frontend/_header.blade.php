@@ -10,27 +10,26 @@
         <nav id="navbar" class="navbar d-flex justify-content-center">
             <ul>
 
-                <li><a class="nav-link scrollto" href="/">Home</a></li>
-
+                <li><a class="nav-link scrollto " href="/">الرئيسية</a></li>
                 @if(check_login() != 1)
-                <li><a class="nav-link scrollto" data-bs-toggle="modal" data-bs-target="#companyModal">Register School</a></li>
-                <li><a class="nav-link scrollto" data-bs-toggle="modal" data-bs-target="#tacherModal">Register Teacher</a></li>
+                <li><a class="nav-link scrollto " data-bs-toggle="modal" data-bs-target="#companyModal"> تسجيل المدارس</a></li>
+                <li><a class="nav-link scrollto" data-bs-toggle="modal" data-bs-target="#tacherModal"> تسجيل المعلمين</a></li>
 
-                <li><a class="nav-link scrollto" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
+                <li><a class="nav-link scrollto" data-bs-toggle="modal" data-bs-target="#loginModal">تسجيل دخول</a></li>
 
                 @endif
-                <li><a class="nav-link scrollto" href="/#team">Teachers</a></li>
+                <li><a class="nav-link scrollto" href="/#team">المعلمين</a></li>
 
-                <li><a class="nav-link scrollto" href="/#services">Services</a></li>
+                <li><a class="nav-link scrollto" href="/#services">الخدمات</a></li>
 
-                <li  @if(check_login() == 1) style="margin-right: 350px" @endif><a class="nav-link scrollto" href="/#contact">Contact</a></li>
+                <li  @if(check_login() == 1) style="margin-right: 350px" @endif><a class="nav-link scrollto" href="/#contact">تواصل معنا</a></li>
             
                 @if(check_login() == 1)
 
-                <li><a class="nav-link scrollto" href="{{ route('dashboard') }}">Profile</a></li>
+                <li><a class="nav-link scrollto" href="{{ route('dashboard') }}">الملف الشخصي</a></li>
 
                
-                <li><a class="nav-link scrollto" href="{{ route('logout_user') }}">Logout</a></li>
+                <li><a class="nav-link scrollto" href="{{ route('logout_user') }}">تسجيل خروج</a></li>
                 @endif
             </ul>
             <i class="bi bi-list mobile-nav-toggle d-none"></i>

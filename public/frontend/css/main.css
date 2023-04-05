@@ -330,7 +330,7 @@ section {
         font-family: var(--font-secondary);
         font-size: 16px;
         font-weight: 400;
-        color: rgba(var(--color-secondary-dark-rgb), 0.7);
+        /* color: rgba(var(--color-secondary-dark-rgb), 0.7); */
         white-space: nowrap;
         transition: 0.3s;
         position: relative;
