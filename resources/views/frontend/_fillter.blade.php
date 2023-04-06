@@ -131,7 +131,7 @@
                     <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="200">
                         <div class="team-member">
                             <div class="member-img">
-                                <img src="{{ asset('uploads/' . $item->image) }}" class="img-fluid" alt="">
+                                <img src="{{ asset('uploads/' . $item->image) }}" class="img-fluid imge_hight" alt="">
                             </div>
                             <div class="member-info">
                                 <div class="social">
