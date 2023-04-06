@@ -112,8 +112,8 @@
                                 </div>
                                 <h4>{{ $item->name }}</h4>
                             <span>{{ $item->country }}</span>
-                            <span>{{ $item->educational_material }} :  التخصص </span>
-                            <span>{{ $item->export_number }} :  سنوات الخبرة</span>
+                            <span> التخصص : {{ $item->educational_material }}   </span>
+                            <span>  {{ $item->export_number }} :  سنوات الخبرة</span>
 
                             </div>
                         </div>
