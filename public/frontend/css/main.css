@@ -2234,6 +2234,10 @@ section {
     opacity: 1;
 }
 
+.nav-link:hover {
+    cursor: pointer;
+}
+
 .imge_hight {
     height: 400px !important;
     width: 400px;
