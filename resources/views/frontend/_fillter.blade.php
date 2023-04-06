@@ -78,7 +78,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="education_level">سنوات الخبرة :</label>
-                        <input type="number" name="years_experince" class="form-control" >
+                        <input type="number" name="years_experince" value="{{ $request->years_experince }}" class="form-control" >
                     </div>
                 </div>
                 <div class="col-md-2" style="margin-top: 30px">
