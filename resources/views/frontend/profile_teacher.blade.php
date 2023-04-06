@@ -150,43 +150,11 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="country">المرحلة التعليمية</label>
-                            <select id="education_level" required name="education_level" class="form-control">
-                                <option value="">اختر مستوى التعليم</option>
-                                <optgroup label="المرحلة الابتدائية">
-                                    <option value="الصف الأول الابتدائي" @if ($user->education_level == 'الصف الأول الابتدائي') selected @endif>
-                                        الصف الأول الابتدائي</option>
-                                    <option value="الصف الثاني الابتدائي" @if ($user->education_level == 'الصف الثاني الابتدائي') selected @endif>
-                                        الصف الثاني الابتدائي</option>
-                                    <option value="الصف الثالث الابتدائي" @if ($user->education_level == 'الصف الثالث الابتدائي') selected @endif>
-                                        الصف الثالث الابتدائي</option>
-                                    <option value="الصف الرابع الابتدائي" @if ($user->education_level == 'الصف الرابع الابتدائي') selected @endif>
-                                        الصف الرابع الابتدائي</option>
-                                    <option value="الصف الخامس الابتدائي" @if ($user->education_level == 'الصف الخامس الابتدائي') selected @endif>
-                                        الصف الخامس الابتدائي</option>
-                                    <option value="الصف السادس الابتدائي" @if ($user->education_level == 'الصف السادس الابتدائي') selected @endif>
-                                        الصف السادس الابتدائي</option>
-                                </optgroup>
-                                <optgroup label="المرحلة المتوسطة">
-                                    <option value="الصف الأول المتوسط" @if ($user->education_level == 'الصف الأول المتوسط') selected @endif>الصف
-                                        الأول المتوسط</option>
-                                    <option value="الصف الثاني المتوسط" @if ($user->education_level == 'الصف الثاني المتوسط') selected @endif>الصف
-                                        الثاني المتوسط</option>
-                                    <option value="الصف الثالث المتوسط" @if ($user->education_level == 'الصف الثالث المتوسط') selected @endif>الصف
-                                        الثالث المتوسط</option>
-                                </optgroup>
-                                <optgroup label="المرحلة الثانوية">
-                                    <option value="الصف الأول الثانوي" @if ($user->education_level == 'الصف الأول الثانوي') selected @endif>الصف
-                                        الأول الثانوي</option>
-                                    <option value="الصف الثاني الثانوي"@if ($user->education_level == 'الصف الثاني الثانوي') selected @endif>الصف
-                                        الثاني الثانوي</option>
-                                    <option value="الصف الثالث الثانوي"@if ($user->education_level == 'الصف الثالث الثانوي') selected @endif>الصف
-                                        الثالث الثانوي</option>
-                                </optgroup>
-                                <!-- Add more options as needed -->
-                            </select>
+                            <label for="years_of_experience">عدد سنوات الخبرة </label>
+                            <input type="number" name="years_of_experience" id="years_of_experience" class="form-control @error('years_of_experience') is-invalid @enderror" value="{{ old('years_of_experience', $user->export_number) }}" required>
+
                              
-                            @error('education_level')
+                            @error('years_of_experience')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

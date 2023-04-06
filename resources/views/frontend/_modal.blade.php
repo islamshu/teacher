@@ -192,30 +192,10 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="education_level">اختر مستوى التعليم:</label>
-                        <select id="education_level" name="education_level" class="form-control">
-                            <option value="">اختر مستوى التعليم</option>
-                            <optgroup label="المرحلة الابتدائية">
-                                <option value="الصف الأول الابتدائي">الصف الأول الابتدائي</option>
-                                <option value="الصف الثاني الابتدائي">الصف الثاني الابتدائي</option>
-                                <option value="الصف الثالث الابتدائي">الصف الثالث الابتدائي</option>
-                                <option value="الصف الرابع الابتدائي">الصف الرابع الابتدائي</option>
-                                <option value="الصف الخامس الابتدائي">الصف الخامس الابتدائي</option>
-                                <option value="الصف السادس الابتدائي">الصف السادس الابتدائي</option>
-                            </optgroup>
-                            <optgroup label="المرحلة المتوسطة">
-                                <option value="الصف الأول المتوسط">الصف الأول المتوسط</option>
-                                <option value="الصف الثاني المتوسط">الصف الثاني المتوسط</option>
-                                <option value="الصف الثالث المتوسط">الصف الثالث المتوسط</option>
-                            </optgroup>
-                            <optgroup label="المرحلة الثانوية">
-                                <option value="الصف الأول الثانوي">الصف الأول الثانوي</option>
-                                <option value="الصف الثاني الثانوي">الصف الثاني الثانوي</option>
-                                <option value="الصف الثالث الثانوي">الصف الثالث الثانوي</option>
-                            </optgroup>
-                            <!-- Add more options as needed -->
-                        </select>
-
+                        <label for="education_level">عدد سنوات الخبرة  :</label>
+                        
+                        <input type="number" class="form-control" id="years_of_experience" name="years_of_experience"
+                         required>
                         <div class="invalid-feedback">
                         </div>
                     </div>

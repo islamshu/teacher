@@ -81,7 +81,7 @@ class UserController extends Controller
             'cv' => 'required|mimes:pdf',
             'country' => 'required',
             'country' => 'required',
-            'education_level' => 'required',
+            'years_of_experience' => 'required',
             'educational_material' => 'required',
             'teachePassword' => 'required|string|min:8',
             'teacheConformPassword' => 'required|same:teachePassword'
@@ -97,7 +97,7 @@ class UserController extends Controller
         $taecher->whataspp_number = $request->whataspp_number;
         $taecher->password = Hash::make($request->input('teachePassword'));
         $taecher->country = $request->country;
-        $taecher->education_level = $request->education_level;
+        $taecher->export_number = $request->years_of_experience;
         $taecher->educational_material = $request->educational_material;
         $taecher->cv = $request->cv->store('teacher_cv');
         $taecher->image = $request->image->store('teacher');
@@ -128,7 +128,7 @@ class UserController extends Controller
             ],
             'whataspp_number'=>'required',
             'country' => 'required',
-            'education_level' => 'required',
+            'years_of_experience' => 'required',
             'educational_material' => 'required',
         ]);
         if($request->image != null){
@@ -149,7 +149,7 @@ class UserController extends Controller
         $taecher->whataspp_number = $request->whataspp_number;
         // $taecher->password = Hash::make($request->input('teachePassword'));
         $taecher->country = $request->country;
-        $taecher->education_level = $request->education_level;
+        $taecher->export_number = $request->years_of_experience;
         $taecher->educational_material = $request->educational_material;
         if($request->cv != null){
             $taecher->cv = $request->cv->store('teacher_cv');
