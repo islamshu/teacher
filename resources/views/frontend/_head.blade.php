@@ -29,23 +29,23 @@
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('frontend/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('frontend/vendor/aos/aos.css') }}" rel="stylesheet">
-    <link href="{{ asset('frontend/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('frontend/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css' . config('app.app_version')) }}" rel="stylesheet">
+    <link href="{{ asset('frontend/vendor/bootstrap-icons/bootstrap-icons.css' . config('app.app_version')) }}" rel="stylesheet">
+    <link href="{{ asset('frontend/vendor/aos/aos.css' . config('app.app_version')) }}" rel="stylesheet">
+    <link href="{{ asset('frontend/vendor/glightbox/css/glightbox.min.css' . config('app.app_version')) }}" rel="stylesheet">
+    <link href="{{ asset('frontend/vendor/swiper/swiper-bundle.min.css' . config('app.app_version')) }}" rel="stylesheet">
 
     <!-- Variables CSS Files. Uncomment your preferred color scheme -->
-    <link href="{{ asset('frontend/css/variables.css') }}" rel="stylesheet">
-    <!-- <link href="{{ asset('frontend/css/variables-blue.cs') }}s" rel="stylesheet"> -->
-    <!-- <link href="{{ asset('frontend/css/variables-green.css') }}" rel="stylesheet"> -->
-    <!-- <link href="{{ asset('frontend/css/variables-orange.css') }}" rel="stylesheet"> -->
-    <!-- <link href="{{ asset('frontend/css/variables-purple.css') }}" rel="stylesheet"> -->
-    <!-- <link href="{{ asset('frontend/css/variables-red.css') }}" rel="stylesheet"> -->
-    <!-- <link href="{{ asset('frontend/css/variables-pink.css') }}" rel="stylesheet"> -->
+    <link href="{{ asset('frontend/css/variables.css' . config('app.app_version')) }}" rel="stylesheet">
+    <!-- <link href="{{ asset('frontend/css/variables-blue.cs' . config('app.app_version')) }}s" rel="stylesheet"> -->
+    <!-- <link href="{{ asset('frontend/css/variables-green.css' . config('app.app_version')) }}" rel="stylesheet"> -->
+    <!-- <link href="{{ asset('frontend/css/variables-orange.css' . config('app.app_version')) }}" rel="stylesheet"> -->
+    <!-- <link href="{{ asset('frontend/css/variables-purple.css' . config('app.app_version')) }}" rel="stylesheet"> -->
+    <!-- <link href="{{ asset('frontend/css/variables-red.css' . config('app.app_version')) }}" rel="stylesheet"> -->
+    <!-- <link href="{{ asset('frontend/css/variables-pink.css' . config('app.app_version')) }}" rel="stylesheet"> -->
 
     <!-- Template Main CSS File -->
-    <link href="{{ asset('frontend/css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/css/main.css' . config('app.app_version')) }}" rel="stylesheet">
 
     <!-- =======================================================
   * Template Name: HeroBiz - v2.4.0
