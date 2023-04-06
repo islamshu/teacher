@@ -112,6 +112,8 @@
                             <label for="country">التخصص </label>
                             <select id="educational_material" required name="educational_material" class="form-control">
                                 <option value="">يرجى الاختيار</option>
+                                <option value="رياض الأطفال" @if ($user->educational_material == 'رياض الأطفال') selected @endif>رياض الأطفال</option>
+
                                 <option value="الرياضيات" @if ($user->educational_material == 'الرياضيات') selected @endif>الرياضيات</option>
                                 <option value="اللغة العربية" @if ($user->educational_material == 'اللغة العربية') selected @endif>اللغة العربية
                                 </option>

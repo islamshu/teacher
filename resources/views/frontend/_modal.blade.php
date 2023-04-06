@@ -203,6 +203,7 @@
                         <label for="educational_material">التخصص  :</label>
                         <select id="educational_material" name="educational_material" class="form-control">
                             <option value="">يرجى الاختيار</option>
+                            <option value="رياض الأطفال">رياض الأطفال</option>
                             <option value="الرياضيات">الرياضيات</option>
                             <option value="اللغة العربية">اللغة العربية</option>
                             <option value="اللغة الإنجليزية">اللغة الإنجليزية</option>

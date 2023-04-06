@@ -24,8 +24,8 @@ class HomeController extends Controller
 
             $query->where('educational_material', $request->input('educational_material'));
         }
-        if ($request->has('education_level') &&  $request->education_level != null) {
-            $query->where('education_level', $request->input('education_level'));
+        if ($request->has('years_experince') &&  $request->education_level != null) {
+            $query->where('export_number', $request->input('years_experince'));
         }
                 
         
