@@ -42,7 +42,7 @@
     <!-- <link href="{{ asset('frontend/css/variables-orange.css') }}" rel="stylesheet"> -->
     <!-- <link href="{{ asset('frontend/css/variables-purple.css') }}" rel="stylesheet"> -->
     <!-- <link href="{{ asset('frontend/css/variables-red.css') }}" rel="stylesheet"> -->
-    <!-- <link href="{{ asset('frontend/css/variables-pink.css'edie) }}" rel="stylesheet"> -->
+    <!-- <link href="{{ asset('frontend/css/variables-pink.css') }}" rel="stylesheet"> -->
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('frontend/css/main.css') }}" rel="stylesheet">
