@@ -19,7 +19,6 @@ class UserController extends Controller
     }
     public function company_register(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
             'companyName' => 'required|string|max:255',
             'companyEmail' => [
@@ -37,7 +36,7 @@ class UserController extends Controller
                     return $query->whereNull('deleted_at');
                 }),
             ],
-            'commercialRegister' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp',
+            'commercialRegister' => 'required|mimes:pdf',
             'companyPassword' => 'required|string|min:8',
             'confirmPassword' => 'required|same:companyPassword'
         ]);
@@ -46,14 +45,16 @@ class UserController extends Controller
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
         }
-        $company = new Company();
+        $company = new Teacher();
+        $company->type ='school';
         $company->name = $request->input('companyName');
         $company->email = $request->input('companyEmail');
         $company->password = Hash::make($request->input('companyPassword'));
         $company->commercialRegister = $request->commercialRegister->store('commercialRegister');
-        $company->image = 'company/user_defult.webp';
+        $company->image =  $request->image->store('image');
+
         $company->save();
-        Auth::guard('company')->login($company);
+        Auth::guard('teacher')->login($company);
         return response()->json(['success' => 'true'], 200);
     }
     public function teacher_register(Request $request)
@@ -92,6 +93,7 @@ class UserController extends Controller
             return response()->json(['errors' => $validator->errors()], 422);
         }
         $taecher = new Teacher();
+        $taecher->type = 'teacher';
         $taecher->name = $request->teacherName;
         $taecher->email = $request->teacherEmail;
         $taecher->whataspp_number = $request->whataspp_number;
@@ -201,20 +203,23 @@ class UserController extends Controller
         if ((auth()->check())) {
             return view('layouts.backend');
         } else {
-            if (auth('company')->check()) {
-                $user = auth('company')->user();
-                return view('frontend.profile')->with('user', $user);
-            }
+            
             if (auth('teacher')->check()) {
-                $user = auth('teacher')->user();
-                return view('frontend.profile_teacher')->with('user', $user);
+                if(auth('teacher')->user()->type == 'teacher'){
+                    $user = auth('teacher')->user();
+                    return view('frontend.profile_teacher')->with('user', $user);
+                }else{
+                    $user = auth('teacher')->user();
+                    return view('frontend.profile')->with('user', $user);
+                }
+                
             }
             return redirect('/');
         }
     }
     public function company_update(Request $request)
     {
-        $user = auth('company')->user();
+        $user = auth('teacher')->user();
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:companies,email,' . $user->id,

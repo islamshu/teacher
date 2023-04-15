@@ -15,6 +15,12 @@
                 <form id="submit-form" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
+                        <label for="companyName" class="form-label"> صورة المعلم</label>
+                        <input type="file" class="form-control" id="image" name="image" required>
+                        <div class="invalid-feedback">
+                        </div>
+                    </div>
+                    <div class="mb-3">
                         <label for="companyName" class="form-label"> اسم المدرسة</label>
                         <input type="text" class="form-control" id="companyName" name="companyName" required>
                         <div class="invalid-feedback">

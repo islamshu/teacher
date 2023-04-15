@@ -10,8 +10,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{ asset('frontend/img/favicon.png') }}" rel="icon">
-    <link href="{{ asset('frontend/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('uploads/'.get_general_value('icon')) }}" rel="icon">
+    <link href="{{ asset('uploads/'.get_general_value('icon')) }}" rel="apple-touch-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.css">
 
 
@@ -53,6 +53,7 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  @yield('css')
 </head>
 
 <body>

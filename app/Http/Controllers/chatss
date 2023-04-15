@@ -1,0 +1,78 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Events\ChatMessageSent;
+use App\Events\NewChatMessage;
+use App\Events\NewMessage;
+use App\Models\Chat;
+use App\Models\NewChat;
+use App\Models\Teacher;
+use Illuminate\Http\Request;
+use Auth;
+
+class ChatController extends Controller
+{
+
+    // public function index()
+    // {
+    //     return view('frontend.chat');
+    // }
+    public function index( $id)
+    {
+        // Get the authenticated user
+        $user_id = auth('teacher')->id();
+        $user = Teacher::find($id);
+        // Get the messages between the authenticated user and the selected user
+        $messages = NewChat::where(function ($query) use ($user_id, $user) {
+            $query->where('sender_id', $user_id)
+                ->where('receiver_id', $user->id);
+        })->orWhere(function ($query) use ($user_id, $user) {
+            $query->where('sender_id', $user->id)
+                ->where('receiver_id', $user_id);
+        })->orderBy('created_at', 'asc')->get();
+
+        // Render the chat view and pass the necessary data to it
+        return view('frontend.chat', [
+            'receiver' => $user,
+            'messages' => $messages,
+        ]);
+    }
+    public function store(Request $request)
+    {
+        $message = new NewChat();
+        $message->sender_id = auth('teacher')->id();
+        $message->receiver_id = $request->receiver_id;
+        $message->message = $request->message;
+        $message->save();
+
+        event(new NewMessage($message));
+
+        return redirect()->back();
+    }
+
+    public function chat_user($sender, $sender_guard, $resever, $resever_guard)
+    {
+        $messages = Chat::where('sender_id', $sender)->where('sender_guard', $sender_guard)->Where('resever_id', $resever)->where('resever_guard', $resever_guard)
+            ->orwhere('sender_id', $sender)->where('receiver_id', $id1)->orderby('id', 'desc')->get();
+    }
+
+    public function sendMessage(Request $request)
+    {
+        $message = $request->input('message');
+        $user = get_guard_user();
+        $chat = new Chat();
+        $chat->sender_id = get_guard_id();
+        $chat->sender_guard = get_guard_name();
+        $chat->message = $request->message;
+        $chat->resever_id = $request->resever_id;
+        $chat->resever_guard = $request->resever_guard;
+        $chat->save();
+        $data = [
+            'username' => $user->name,
+            'message' => $message,
+            'avatar' => asset('uploads/general/8PN9WLSMkOajpp8BLLRN9xPE2jvmsMNlj9POnF91.jpg'),
+        ];
+        event(new NewChatMessage($data));
+    }
+}
