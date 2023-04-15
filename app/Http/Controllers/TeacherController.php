@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class TeacherController extends Controller
 {
     public function index(){
-        $teachers = Teacher::orderby('id','desc')->get();
+        $teachers = Teacher::where('type','teacher')->orderby('id','desc')->get();
         return view('dashboard.teachers.index')->with('teachers',$teachers);
     }
     public function show($id){
