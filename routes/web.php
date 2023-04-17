@@ -34,6 +34,7 @@ Route::post('login_user', [UserController::class, 'login_user'])->name('login_us
 Route::post('teacher_register', [UserController::class, 'teacher_register'])->name('teacher_register');
 Route::get('teachers', [HomeController::class, 'teachers'])->name('teachers');
 Route::post('contact_us', [MessageController::class, 'contact_us'])->name('contact_us');
+Route::get('pay_user_new', [UserController::class, 'pay_user_new'])->name('pay_user');
 
 
 Route::get('/chat/{techer_id}',[ChatController::class,'chat_user'])->name('chat_user');
@@ -57,6 +58,8 @@ Route::get('edit_profile', function () {
 
 Route::get('logout_for_user', [UserController::class, 'logout_user'])->name('logout_user');
 Route::get('pay_user', [HomeController::class, 'pay_user'])->name('payment-verify');
+
+
 
 Route::put('teacher_update', [UserController::class, 'teacher_update'])->name('teacher_update');
 

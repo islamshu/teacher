@@ -17,6 +17,7 @@ class HomeController extends Controller
     public function success_paid(){
         $user = auth('teacher')->user();
         $user->is_paid = 1;
+        $user->save();
         return view('success_paid');
     }
     public function pay_user(Request $request){
@@ -55,7 +56,7 @@ class HomeController extends Controller
     }
     public function teachers(Request $request)
     {
-        $query = Teacher::query();
+        $query = Teacher::query()->where('is_paid',1);
         if ($request->has('country') &&  $request->country != null) {
             $query->where('country', 'like', '%' . $request->input('country') . '%');
         }

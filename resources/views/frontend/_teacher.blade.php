@@ -9,7 +9,7 @@
 
 
         <div class="row gy-5">
-            @foreach (App\Models\Teacher::orderby('id', 'desc')->take(6)->get() as $item)
+            @foreach (App\Models\Teacher::orderby('id', 'desc')->where('is_paid',1)->take(6)->get() as $item)
                 <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="200">
                     <div class="team-member">
                         <div class="member-img">

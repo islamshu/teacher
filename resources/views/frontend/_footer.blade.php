@@ -109,7 +109,12 @@
                     text: 'You have successfully registered.'
                 }).then((result) => {
                     // refresh the page
-                    location.reload();
+                    location.replace(response['url']);
+
+                    // Window.location.replace(response['url']);
+
+
+                    // location.reload();
                 });
             },
             error: function(response) {

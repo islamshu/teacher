@@ -43,6 +43,7 @@
       </div>
         <h1>Success</h1> 
         <p>Payment completed successfully!</p>
+        <a href="/" class="btn btn-success">الرجوع للرئيسية</a>
       </div>
     </body>
 </html>
