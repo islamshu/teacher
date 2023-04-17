@@ -38,7 +38,8 @@ Route::post('contact_us', [MessageController::class, 'contact_us'])->name('conta
 
 Route::get('/chat/{techer_id}',[ChatController::class,'chat_user'])->name('chat_user');
 Route::get('send-message',[ChatController::class,'send_message'])->name('send_message');
-
+Route::get('success_paid',[HomeController::class, 'success_paid'])->name('success_paid');
+Route::get('canceld_paid',[HomeController::class, 'canceld_paid'])->name('canceld_paid');
 
 
 
@@ -53,7 +54,10 @@ Route::get('edit_profile', function () {
     return view('layouts.backend');
 })->name('edit_profile');
 
+
 Route::get('logout_for_user', [UserController::class, 'logout_user'])->name('logout_user');
+Route::get('pay_user', [HomeController::class, 'pay_user'])->name('payment-verify');
+
 Route::put('teacher_update', [UserController::class, 'teacher_update'])->name('teacher_update');
 
 Route::put('company_update', [UserController::class, 'company_update'])->name('company_update');

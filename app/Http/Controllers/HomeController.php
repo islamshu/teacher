@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\GeneralInfo;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Omnipay\Omnipay;
 
 class HomeController extends Controller
 {
@@ -13,6 +14,45 @@ class HomeController extends Controller
      *
      * @return void
      */
+    public function success_paid(){
+        $user = auth('teacher')->user();
+        $user->is_paid = 1;
+        return view('success_paid');
+    }
+    public function pay_user(Request $request){
+        dd(auth('teacher')->id());
+        $gateway = Omnipay::create('Thawani');
+        $gateway->setPublishKey('HGvTMLDssJghr9tlN9gr4DVYt0qyBy');
+        $gateway->setSecretKey('rRQ26GcsZzoEhbrP2HZvLYDbn9C9et');
+        $gateway->setTestMode(true-false);
+        $rand_number = rand(111111111111111111,999999999999999999);
+        $purchase = $gateway->purchase();
+        $purchase->setAmount(12000);
+        $purchase->setQuantity(1);
+        $purchase->setProductName("Register in Teacher"); //Product name is required
+        $purchase->setTransactionId($rand_number); //TransactionId is required
+        $purchase->setCustomerId('');
+        $purchase->setReturnUrl('https://www.example.com/thawani/success'); //The success url is required
+        $purchase->setCancelUrl('https://www.example.com/thawani/cancel');  //The cancel url is required
+        $purchase->setSaveCardOnSuccess(false);
+        $purchase->setPlanId('');
+        // The metadata about the customer is required, like name, email
+        $purchase->setMetadata([
+            'orderId' => $rand_number,
+            'customerId' => 1,
+            'customerEmail' => 'islamshu12@gmail.com',
+            'customerName' => 'islam',// user full name
+        ]);
+
+        $result = $purchase->send();
+        $response = $result->getData();
+        $redirectUrl = $result->getRedirectUrl();
+        array_push($response,$redirectUrl);
+        return $response;
+
+        return $response['data']['session_id'];
+
+    }
     public function teachers(Request $request)
     {
         $query = Teacher::query();

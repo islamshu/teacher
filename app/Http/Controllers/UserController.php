@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Validator;
 use Auth;
 use Illuminate\Validation\Rule;
+use Omnipay\Omnipay;
 
 
 class UserController extends Controller
@@ -105,7 +106,43 @@ class UserController extends Controller
         $taecher->image = $request->image->store('teacher');
         $taecher->save();
         Auth::guard('teacher')->login($taecher);
+        return $this->pay_user($request);
+        
         return response()->json(['success' => 'true'], 200);
+    }
+    public function pay_user(Request $request){
+        $user =auth('teacher')->user();
+        $gateway = Omnipay::create('Thawani');
+        $gateway->setPublishKey('HGvTMLDssJghr9tlN9gr4DVYt0qyBy');
+        $gateway->setSecretKey('rRQ26GcsZzoEhbrP2HZvLYDbn9C9et');
+        $gateway->setTestMode(true-false);
+        $rand_number = rand(111111111111111111,999999999999999999);
+        $purchase = $gateway->purchase();
+        $purchase->setAmount(12000);
+        $purchase->setQuantity(1);
+        $purchase->setProductName("Register in Teacher"); //Product name is required
+        $purchase->setTransactionId($rand_number); //TransactionId is required
+        $purchase->setCustomerId('');
+        $purchase->setReturnUrl(route('success_paid')); //The success url is required
+        $purchase->setCancelUrl(route('canceld_paid'));  //The cancel url is required
+        $purchase->setSaveCardOnSuccess(false);
+        $purchase->setPlanId('');
+        // The metadata about the customer is required, like name, email
+        $purchase->setMetadata([
+            'orderId' => $rand_number,
+            'customerId' => 1,
+            'customerEmail' => 'islamshu12@gmail.com',
+            'customerName' => 'islam',// user full name
+        ]);
+
+        $result = $purchase->send();
+        $response = $result->getData();
+        $redirectUrl = $result->getRedirectUrl();
+        $user->invoice = $response['data']['invoice'];
+        $user->save();
+
+        return $redirectUrl;
+
     }
     public function teacher_update(Request $request)
     {
