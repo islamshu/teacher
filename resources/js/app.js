@@ -1,4 +1,5 @@
 import './bootstrap';
+import '../css/app.css';
 
 $(document).ready(function() {
     $('#messages').animate({

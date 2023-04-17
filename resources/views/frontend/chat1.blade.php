@@ -2,8 +2,8 @@
 @section('css')
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <style>
+        @vite('resources/js/app.js')
+        <style>
         .inbox_msg {
             padding: 10px;
             height: 400px;
