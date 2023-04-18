@@ -81,7 +81,7 @@
                     <div class="chat_list" id="{{ $user->id }}" onclick="loadMessages(this.id)">
                         <div class="chat_people">
                             <div class="chat_img" style="display: flex;/* border: beige; */border-style: groove;height: 20% !important;margin: 5px;">
-                                <img style="height: 100%" src="{{ asset('uploads/' . $user->image) }}" width="50" height="50"
+                                <img  src="{{ asset('uploads/' . $user->image) }}" width="80" 
                                     alt="{{ $user->name }}">
                                 <div class="chat_ib" >
                                     <h5><a href="{{ route('chat_user',encrypt($user->id)) }}">{{ $user->name }}</a> <br>
