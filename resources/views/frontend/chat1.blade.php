@@ -117,7 +117,7 @@
                 <div class="box-footer">
                     <form action="#" method="post" id="message_form">
                         <div class="input-group">
-                            <input type="text" name="message" id="message" placeholder="Type Message ..."
+                            <input type="text" required name="message" id="message" placeholder="Type Message ..."
                                 class="form-control">
                             <input type="hidden" value="{{ $teacher->id }}" id="reseve_id">
                             <input type="hidden" value="{{ get_guard_id() }}" id="user_id">

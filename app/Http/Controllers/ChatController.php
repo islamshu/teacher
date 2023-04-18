@@ -42,16 +42,19 @@ class ChatController extends Controller
         
     }
     public function send_message(Request $request){
-        $mesagee = new Messagee();
-        $mesagee->sender_id = get_guard_id();
-        $mesagee->receiver_id = $request->reserve_id;
-        $mesagee->message = $request->message;
-        $mesagee->save();
-        $time = $mesagee->created_at->format('Y-m-d H:m:s');
-        
+        if($request->message != null){
+            $mesagee = new Messagee();
+            $mesagee->sender_id = get_guard_id();
+            $mesagee->receiver_id = $request->reserve_id;
+            $mesagee->message = $request->message;
+            $mesagee->save();
+            $time = $mesagee->created_at->format('Y-m-d H:m:s');
+            event(new Message( get_guard_user()->name,get_guard_user()->email,$request->message,$mesagee->receiver_id ,$mesagee,$time));
+            return ['success' => true];
 
-        event(new Message( get_guard_user()->name,get_guard_user()->email,$request->message,$mesagee->receiver_id ,$mesagee,$time));
+        }
         return ['success' => true];
+
     }
     public function index()
     {
