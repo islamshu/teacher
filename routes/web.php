@@ -59,6 +59,7 @@ Route::get('edit_profile', function () {
 Route::get('logout_for_user', [UserController::class, 'logout_user'])->name('logout_user');
 Route::get('pay_user', [HomeController::class, 'pay_user'])->name('payment-verify');
 
+Route::post('send_job_request', [HomeController::class, 'send_job_request'])->name('send_job_request');
 
 
 Route::put('teacher_update', [UserController::class, 'teacher_update'])->name('teacher_update');

@@ -27,7 +27,7 @@
                 @if(check_login() == 1)
 
                 <li><a class="nav-link scrollto" href="{{ route('dashboard') }}">الملف الشخصي</a></li>
-                @if(auth('teacher')->check() && auth('teacher')->user()->is_paid == 0 )
+                @if(auth('teacher')->check() && auth('teacher')->user()->type == 'teacher' && auth('teacher')->user()->is_paid == 0 )
 
                 <li><a class="nav-link scrollto btn btn-danger" href="{{ route('pay_user') }}">ادفع الاشتراك </a></li>
                 @endif

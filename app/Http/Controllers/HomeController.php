@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GeneralInfo;
+use App\Models\Job;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Omnipay\Omnipay;
@@ -19,6 +20,26 @@ class HomeController extends Controller
         $user->is_paid = 1;
         $user->save();
         return view('success_paid');
+    }
+    public function send_job_request(Request $request){
+        $user = auth('teacher')->user();
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'start_date'=>'date|required',
+            'end_date'=>'date|required',
+        ]);
+        $job = new Job();
+        $job->title = $request->title;
+        $job->description = $request->description;
+        $job->start_at = $request->start_date;
+        $job->end_at = $request->end_date;
+        $job->user_id = $user->id;
+        $job->save();
+        return redirect()->back()->with(['success' => 'Send Succeffuly']);
+
+
+
     }
     public function pay_user(Request $request){
         dd(auth('teacher')->id());
