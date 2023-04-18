@@ -7,7 +7,7 @@
 
       <div class="row gy-5">
 
-        @foreach (App\Models\Job::with('school')->where('start_at','<',now())->where('end_at','>',now())->take(4) as $item)
+        @foreach (App\Models\Job::with('school')->where('start_at','<',now())->where('end_at','>',now())->take(4)->get() as $item)
 
         <div class="col-xl-3 col-md-4">
         
