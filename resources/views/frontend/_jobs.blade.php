@@ -20,7 +20,7 @@
               <p class="card-text">  عنوان الوظيفة : {{ $item->title }} </p>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item"> التخصص المطلوب : {{ $item->title }}</li>
+              <li class="list-group-item"> التخصص المطلوب : {{ $item->educational_material }}</li>
               <li class="list-group-item"> ينتهي الطلب في : {{ $item->end_at }}</li>
               <li class="list-group-item"> عدد المتقدمين حاليا : 20 متقدم</li>
             </ul>
