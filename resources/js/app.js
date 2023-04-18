@@ -37,11 +37,13 @@ var secondNumber = numbers[1];
 var name_chaneel = 'chat-' + firstNumber + '.' + secondNumber;
 
 window.Echo.channel(name_chaneel)
-    .listen('.message', (e) => {
 
-        $('#messages').append('<p class="chat"><strong>(' + e.time + ')<br>' + e.username + '</strong>' + ' :' + e.message + '</p>');
-        $('#message').val('');
-        $('#messages').animate({
-            scrollTop: '+=90000'
-        }, 500);
-    });
+.listen('.message', (e) => {
+    alert('dd');
+
+    $('#messages').append('<p class="chat"><strong>(' + e.time + ')<br>' + e.username + '</strong>' + ' :' + e.message + '</p>');
+    $('#message').val('');
+    $('#messages').animate({
+        scrollTop: '+=90000'
+    }, 500);
+});
