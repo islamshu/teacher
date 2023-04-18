@@ -1,7 +1,7 @@
 @extends('layouts.index')
 
 @section('content')
-<div class="container " style="margin-top: 10%;margin-bottom: 10%">
+<div class="container " style="margin-top: 10%;margin-bottom: 10%;text-align: right">
     <div class="row">
         <div class="col-md-3">
             <div class="card mb-3">

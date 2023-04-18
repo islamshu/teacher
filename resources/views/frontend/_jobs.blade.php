@@ -1,0 +1,38 @@
+<section id="jobs" class="jobs">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-header">
+        <h2>الوظائف</h2>
+      </div>
+
+      <div class="row gy-5">
+
+        @foreach (App\Models\Job::with('school')->where('start_at','<',now())->where('end_at','>',now())->take(4) as $item)
+
+        <div class="col-xl-3 col-md-4">
+        
+          <div class="card" style="width: auto;text-align:center">
+            <img class="card-img-top" src="{{ asset('uploads/'.$item->school->image) }}" width="300" height="200" alt="Card image cap">
+            <div id="overlay">
+                <div class="text"> {{ $item->school->name }}</div>
+              </div>
+            <div class="card-body">
+              <p class="card-text">  عنوان الوظيفة : {{ $item->title }} </p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"> التخصص المطلوب : {{ $item->title }}</li>
+              <li class="list-group-item"> ينتهي الطلب في : {{ $item->end_at }}</li>
+              <li class="list-group-item"> عدد المتقدمين حاليا : 20 متقدم</li>
+            </ul>
+            <div class="card-body">
+              <a href="#" class="card-link">انضم للوظيفة</a>
+            </div>
+          </div>
+        </div>
+        @endforeach
+
+
+      </div>
+
+    </div>
+  </section>

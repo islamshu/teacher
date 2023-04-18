@@ -35,6 +35,7 @@ class HomeController extends Controller
         $job->start_at = $request->start_date;
         $job->end_at = $request->end_date;
         $job->user_id = $user->id;
+        $job->educational_material = $request->educational_material;
         $job->save();
         return redirect()->back()->with(['success' => 'Send Succeffuly']);
 

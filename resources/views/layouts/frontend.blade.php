@@ -47,6 +47,7 @@
     <!-- End Services Section -->
 
 
+    @include('frontend._jobs')
 
     <!-- ======= Team Section ======= -->
     @include('frontend._teacher')
@@ -74,7 +75,7 @@
 
             <div class="row gy-5 gx-lg-5">
 
-                <div class="col-lg-4">
+                <div class="col-lg-4" style="text-align:center">
 
                     <div class="info">
                         <h3>خليك معنا دائما على تواصل</h3>
