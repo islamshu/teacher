@@ -39,8 +39,6 @@ var name_chaneel = 'chat-' + firstNumber + '.' + secondNumber;
 window.Echo.channel(name_chaneel)
 
 .listen('.message', (e) => {
-    alert('dd');
-
     $('#messages').append('<p class="chat"><strong>(' + e.time + ')<br>' + e.username + '</strong>' + ' :' + e.message + '</p>');
     $('#message').val('');
     $('#messages').animate({
