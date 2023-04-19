@@ -109,6 +109,8 @@
 
 <script>
     function teacherForm() {
+        $("#loading").show();
+
         $.ajax({
             type: 'POST',
             url: $('#teacher-form').attr('action'),
@@ -116,6 +118,8 @@
             processData: false,
             contentType: false,
             success: function(response) {
+                $("#loading").hide();
+
                 Swal.fire({
                     icon: 'success',
                     title: ' تم التسجيل بنجاح!',
@@ -131,6 +135,8 @@
                 });
             },
             error: function(response) {
+                $("#loading").hide();
+
                 // If form submission fails, display validation errors in the modal
                 $('.invalid-feedback').empty();
                 $('form').find('.is-invalid').removeClass('is-invalid');
@@ -146,6 +152,8 @@
 
     function LoginForm() {
         $('#error-id').empty();
+        $("#loading").show();
+
         $.ajax({
             type: 'POST',
             url: $('#login-form').attr('action'),
@@ -153,16 +161,21 @@
             processData: false,
             contentType: false,
             success: function(response) {
+                $("#loading").hide();
+
                 Swal.fire({
                     icon: 'success',
                     title: ' تم تسجيل الدخول بنجاح!',
                     text: 'You have successfully registered.'
                 }).then((result) => {
                     // refresh the page
+
                     location.reload();
                 });
             },
             error: function(response) {
+                $("#loading").hide();
+
                 // If form submission fails, display validation errors in the modal
                 $('<p>' + response.responseJSON.errors + '</p>').appendTo('#error-id');
             }
@@ -170,6 +183,8 @@
     }
 
     function contacntForm() {
+        $("#loading").show();
+
         $.ajax({
             type: 'POST',
             url: $('#contact-form').attr('action'),
@@ -177,6 +192,8 @@
             processData: false,
             contentType: false,
             success: function(response) {
+                $("#loading").hide();
+
                 Swal.fire({
                     icon: 'success',
                     title: 'تم الارسال بنجاح!'
@@ -185,6 +202,8 @@
 
             },
             error: function(response) {
+                $("#loading").hide();
+
                 $('.invalid-feedback').empty();
                 $('form').find('.is-invalid').removeClass('is-invalid');
                 var errors = response.responseJSON.errors;
@@ -202,6 +221,7 @@
 
     $("#submit-form").submit(function(event) {
         event.preventDefault();
+        $("#loading").show();
 
         $.ajax({
             type: 'POST',
@@ -210,6 +230,8 @@
             processData: false,
             contentType: false,
             success: function(response) {
+                $("#loading").hide();
+
                 Swal.fire({
                     icon: 'success',
                     title: ' تم تسجيل الدخول بنجاح!',
@@ -220,6 +242,8 @@
                 });
             },
             error: function(response) {
+                $("#loading").hide();
+
                 // If form submission fails, display validation errors in the modal
                 $('.invalid-feedback').empty();
                 $('form').find('.is-invalid').removeClass('is-invalid');
@@ -239,6 +263,8 @@
         })
     });
     $(document).on('click', '.send-request', function(e) {
+        $("#loading").show();
+
         var trash_id = $(this).attr('data-trash-id');
         $.ajaxSetup({
             headers: {
@@ -252,6 +278,8 @@
             // processData: false,
             // contentType: false,
             success: function(response) {
+                $("#loading").hide();
+
                 if(response['success'] == 'true'){
                     Swal.fire({
                     icon: 'success',
@@ -266,17 +294,7 @@
                 
 
             },
-            error: function(response) {
-                $('.invalid-feedback').empty();
-                $('form').find('.is-invalid').removeClass('is-invalid');
-                var errors = response.responseJSON.errors;
-                $.each(errors, function(field, messages) {
-                    var input = $('#contact-form').find('[name="' + field + '"]');
-                    input.addClass('is-invalid');
-                    input.next('.invalid-feedback').html(messages[0]);
-                }); // If form submission fails, display validation errors in the modal
-                //    $('<p>' + response.responseJSON.errors + '</p>').appendTo('#error-id');
-            }
+           
         });
     });
 </script>

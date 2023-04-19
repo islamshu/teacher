@@ -28,13 +28,12 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap"
         rel="stylesheet">
-        <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <!-- Vendor CSS Files -->
     <link href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css?version=' . config('app.app_version')) }}"
         rel="stylesheet">
-    <link
-        href="{{ asset('frontend/vendor/bootstrap-icons/bootstrap-icons.css?version=' . config('app.app_version')) }}"
+    <link href="{{ asset('frontend/vendor/bootstrap-icons/bootstrap-icons.css?version=' . config('app.app_version')) }}"
         rel="stylesheet">
     <link href="{{ asset('frontend/vendor/aos/aos.css?version=' . config('app.app_version')) }}" rel="stylesheet">
     <link href="{{ asset('frontend/vendor/glightbox/css/glightbox.min.css?version=' . config('app.app_version')) }}"
@@ -61,35 +60,48 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
     <style>
-      
-#overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 50%;
-  width: 100%;
-  opacity: 0;
-  transition: .5s ease;
-  background-color: #8e9395;
-}
+        #loading {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10014;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(192, 192, 192, 0.5);
+            background-image: url("https://i.stack.imgur.com/MnyxU.gif");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
 
-.card:hover #overlay {
-  opacity: 0.87;
-}
+        #overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            width: 100%;
+            opacity: 0;
+            transition: .5s ease;
+            background-color: #8e9395;
+        }
 
-.text {
-  color: white;
-  font-size: 20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
+        .card:hover #overlay {
+            opacity: 0.87;
+        }
+
+        .text {
+            color: white;
+            font-size: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
     </style>
     @yield('css')
 </head>
