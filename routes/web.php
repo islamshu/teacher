@@ -36,6 +36,7 @@ Route::get('teachers', [HomeController::class, 'teachers'])->name('teachers');
 Route::post('contact_us', [MessageController::class, 'contact_us'])->name('contact_us');
 Route::get('pay_user_new', [UserController::class, 'pay_user_new'])->name('pay_user');
 
+Route::post('add_request_job', [HomeController::class, 'add_request_job'])->name('add_request_job');
 
 Route::get('/chat/{techer_id}',[ChatController::class,'chat_user'])->name('chat_user');
 Route::get('send-message',[ChatController::class,'send_message'])->name('send_message');

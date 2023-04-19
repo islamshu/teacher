@@ -17,4 +17,13 @@ class Job extends Model
     {
         return $this->belongsTo(Teacher::class,'user_id');
     }
+    /**
+     * Get all of the comments for the Job
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function orders()
+    {
+        return $this->hasMany(TeacherJob::class);
+    }
 }

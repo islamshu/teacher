@@ -20,12 +20,12 @@
               <p class="card-text">  عنوان الوظيفة : {{ $item->title }} </p>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item"> التخصص المطلوب : {{ $item->educational_material }}</li>
+              <li class="list-group-item"> التخصص  : {{ $item->educational_material }}</li>
               <li class="list-group-item"> ينتهي الطلب في : {{ $item->end_at }}</li>
-              <li class="list-group-item"> عدد المتقدمين حاليا : 20 متقدم</li>
+              <li class="list-group-item"> عدد المتقدمين حاليا : {{ $item->orders->count() }} متقدم</li>
             </ul>
             <div class="card-body">
-              <a href="#" class="card-link">انضم للوظيفة</a>
+              <button @if(check_login() != 1) class="loginalert btn btn-info" @else data-trash-id="{{$item->id}}" class="send-request btn btn-info" @endif class="card-link">انضم للوظيفة</a>
             </div>
           </div>
         </div>

@@ -8,7 +8,7 @@
                     <div class="footer-info">
                         <h3>{{ get_general_value('title') }}</h3>
                         <p>
-                         
+
                             <strong>رقم الهاتف:</strong>{{ get_general_value('phone_number') }}<br>
                             <strong>البريد الاكتروني:</strong> {{ get_general_value('email') }}<br>
                         </p>
@@ -25,7 +25,7 @@
                     </ul>
                 </div>
 
-               
+
 
                 <div class="col-lg-4 col-md-6 footer-newsletter">
                     <h4>اشترك بالرسائل البريدية </h4>
@@ -76,24 +76,37 @@
 
 
 <!-- Vendor JS Files -->
-<script src="{{ asset('frontend/vendor/bootstrap/js/bootstrap.bundle.min.js?version=' . config('app.app_version') ) }}"></script>
+<script src="{{ asset('frontend/vendor/bootstrap/js/bootstrap.bundle.min.js?version=' . config('app.app_version')) }}">
+</script>
 <script src="{{ asset('frontend/vendor/aos/aos.js?version=' . config('app.app_version')) }}"></script>
-<script src="{{ asset('frontend/vendor/glightbox/js/glightbox.min.js?version=' . config('app.app_version')) }}"></script>
-<script src="{{ asset('frontend/vendor/isotope-layout/isotope.pkgd.min.js?version=' . config('app.app_version')) }}"></script>
+<script src="{{ asset('frontend/vendor/glightbox/js/glightbox.min.js?version=' . config('app.app_version')) }}">
+</script>
+<script src="{{ asset('frontend/vendor/isotope-layout/isotope.pkgd.min.js?version=' . config('app.app_version')) }}">
+</script>
 <script src="{{ asset('frontend/vendor/swiper/swiper-bundle.min.js?version=' . config('app.app_version')) }}"></script>
 <script src="{{ asset('frontend/vendor/php-email-form/validate.js?version=' . config('app.app_version')) }}"></script>
 <script src="{{ asset('frontend/js/main.js?version=' . config('app.app_version')) }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+    integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous">
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.js"></script>
 
-    
-    
-    
+
+
+
 <script>
     function teacherForm() {
         $.ajax({
@@ -130,7 +143,7 @@
             }
         });
     }
-    
+
     function LoginForm() {
         $('#error-id').empty();
         $.ajax({
@@ -151,10 +164,11 @@
             },
             error: function(response) {
                 // If form submission fails, display validation errors in the modal
-               $('<p>' + response.responseJSON.errors + '</p>').appendTo('#error-id');
+                $('<p>' + response.responseJSON.errors + '</p>').appendTo('#error-id');
             }
         });
     }
+
     function contacntForm() {
         $.ajax({
             type: 'POST',
@@ -178,16 +192,16 @@
                     var input = $('#contact-form').find('[name="' + field + '"]');
                     input.addClass('is-invalid');
                     input.next('.invalid-feedback').html(messages[0]);
-                });                // If form submission fails, display validation errors in the modal
-            //    $('<p>' + response.responseJSON.errors + '</p>').appendTo('#error-id');
+                }); // If form submission fails, display validation errors in the modal
+                //    $('<p>' + response.responseJSON.errors + '</p>').appendTo('#error-id');
             }
         });
     }
-    
 
-   
-$( "#submit-form" ).submit(function( event ) {
-    event.preventDefault();
+
+
+    $("#submit-form").submit(function(event) {
+        event.preventDefault();
 
         $.ajax({
             type: 'POST',
@@ -218,15 +232,53 @@ $( "#submit-form" ).submit(function( event ) {
             }
         });
     });
-    $('.loginalert').click(function(){
+    $('.loginalert').click(function() {
         Swal.fire({
-                    icon: 'error',
-                    title: 'يجب تسجيل الدخول اولا !!',
-                })
+            icon: 'error',
+            title: 'يجب تسجيل الدخول اولا !!',
+        })
     });
-   
-    
-    
+    $(document).on('click', '.send-request', function(e) {
+        var trash_id = $(this).attr('data-trash-id');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('add_request_job') }}" ,
+            data: { "job_id": trash_id},
+            // processData: false,
+            // contentType: false,
+            success: function(response) {
+                if(response['success'] == 'true'){
+                    Swal.fire({
+                    icon: 'success',
+                    title:response['message']
+                });
+                }else{
+                    Swal.fire({
+                    icon: 'error',
+                    title:response['message'],
+                });
+                }
+                
+
+            },
+            error: function(response) {
+                $('.invalid-feedback').empty();
+                $('form').find('.is-invalid').removeClass('is-invalid');
+                var errors = response.responseJSON.errors;
+                $.each(errors, function(field, messages) {
+                    var input = $('#contact-form').find('[name="' + field + '"]');
+                    input.addClass('is-invalid');
+                    input.next('.invalid-feedback').html(messages[0]);
+                }); // If form submission fails, display validation errors in the modal
+                //    $('<p>' + response.responseJSON.errors + '</p>').appendTo('#error-id');
+            }
+        });
+    });
 </script>
 
 </body>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\GeneralInfo;
 use App\Models\Job;
 use App\Models\Teacher;
+use App\Models\TeacherJob;
 use Illuminate\Http\Request;
 use Omnipay\Omnipay;
 
@@ -15,6 +16,22 @@ class HomeController extends Controller
      *
      * @return void
      */
+    public function add_request_job(Request $request){
+        if(!auth('teacher')->check()){
+            return response()->json(['success' => 'false','message'=>'لا يمكنك ارسال طلب ! فقط المعلمين من يمكنهم الارسال . '], 200);
+        }
+        if(!TeacherJob::where('job_id',$request->job_id)->where('teacher_id',auth('teacher')->id())->first()){
+            $job = new TeacherJob();
+            $job->job_id = $request->job_id;
+            $job->teacher_id = auth('teacher')->id();
+            $job->save();
+            return response()->json(['success' => 'true','message'=>'تم الارسال بنجاح'], 200);
+        }else{
+            return response()->json(['success' => 'false','message'=>'لقد قمت بالارسال من قبل'], 200);
+        }
+
+
+    }
     public function success_paid(){
         $user = auth('teacher')->user();
         $user->is_paid = 1;

@@ -113,7 +113,7 @@
                                                     <td>{{ $item->start_at }}</td>
                                                     <td>{{ $item->end_at }}</td>
                                                     <td>{{ 'رياضيات' }}</td>
-                                                    <td>20</td>
+                                                    <td>{{ $item->orders->count() }}</td>
 
                                                 </tr>
                                             @endforeach
