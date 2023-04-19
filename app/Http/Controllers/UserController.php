@@ -271,7 +271,7 @@ class UserController extends Controller
             return response()->json(['success' => 'true'], 200);
 
         }else{
-            return response()->json(['errors' => 'email or password error'], 422);
+            return response()->json(['errors' => ' البريد الاكتروني او كلمة المرور خاطئة'], 422);
         }
     }
     public function dashboard()
