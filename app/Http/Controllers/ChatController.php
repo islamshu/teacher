@@ -6,6 +6,7 @@ use App\Events\Message;
 use App\Events\NewChatMessage;
 use App\Models\Chat;
 use App\Models\Messagee;
+use App\Models\StartChat;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Auth;
@@ -43,6 +44,13 @@ class ChatController extends Controller
     }
     public function send_message(Request $request){
         if($request->message != null){
+            $chat = StartChat::where('school_id',get_guard_id())->where('teacher_id',$request->reserve_id)->first();
+            if(!$chat){
+                $c = new StartChat();
+                $c->school_id= get_guard_id();
+                $c->teacher_id = $request->reserve_id;
+                $c->save();
+            }
             $mesagee = new Messagee();
             $mesagee->sender_id = get_guard_id();
             $mesagee->receiver_id = $request->reserve_id;
