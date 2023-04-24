@@ -3319,4 +3319,7 @@ section {
     .carousel-item {
         height: 350px;
     }
+    #myCarousel {
+        margin-top: 15%;
+    }
 }
