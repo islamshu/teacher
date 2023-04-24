@@ -1648,6 +1648,7 @@ section {
 .services .img {
     border-radius: 8px;
     overflow: hidden;
+    height: 336px;
 }
 
 .services .img img {
