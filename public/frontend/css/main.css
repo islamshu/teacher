@@ -242,7 +242,7 @@ section {
 --------------------------------------------------------------*/
 
 .slider-image {
-    height: 745px !important;
+    max-height: 650px;
 }
 
 .header {

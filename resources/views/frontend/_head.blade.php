@@ -52,6 +52,7 @@
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('frontend/css/main.css?version=' . config('app.app_version')) }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"  />
 
     <!-- =======================================================
   * Template Name: HeroBiz - v2.4.0

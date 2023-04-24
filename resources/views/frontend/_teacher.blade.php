@@ -25,9 +25,9 @@
                                     @if (check_login() != 1) class="loginalert" @else href="{{ asset('uploads/' . $item->cv) }}" target="_blank" @endif><i
                                         class="bi bi-file-person-fill"></i></a>
 
-                                <a
-                                    @if (check_login() != 1) class="loginalert" @else href="{{ route('chat_user', encrypt($item->id)) }}" target="_blank" @endif><i
-                                        class="bi bi-chat-dots"></i></a>
+                                
+                                    @if(school_login() ==1) <a href="{{ route('chat_user', encrypt($item->id)) }}" target="_blank" ><i
+                                        class="bi bi-chat-dots"></i></a>@endif
                               
 
                             </div>

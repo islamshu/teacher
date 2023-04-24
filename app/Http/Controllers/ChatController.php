@@ -27,8 +27,8 @@ class ChatController extends Controller
                 $id2 = $teacher->id;
 
                 $conversations =Messagee::where('sender_id',$id1)->orWhere('receiver_id',$id1)->get();
-                $users = $conversations->map(function($conversation) use($id){
-                if($conversation->sender_id == $id) {
+                $users = $conversations->map(function($conversation) use($id1){
+                if($conversation->sender_id == $id1) {
                     return $conversation->receiver;
                 }
                 return $conversation->sender;

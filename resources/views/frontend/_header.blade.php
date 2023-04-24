@@ -27,12 +27,17 @@
                 <li   ><a class="nav-link scrollto" href="/#contact">تواصل معنا</a></li>
             
                 @if(check_login() == 1)
-
+                <li style="right: 36%">
+                    <a class="nav-link scrollto" href="#">
+                      <i class="fa fa-bell fa-4x"></i> Notifications
+                    </a>
+                  </li>
                 <li style="right: 37%"><a class="nav-link scrollto "  href="{{ route('dashboard') }}">الملف الشخصي</a></li>
                 @if(auth('teacher')->check() && auth('teacher')->user()->type == 'teacher' && auth('teacher')->user()->is_paid == 0 )
 
                 <li style="right: 38%" ><a class="nav-link scrollto btn btn-danger" href="{{ route('pay_user') }}">ادفع الاشتراك </a></li>
                 @endif
+               
 
                 <li style="right: 40%"><a class="nav-link scrollto"   href="{{ route('logout_user') }}">تسجيل خروج</a></li>
                 @endif

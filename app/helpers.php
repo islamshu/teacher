@@ -12,6 +12,13 @@ function check_login(){
         return 0;
     }
 }
+function school_login(){
+    if(auth('teacher')->check() &&  auth('teacher')->user()->type =='school' ){
+        return 1;
+    }else{
+        return 0;
+    }
+}
 function get_general_value($key)
 {
    $general = GeneralInfo::where('key', $key)->first();

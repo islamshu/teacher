@@ -77,6 +77,10 @@
               </div>
             <div class="inbox_people col-md-3">
                 <!-- Display list of users -->
+                @if(App\Models\StartChat::where('school_id',auth('teacher')->id())->where('teacher_id',$teacher->id)->first())
+                <button class="btn btn-danger">انهاء المحادثة</button>
+                @endif
+
                 @foreach ($users->where('id','!=',auth('teacher')->id()) as $user)
                     <div class="chat_list" id="{{ $user->id }}" onclick="loadMessages(this.id)">
                         <div class="chat_people">
