@@ -7,6 +7,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\FteureController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HowItWorkController;
+use App\Http\Controllers\MeetController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SliderController;
@@ -29,6 +30,7 @@ use Illuminate\Http\Request;
 Route::get('/', function () {
     return view('layouts.frontend');
 });
+Route::get('googlemeet',[MeetController::class,'createMeeting'])->name('google_meet');
 Route::post('company_register', [UserController::class, 'company_register'])->name('company_register');
 Route::post('login_user', [UserController::class, 'login_user'])->name('login_user');
 Route::post('teacher_register', [UserController::class, 'teacher_register'])->name('teacher_register');
@@ -39,6 +41,10 @@ Route::get('pay_user_new', [UserController::class, 'pay_user_new'])->name('pay_u
 Route::post('add_request_job', [HomeController::class, 'add_request_job'])->name('add_request_job');
 
 Route::get('/chat/{techer_id}',[ChatController::class,'chat_user'])->name('chat_user');
+Route::get('end_chat',[ChatController::class,'end_chat'])->name('end_chat');
+Route::get('start_chat',[ChatController::class,'start_chat'])->name('start_chat');
+
+
 Route::get('send-message',[ChatController::class,'send_message'])->name('send_message');
 Route::get('success_paid',[HomeController::class, 'success_paid'])->name('success_paid');
 Route::get('canceld_paid',[HomeController::class, 'canceld_paid'])->name('canceld_paid');

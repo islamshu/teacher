@@ -59,6 +59,13 @@ function get_guard_user(){
         return auth('web')->user();
     }
 }
+function notif(){
+    if(auth('teacher')->check()){
+        return auth('teacher')->user()->unreadNotifications;
+    }elseif(auth()->check()){
+        return auth('web')->user()->unreadNotifications;
+    }
+}
 
 
 

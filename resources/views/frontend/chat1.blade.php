@@ -77,8 +77,46 @@
               </div>
             <div class="inbox_people col-md-3">
                 <!-- Display list of users -->
-                @if(App\Models\StartChat::where('school_id',auth('teacher')->id())->where('teacher_id',$teacher->id)->first())
-                <button class="btn btn-danger">انهاء المحادثة</button>
+                @if(auth('teacher')->user()->type == 'school')
+                @php
+                    $chat = App\Models\StartChat::where('school_id',auth('teacher')->id())->where('teacher_id',$teacher->id)->orderby('id','desc')->first();
+                    if($chat){
+                        if($chat->is_finish == 1){
+                            $end_chat = 0;
+                        }else{
+                            $end_chat = 1;
+                        }
+                    }else{
+                        $end_chat = 0;
+                    }
+
+              @endphp
+                @if($chat)
+                @if($chat->is_finish == 1)
+            
+                <button class="btn btn-success" id="start_chat">بدء المحادثة</button>
+                @else
+              
+                <button class="btn btn-danger" id="end_chat">انهاء المحادثة</button>
+                @endif
+                @else
+            
+                <button class="btn btn-success" id="start_chat">بدء المحادثة</button>
+                @endif
+                @else
+                @php
+                $chat = App\Models\StartChat::where('school_id',$teacher->id)->where('teacher_id',auth('teacher')->id())->orderby('id','desc')->first();
+                if($chat){
+                    if($chat->is_finish == 1){
+                        $end_chat = 0;
+                    }else{
+                        $end_chat = 1;
+                    }
+                }else{
+                    $end_chat = 0;
+                }
+
+          @endphp
                 @endif
 
                 @foreach ($users->where('id','!=',auth('teacher')->id()) as $user)
@@ -108,7 +146,7 @@
                 <div class="box-body">
                     <div class="direct-chat-messages" id="messages">
                         @foreach ($messages as $item)
-                            <p class="chat"><strong>({{ $item->created_at->format('Y-m-d H:m:s') }}) <br>{{   $item->sender_id == get_guard_id() ? 'me' : get_tacher($item->sender_id)->name }}</strong>:
+                            <p class="chat"><strong>({{ $item->created_at->format('Y-m-d H:m:s') }}) <br>{{   $item->sender_id == get_guard_id() ? get_tacher($item->sender_id)->name : get_tacher($item->sender_id)->name }}</strong>:
                                 {{ $item->message }}</p>
                         @endforeach
 
@@ -121,14 +159,14 @@
                 <div class="box-footer">
                     <form action="#" method="post" id="message_form">
                         <div class="input-group">
-                            <input type="text" required name="message" id="message" placeholder="Type Message ..."
+                            <input type="text" required name="message" @if($end_chat == 0) disabled @endif id="message" placeholder="Type Message ..."
                                 class="form-control">
                             <input type="hidden" value="{{ $teacher->id }}" id="reseve_id">
                             <input type="hidden" value="{{ get_guard_id() }}" id="user_id">
 
 
                             <span class="input-group-btn">
-                                <button type="submit" id="send_message" class="btn btn-primary btn-flat">Send</button>
+                                <button type="submit" @if($end_chat == 0) disabled @endif  id="send_message" class="btn btn-primary btn-flat">Send</button>
                             </span>
                         </div>
                     </form>
@@ -148,6 +186,59 @@
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
+        });
+    </script>
+    <script>
+        $('#end_chat').click(function(){
+           
+            let school = "{{ get_guard_id() }}";
+            let teacher = "{{ $teacher->id }}";
+
+            $.ajax({
+            type: 'get',
+            url: '{{ route('end_chat') }}',
+            data: {"school_id":school ,"teacher_id":teacher},
+            
+            success: function(response) {
+                $('#send_message').attr('disabled',true)
+            $('#message').attr('disabled',true)
+            location.reload();
+
+              
+            },
+            error: function(response) {
+                $("#loading").hide();
+
+                // If form submission fails, display validation errors in the modal
+                $('<p>' + response.responseJSON.errors + '</p>').appendTo('#error-id');
+            }
+        });
+        });
+    </script>
+    <script>
+        $('#start_chat').click(function(){
+           
+            let school = "{{ get_guard_id() }}";
+            let teacher = "{{ $teacher->id }}";
+
+            $.ajax({
+            type: 'get',
+            url: '{{ route('start_chat') }}',
+            data: {"school_id":school ,"teacher_id":teacher},
+            
+            success: function(response) {
+             
+            location.reload();
+
+              
+            },
+            error: function(response) {
+                $("#loading").hide();
+
+                // If form submission fails, display validation errors in the modal
+                $('<p>' + response.responseJSON.errors + '</p>').appendTo('#error-id');
+            }
+        });
         });
     </script>
 @endsection

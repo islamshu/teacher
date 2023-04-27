@@ -30,11 +30,8 @@ class Message implements ShouldBroadcast
         $this->mesagee = $mesagee;
 
         $sender_id = $this->mesagee->sender_id;
-        if($sender_id ==get_guard_id()  ){
-            $this->username = 'me';
-        }else{
-            $this->username = Teacher::find($sender_id)->name;
-        }
+        $this->username = Teacher::find($sender_id)->name;
+
         $this->message = $message;
         $this->receiver_id = $receiver_id;
         $this->email = $email;

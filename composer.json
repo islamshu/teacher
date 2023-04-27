@@ -9,6 +9,7 @@
         "behzadbabaei/omnipay-thawani": "^1.1",
         "beyondcode/laravel-websockets": "^1.14",
         "guzzlehttp/guzzle": "^7.2",
+        "google/apiclient": "^2.12.1",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",

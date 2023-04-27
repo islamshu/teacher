@@ -27,11 +27,22 @@
                 <li   ><a class="nav-link scrollto" href="/#contact">تواصل معنا</a></li>
             
                 @if(check_login() == 1)
-                <li style="right: 36%">
-                    <a class="nav-link scrollto" href="#">
-                      <i class="fa fa-bell fa-4x"></i> Notifications
+                
+                  <li class="dropdown" style="right: 36%">
+                    <a href="#"><i class="fa fa-bell fa-4x"></i> الاشعارات
                     </a>
-                  </li>
+                    <ul>
+
+                        @forelse (notif() as $notification) 
+                        <li><a href="{{ $notification->data['url'] }}">{{ $notification->data['title'] }}</a></li>
+
+                        @empty
+                        <li><a >لا يوجد اشعارات</a></li>
+
+                        @endforelse 
+                      
+                    </ul>
+                </li>
                 <li style="right: 37%"><a class="nav-link scrollto "  href="{{ route('dashboard') }}">الملف الشخصي</a></li>
                 @if(auth('teacher')->check() && auth('teacher')->user()->type == 'teacher' && auth('teacher')->user()->is_paid == 0 )
 
