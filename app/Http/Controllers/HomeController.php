@@ -17,9 +17,14 @@ class HomeController extends Controller
      * @return void
      */
     public function add_request_job(Request $request){
-        if(!auth('teacher')->check() && auth('teacher')->user()->type != 'teacher' ){
+        if(!auth('teacher')->check()){
             return response()->json(['success' => 'false','message'=>'لا يمكنك ارسال طلب ! فقط المعلمين من يمكنهم الارسال . '], 200);
         }
+        if(auth('teacher')->user()->type == 'school'){
+            return response()->json(['success' => 'false','message'=>'لا يمكنك ارسال طلب ! فقط المعلمين من يمكنهم الارسال . '], 200);
+        }
+
+        
         if(!TeacherJob::where('job_id',$request->job_id)->where('teacher_id',auth('teacher')->id())->first()){
             $job = new TeacherJob();
             $job->job_id = $request->job_id;
