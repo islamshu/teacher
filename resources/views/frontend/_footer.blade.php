@@ -271,6 +271,7 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+        
         $.ajax({
             type: 'POST',
             url: "{{ route('add_request_job') }}" ,
