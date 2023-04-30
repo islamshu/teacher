@@ -128,6 +128,24 @@ class HomeController extends Controller
         
         return view('frontend._fillter',compact('teachers','request'));
     }
+    public function jobs(Request $request)
+    {
+        $query = Job::query()->where('start_at','<',now());
+        
+    
+        if ($request->has('educational_material') &&  $request->educational_material != null) {
+
+            $query->where('educational_material', $request->input('educational_material'));
+        }
+        
+                
+        
+
+        
+        $jobs = $query->orderby('id','desc')->paginate(9);
+        
+        return view('frontend.jobs',compact('jobs','request'));
+    }
     public function setting(){
         return view('dashboard.setting');
     }

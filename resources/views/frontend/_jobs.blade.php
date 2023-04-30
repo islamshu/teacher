@@ -35,4 +35,8 @@
       </div>
 
     </div>
+    <div class="d-flex justify-content-center">
+      <a href="{{ route('jobs') }}" class="btn btn-info mt-3"> مشاهدة الجميع</a>
+
+  </div>
   </section>
