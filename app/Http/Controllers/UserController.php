@@ -306,7 +306,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->name = $request->name;
         $user->save();
-        return redirect()->back()->with(['success' => 'Updated Succeffuly']);
+        return redirect()->back()->with(['success' => 'تم التعديل بنجاح']);
     }
     public function logout_user()
     {

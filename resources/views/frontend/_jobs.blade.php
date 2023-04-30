@@ -17,7 +17,7 @@
                 <div class="text"> {{ $item->school->name }}</div>
               </div>
             <div class="card-body">
-              <p class="card-text">  عنوان الوظيفة : {{ $item->title }} </p>
+           <a href="{{ route('job',encrypt($item->id)) }}">  <p class="card-text">  عنوان الوظيفة : {{ $item->title }} </p></a> 
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item"> التخصص  : {{ $item->educational_material }}</li>

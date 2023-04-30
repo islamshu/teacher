@@ -156,7 +156,7 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="email">وصف الوظيفة </label>
+                                            <label for="email">شروط الوظيفة </label>
                                             <textarea required name="description" class="form-control @error('description') is-invalid @enderror" id=""
                                                 cols="30" rows="3">{{ old('description') }}</textarea>
                                             @error('description')

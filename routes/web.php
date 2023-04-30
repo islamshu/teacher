@@ -35,6 +35,8 @@ Route::post('company_register', [UserController::class, 'company_register'])->na
 Route::post('login_user', [UserController::class, 'login_user'])->name('login_user');
 Route::post('teacher_register', [UserController::class, 'teacher_register'])->name('teacher_register');
 Route::get('teachers', [HomeController::class, 'teachers'])->name('teachers');
+Route::get('job/{id}', [HomeController::class, 'job'])->name('job');
+
 Route::post('contact_us', [MessageController::class, 'contact_us'])->name('contact_us');
 Route::get('pay_user_new', [UserController::class, 'pay_user_new'])->name('pay_user');
 

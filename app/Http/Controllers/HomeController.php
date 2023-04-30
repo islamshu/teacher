@@ -37,6 +37,14 @@ class HomeController extends Controller
 
 
     }
+    public function job($id){
+        $id = decrypt($id);
+        $job = Job::find($id);
+        $jobs = Job::where('id','!=',$job->id)->where('start_at','<',now())->where('end_at','>',now())->inRandomOrder()->limit(2)->get();
+
+        return view('frontend.job')->with('job',$job)->with('jobs',$jobs);
+
+    }
     public function success_paid(){
         $user = auth('teacher')->user();
         $user->is_paid = 1;
@@ -59,7 +67,7 @@ class HomeController extends Controller
         $job->user_id = $user->id;
         $job->educational_material = $request->educational_material;
         $job->save();
-        return redirect()->back()->with(['success' => 'Send Succeffuly']);
+        return redirect()->back()->with(['success' => 'تم اضافة الوظيفة بنجاح']);
 
 
 
