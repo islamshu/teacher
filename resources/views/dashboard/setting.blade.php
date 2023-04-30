@@ -46,6 +46,14 @@
                                                         style="width: 100px" class="imagee-preview" alt="">
                                                 </div>
                                             </div>
+                                            <div class="col-md-6">
+                                                <label>صورة الناف بار </label>
+                                                <input type="file" name="general_file[header_logo]" class="form-control imagee">
+                                                <div class="form-group">
+                                                    <img src="{{ asset('uploads/' . get_general_value('header_logo')) }}"
+                                                        style="width: 100px" class="imagee-preview" alt="">
+                                                </div>
+                                            </div>
 
                                         </div>
                                         <br>
