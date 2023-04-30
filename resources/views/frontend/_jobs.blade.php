@@ -12,7 +12,7 @@
         <div class="col-xl-3 col-md-4">
         
           <div class="card" style="width: auto;text-align:center">
-            <img class="card-img-top" src="{{ asset('uploads/'.$item->school->image) }}" width="300" height="200" alt="Card image cap">
+            <a href="{{ route('job',encrypt($item->id)) }}"><img class="card-img-top" src="{{ asset('uploads/'.$item->school->image) }}" width="300" height="200" alt="Card image cap"></a>
             <div id="overlay">
                 <div class="text"> {{ $item->school->name }}</div>
               </div>
