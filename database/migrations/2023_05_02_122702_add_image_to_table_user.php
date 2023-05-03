@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('table_user', function (Blueprint $table) {
+        Schema::table('teachers', function (Blueprint $table) {
             $table->integer('status')->default(1);
         });
     }

@@ -81,6 +81,17 @@
                         <input type="number" name="years_experince" value="{{ $request->years_experince }}" class="form-control" >
                     </div>
                 </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="education_level">حالة المدرس  :</label>
+                        <select name="status" class="form-control" id="">
+                        <option value="">اختر الحالة</option>
+                        <option value="1" @if($request->status == 1) selected @endif>متاح</option>
+                        <option value="2" @if($request->status == 2) selected @endif>في محادثة مع مدرسة</option>
+                        <option value="3" @if($request->status == 3) selected @endif>تم تعينه</option>
+                    </select>
+                    </div>
+                </div>
                 <div class="col-md-2" style="margin-top: 30px">
                     <button type="submit" class="btn btn-warning">ابحث</button>
                 </div>
@@ -116,6 +127,8 @@
                             <span>{{ $item->country }}</span>
                             <span> التخصص : {{ $item->educational_material }}   </span>
                             <span>  {{ $item->export_number }} :  سنوات الخبرة</span>
+                            <span><button class="btn btn-{{ get_status_class_teacher($item->status) }}">{{ get_status_teacher($item->status) }}</button></span>
+
 
                             </div>
                         </div>

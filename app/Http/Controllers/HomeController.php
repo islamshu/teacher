@@ -68,9 +68,11 @@ class HomeController extends Controller
         $job->educational_material = $request->educational_material;
         $job->save();
         return redirect()->back()->with(['success' => 'تم اضافة الوظيفة بنجاح']);
-
-
-
+    }
+    public function teachersjob($id){
+        $job = Job::with('teachers')->find($id);
+        return view('frontend.teacher')->with('job',$job);
+        // dd($job->teachers);
     }
     public function pay_user(Request $request){
         dd(auth('teacher')->id());
@@ -119,6 +121,9 @@ class HomeController extends Controller
         }
         if ($request->has('years_experince') &&  $request->years_experince != null) {
             $query->where('export_number', $request->input('years_experince'));
+        }
+        if ($request->has('status') &&  $request->status != null) {
+            $query->where('status', $request->input('status'));
         }
                 
         

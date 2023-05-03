@@ -36,6 +36,7 @@
                             <span> التخصص : {{ $item->educational_material }} </span>
 
                             <span>{{ $item->export_number }} : سنوات الخبرة</span>
+                            <span><button class="btn btn-{{ get_status_class_teacher($item->status) }}">{{ get_status_teacher($item->status) }}</button></span>
 
                         </div>
                     </div>

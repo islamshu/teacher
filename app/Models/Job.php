@@ -17,6 +17,10 @@ class Job extends Model
     {
         return $this->belongsTo(Teacher::class,'user_id');
     }
+    public function teachers()
+    {
+        return $this->hasMany(TeacherJob::class);
+    }
     /**
      * Get all of the comments for the Job
      *

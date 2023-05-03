@@ -98,6 +98,8 @@
                 @else
               
                 <button class="btn btn-danger" id="end_chat">انهاء المحادثة</button>
+                <button class="btn btn-success" id="success_chat"> تعين المعلم بمدرستك</button>
+
                 @endif
                 @else
             
@@ -181,6 +183,7 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $.ajaxSetup({
             headers: {
@@ -214,6 +217,33 @@
             }
         });
         });
+        $('#success_chat').click(function(){
+           
+           let school = "{{ get_guard_id() }}";
+           let teacher = "{{ $teacher->id }}";
+
+           $.ajax({
+           type: 'get',
+           url: '{{ route('success_chat') }}',
+           data: {"school_id":school ,"teacher_id":teacher},
+           
+           success: function(response) {
+               $('#send_message').attr('disabled',true)
+           $('#message').attr('disabled',true)
+           location.reload();
+
+             
+           },
+           error: function(response) {
+               $("#loading").hide();
+
+               // If form submission fails, display validation errors in the modal
+               $('<p>' + response.responseJSON.errors + '</p>').appendTo('#error-id');
+           }
+       });
+       });
+
+        
     </script>
     <script>
         $('#start_chat').click(function(){
@@ -226,9 +256,15 @@
             url: '{{ route('start_chat') }}',
             data: {"school_id":school ,"teacher_id":teacher},
             
-            success: function(response) {
-             
-            location.reload();
+            success: function(res) {
+             if(res.success){
+                location.reload();
+             }else{
+                Swal.fire({
+                        icon: 'error',
+                        title: 'لا يمكن ارسال رسالة الا اذا كان المعلم متاح',
+                })
+             }
 
               
             },

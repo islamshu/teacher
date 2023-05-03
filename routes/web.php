@@ -45,6 +45,9 @@ Route::post('add_request_job', [HomeController::class, 'add_request_job'])->name
 
 Route::get('/chat/{techer_id}',[ChatController::class,'chat_user'])->name('chat_user');
 Route::get('end_chat',[ChatController::class,'end_chat'])->name('end_chat');
+Route::get('success_chat',[ChatController::class,'success_chat'])->name('success_chat');
+Route::get('teachersjob/{id}',[HomeController::class,'teachersjob'])->name('teachersjob');
+
 Route::get('start_chat',[ChatController::class,'start_chat'])->name('start_chat');
 
 

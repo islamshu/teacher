@@ -43,6 +43,10 @@ class ChatController extends Controller
     }
     public function send_message(Request $request)
     {
+        $user = Teacher::find(get_guard_id());
+        if($user->status != 1){
+            return ['success' => false];
+        }
         if ($request->message != null) {
             $chat = StartChat::where('school_id', get_guard_id())->where('teacher_id', $request->reserve_id)->first();
             if (!$chat) {
@@ -52,6 +56,7 @@ class ChatController extends Controller
                 $c->save();
                 $user = Teacher::find(get_guard_id());
                 $ss = Teacher::find($request->reserve_id);
+                $user->status = 2;
                 $url = route('chat_user',encrypt($c->school_id));
                 $data=[
                     'title'=>'تم بدء المحادثة مع مدرسة ' .$ss->name,
@@ -107,6 +112,8 @@ class ChatController extends Controller
         $user = Teacher::find($teacher);
         $ss = Teacher::find($school);
         $url = route('chat_user',encrypt($school));
+        $user->status = 1;
+        $user->save();
 
         $data=[
             'title'=>'تم انتهاء المحادثة مع مدرسة ' .$ss->name,
@@ -115,15 +122,47 @@ class ChatController extends Controller
         ];
         $user->notify(new NotificationsChat($data));
     }
-    public function start_chat(Request $request)
+    public function success_chat(Request $request)
     {
         $school = (int)$request->school_id;
         $teacher = (int)$request->teacher_id;
+        $chat = StartChat::where('school_id',$school)->where('teacher_id',$teacher)->orderby('id','desc')->first();
+        $chat->is_finish = 1;
+        $chat->save();
+        $user = Teacher::find($teacher);
+        $ss = Teacher::find($school);
+        $url = route('chat_user',encrypt($school));
+        $user->status = 3;
+        $user->save();
+
+        $data=[
+            'title'=>'تم تعيينك كمدرسة وتم انهاء المحادثة' .$ss->name,
+            'url'=>$url,
+            'time'=>now(),
+        ];
+        $user->notify(new NotificationsChat($data));
+    }
+    public function start_chat(Request $request)
+    {  
+
+        $school = (int)$request->school_id;
+        $teacher = (int)$request->teacher_id;
+        $start = StartChat::where('teacher_id',$teacher)->where('is_finish',0)->first();
+        if($start){
+            return ['success' => false]; 
+        }
+        $user = Teacher::find($teacher);
+        if($user->status != 1){
+            return ['success' => false];
+        }
         $c = new StartChat();
         $c->school_id = $school;
         $c->teacher_id = $teacher;
         $c->save();
         $user = Teacher::find($teacher);
+        $user->status = 2;
+        $user->save();
+        
         $ss = Teacher::find($school);
         $url = route('chat_user',encrypt($school));
 
@@ -133,6 +172,7 @@ class ChatController extends Controller
             'time'=>now(),
         ];
         $user->notify(new NotificationsChat($data));
+        return ['success' => true];
 
 
 

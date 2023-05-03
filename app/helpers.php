@@ -66,6 +66,24 @@ function notif(){
         return auth('web')->user()->unreadNotifications;
     }
 }
+function get_status_class_teacher($status){
+    if($status == 1){
+        return 'success';
+    }elseif($status == 2){
+        return 'warning';
+    }elseif($status == 3){
+        return 'info';
+    }
+}
+function get_status_teacher($status){
+    if($status == 1){
+        return 'متاح';
+    }elseif($status == 2){
+        return 'في محادثة مع مدرسة';
+    }elseif($status == 3){
+        return 'تم التعيين';
+    }
+}
 
 
 

@@ -113,7 +113,7 @@
                                                     <td>{{ $item->start_at }}</td>
                                                     <td>{{ $item->end_at }}</td>
                                                     <td>{{ 'رياضيات' }}</td>
-                                                    <td>{{ $item->orders->count() }}</td>
+                                                    <td><a href="{{ route('teachersjob',$item->id) }}"> {{ $item->orders->count() }}</a></td>
 
                                                 </tr>
                                             @endforeach

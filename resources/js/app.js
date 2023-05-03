@@ -18,9 +18,17 @@ $(document).ready(function() {
             url: '/send-message',
             data: { message: message, reserve_id: reserve_id },
             success: function(res) {
-                $('#messages').animate({
-                    scrollTop: '+=90000'
-                }, 500);
+                if (res.success == true) {
+                    $('#messages').animate({
+                        scrollTop: '+=90000'
+                    }, 500);
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'لا يمكن ارسال رسالة الا اذا كان المعلم متاح',
+                    })
+                }
+
             }
         });
 
