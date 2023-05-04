@@ -72,7 +72,7 @@ function get_status_class_teacher($status){
     }elseif($status == 2){
         return 'warning';
     }elseif($status == 3){
-        return 'info';
+        return 'danger';
     }
 }
 function get_status_teacher($status){
