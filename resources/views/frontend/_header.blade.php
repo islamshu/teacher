@@ -28,7 +28,7 @@
             
                 @if(check_login() == 1)
                 
-                  <li class="dropdown" style="right: 36%">
+                  <li class="dropdown notificationclass" >
                     <a href="#"><i class="fa fa-bell fa-4x"></i> الاشعارات
                     </a>
                     <ul>
