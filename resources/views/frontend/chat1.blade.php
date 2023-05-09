@@ -74,6 +74,7 @@
         <div class="row justify-content-center">
             <div class="section-header">
                 <h2>محادثة مع  : {{ $teacher->name }}</h2>
+                
               </div>
             <div class="inbox_people col-md-3">
                 <!-- Display list of users -->
