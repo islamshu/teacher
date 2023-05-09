@@ -8,7 +8,7 @@
             <div class="modal-body">
                 <div class="mb-3">
                     <div class="text-center">
-                        <img src="{{ asset('uploads/' . get_general_value('image')) }}" width="150" height="150"
+                        <img src="{{ asset('uploads/' . get_general_value('image')) }}" width="230" height="200"
                             alt="Company Logo">
                     </div>
                 </div>
@@ -72,7 +72,7 @@
             <div class="modal-body">
                 <div class="mb-3">
                     <div class="text-center">
-                        <img src="{{ asset('uploads/' . get_general_value('image')) }}" width="150" height="150"
+                        <img src="{{ asset('uploads/' . get_general_value('image')) }}" width="230" height="200"
                             alt="Company Logo">
                     </div>
                 </div>
@@ -117,7 +117,7 @@
             <div class="modal-body">
                 <div class="mb-3">
                     <div class="text-center">
-                        <img src="{{ asset('uploads/' . get_general_value('image')) }}" width="150" height="150"
+                        <img src="{{ asset('uploads/' . get_general_value('image')) }}" width="230" height="200"
                             alt="Company Logo">
                     </div>
                 </div>
