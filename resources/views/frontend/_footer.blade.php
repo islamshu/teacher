@@ -7,7 +7,7 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-info">
                         <h3>{{ get_general_value('title') }}</h3>
-                        <img src="{{ asset('uploads/'.get_general_value('image')) }}" width="200" height="200" alt="">
+                        <img src="{{ asset('uploads/'.get_general_value('image')) }}" width="230" height="200" alt="">
                         <p>
 
                             <strong>رقم الهاتف:</strong>{{ get_general_value('phone_number') }}<br>
