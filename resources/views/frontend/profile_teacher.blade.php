@@ -108,9 +108,31 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="form-group">
+                        <div class="mb-3">
+                            <label for="job">الوظيفة  :</label>
+                            <select id="job"  name="job" class="form-control job_profile">
+                                <option value="">يرجى الاختيار</option>
+                                <option value="منسقة مدرسة"  @if($user->job == 'منسقة مدرسة') selected @endif @>منسقة مدرسة</option>
+                                <option value="مشرفة تربوية"  @if($user->job == 'مشرفة تربوية') selected @endif>مشرفة تربوية</option>
+                                <option value="مساعد أو مساعدة مدير مدرسة"  @if($user->job == 'مساعد أو مساعدة مدير مدرسة') selected @endif>مساعد أو مساعدة مدير مدرسة</option>
+                                <option value="معلمة تقنية معلومات معلمة مجال أول ( لغة عربية أو تربية اسلامية )"  @if($user->job == 'معلمة تقنية معلومات معلمة مجال أول ( لغة عربية أو تربية اسلامية )') selected @endif>معلمة تقنية معلومات معلمة مجال أول ( لغة عربية أو تربية اسلامية )</option>
+                                <option value="معلمة مجال ثاني ( علوم أو رياضيات )"  @if($user->job == 'معلمة مجال ثاني ( علوم أو رياضيات )') selected @endif>معلمة مجال ثاني ( علوم أو رياضيات )</option>
+                                <option value="أخصائية اجتماعية"  @if($user->job == 'أخصائية اجتماعية') selected @endif>أخصائية اجتماعية</option>
+                                <option value="أخصائية نفسية"  @if($user->job == 'أخصائية نفسية') selected @endif>أخصائية نفسية</option>
+                                <option value="معلم" @if($user->job == 'معلم') selected @endif>معلم / معلمة</option>
+    
+                                
+                                <!-- يمكن إضافة المزيد من المواد التعليمية -->
+                            </select>
+                            @error('job')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group" id="educational_material_profile_div" @if($user->job != 'معلم' ) style="display: none" @endif>
                             <label for="country">التخصص </label>
-                            <select id="educational_material" required name="educational_material" class="form-control">
+                            <select id="educational_material_profile" @if($user->job == 'معلم' ) required @endif name="educational_material" class="form-control">
                                 <option value="">يرجى الاختيار</option>
                                 <option value="رياض الأطفال" @if ($user->educational_material == 'رياض الأطفال') selected @endif>رياض الأطفال</option>
 
@@ -142,6 +164,9 @@
                                     الألمانية</option>
                                 <option value="اللغة الإسبانية" @if ($user->educational_material == 'اللغة الإسبانية') selected @endif>اللغة
                                     الإسبانية</option>
+                                    <option value="مصادر تعلم" @if ($user->educational_material == 'مصادر تعلم') selected @endif>مصادر تعلم
+                                    </option>
+
                                 <!-- يمكن إضافة المزيد من المواد التعليمية -->
                             </select>
                              

@@ -84,7 +84,8 @@ class UserController extends Controller
             'country' => 'required',
             'country' => 'required',
             'years_of_experience' => 'required',
-            'educational_material' => 'required',
+            'job' => 'required',
+            'educational_material' =>$request->job == 'معلم'? 'required':'',
             'teachePassword' => 'required|string|min:8',
             'teacheConformPassword' => 'required|same:teachePassword'
         ]);
@@ -104,6 +105,7 @@ class UserController extends Controller
         $taecher->educational_material = $request->educational_material;
         $taecher->cv = $request->cv->store('teacher_cv');
         $taecher->image = $request->image->store('teacher');
+        $taecher->job = $request->job;
         $taecher->save();
         Auth::guard('teacher')->login($taecher);
         return $this->pay_user($request);
@@ -207,7 +209,8 @@ class UserController extends Controller
             'whataspp_number'=>'required',
             'country' => 'required',
             'years_of_experience' => 'required',
-            'educational_material' => 'required',
+            'job'=>'required',
+            'educational_material' =>$request->job =='معلم' ? 'required' :'',
         ]);
         if($request->image != null){
             $request->validate([
@@ -225,6 +228,7 @@ class UserController extends Controller
         $taecher->name = $request->name;
         $taecher->email = $request->email;
         $taecher->whataspp_number = $request->whataspp_number;
+        $taecher->job = $request->job;
         // $taecher->password = Hash::make($request->input('teachePassword'));
         $taecher->country = $request->country;
         $taecher->export_number = $request->years_of_experience;

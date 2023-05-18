@@ -7,7 +7,7 @@
                         href="#"><i class="ft-menu font-large-1"></i></a></li>
                 <li class="nav-item">
                     <a class="navbar-brand" href="{{ route('dashboard') }}">
-                        <h2>{{ get_general_value('title') }} </h2>
+                        <h2>{!! get_general_value('title') !!} </h2>
                     </a>
                 </li>
                 <li class="nav-item d-md-none">

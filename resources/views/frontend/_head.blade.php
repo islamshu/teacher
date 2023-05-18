@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>{{ get_general_value('title') }}</title>
+    <title>{!! strip_tags(get_general_value('title')) !!}</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 

@@ -61,16 +61,9 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label>اسم الموقع </label>
-                                                <input type="string" name="general[title]"
-                                                    value="{{ get_general_value('title') }}" class="form-control">
-                                            </div>
-                                           
-                                        </div>
-                                     
-
-                                      
-
-                                        
+                                                <textarea name="general[title]" class="form-control ckeditor">{!! get_general_value('title') !!}</textarea>                                            
+                                            </div>                                    
+                                        </div> 
                                         <br>
                                         <div class="row">
 
@@ -82,13 +75,15 @@
                                             </div>
 
                                         </div>
-                                    
-                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <label>سياسة الدفع والتسجيل للمعلمين  </label>
+                                                <textarea name="general[teacher_policy]" class="form-control ckeditor">{!! get_general_value('teacher_policy') !!}</textarea>
 
-
-
-
-                                        <br>
+                                                
+                                            </div>
+                                           
+                                        </div>
 
 
                                     </div>

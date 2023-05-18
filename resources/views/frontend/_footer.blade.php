@@ -6,7 +6,7 @@
 
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-info">
-                        <h3>{{ get_general_value('title') }}</h3>
+                        <h3>{!! get_general_value('title') !!}</h3>
                         <img src="{{ asset('uploads/'.get_general_value('image')) }}" width="230" height="200" alt="">
                         <p>
 
@@ -263,6 +263,39 @@
             title: 'يجب تسجيل الدخول اولا !!',
         })
     });
+    $('#job').change(function(){
+        var tec_val = $(this).val();
+        if(tec_val == 'معلم'){
+            $('#educational_material').attr('required', true);     
+            $("#educational_material_div").css("display", "block")
+
+            
+        }else{
+            $("#educational_material_div").css("display", "none")
+            $('#educational_material').attr('required', false);   
+        }
+    });
+    $('.job_profile').change(function(){
+        var tec_val = $(this).val();
+        if(tec_val == 'معلم'){
+            $('#educational_material_profile').attr('required', true);     
+            $("#educational_material_profile_div").css("display", "block"); 
+        }else{
+            $('#educational_material_profile').attr('required', false);   
+            $("#educational_material_profile_div").css("display", "none");   
+            }
+        });
+
+        $('.job_fillter').change(function(){
+        var tec_val = $(this).val();
+        if(tec_val == 'معلم'){
+            $(".educational_material_fillter").css("display", "block"); 
+        }else{
+            $(".educational_material_fillter").css("display", "none");   
+            }
+        });
+
+
     $(document).on('click', '.send-request', function(e) {
         $("#loading").show();
 

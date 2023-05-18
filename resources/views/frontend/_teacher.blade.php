@@ -33,7 +33,10 @@
                             </div>
                             <h4>{{ $item->name }}</h4>
                             <span>{{ $item->country }}</span>
+                            <span> الوظيفة : {{ $item->job }} </span>
+                            @if($item->job == 'معلم')
                             <span> التخصص : {{ $item->educational_material }} </span>
+                            @endif
 
                             <span>{{ $item->export_number }} : سنوات الخبرة</span>
                             <span><button class="btn btn-{{ get_status_class_teacher($item->status) }}">{{ get_status_teacher($item->status) }}</button></span>

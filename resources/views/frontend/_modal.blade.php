@@ -114,12 +114,16 @@
                 <h5 class="modal-title" id="tacherModalLabel"> معلومات المعلم</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            
             <div class="modal-body">
                 <div class="mb-3">
                     <div class="text-center">
                         <img src="{{ asset('uploads/' . get_general_value('image')) }}" width="230" height="200"
                             alt="Company Logo">
                     </div>
+                </div>
+                <div class="alert alert-warning ">
+                    {!! get_general_value('teacher_policy') !!}
                 </div>
                 <form id="teacher-form" method="post" action="{{ route('teacher_register') }}"
                     enctype="multipart/form-data" onsubmit="teacherForm(); return false;">
@@ -206,6 +210,25 @@
                         </div>
                     </div>
                     <div class="mb-3">
+                        <label for="job">الوظيفة  :</label>
+                        <select id="job" required name="job" class="form-control">
+                            <option value="">يرجى الاختيار</option>
+                            <option value="منسقة مدرسة">منسقة مدرسة</option>
+                            <option value="مشرفة تربوية">مشرفة تربوية</option>
+                            <option value="مساعد أو مساعدة مدير مدرسة">مساعد أو مساعدة مدير مدرسة</option>
+                            <option value="معلمة تقنية معلومات معلمة مجال أول ( لغة عربية أو تربية اسلامية )">معلمة تقنية معلومات معلمة مجال أول ( لغة عربية أو تربية اسلامية )</option>
+                            <option value="معلمة مجال ثاني ( علوم أو رياضيات )">معلمة مجال ثاني ( علوم أو رياضيات )</option>
+                            <option value="أخصائية اجتماعية">أخصائية اجتماعية</option>
+                            <option value="أخصائية نفسية">أخصائية نفسية</option>
+                            <option value="معلم">معلم / معلمة</option>
+
+                            
+                            <!-- يمكن إضافة المزيد من المواد التعليمية -->
+                        </select>
+                        <div class="invalid-feedback">
+                        </div>
+                    </div>
+                    <div class="mb-3" id="educational_material_div" style="display: none">
                         <label for="educational_material">التخصص  :</label>
                         <select id="educational_material" name="educational_material" class="form-control">
                             <option value="">يرجى الاختيار</option>
@@ -227,6 +250,9 @@
                             <option value="اللغة الفرنسية">اللغة الفرنسية</option>
                             <option value="اللغة الألمانية">اللغة الألمانية</option>
                             <option value="اللغة الإسبانية">اللغة الإسبانية</option>
+                            <option value="مصادر تعلم">مصادر تعلم</option>
+
+                            
                             <!-- يمكن إضافة المزيد من المواد التعليمية -->
                         </select>
                         <div class="invalid-feedback">

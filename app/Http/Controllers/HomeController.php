@@ -110,11 +110,15 @@ class HomeController extends Controller
     }
     public function teachers(Request $request)
     {
-        $query = Teacher::query()->where('is_paid',1);
+        $query = Teacher::query()->where('is_paid',1)->where('type','teacher');
         if ($request->has('country') &&  $request->country != null) {
             $query->where('country', 'like', '%' . $request->input('country') . '%');
         }
     
+        if ($request->has('job') &&  $request->job != null) {
+            
+            $query->where('job', $request->input('job'));
+        }
         if ($request->has('educational_material') &&  $request->educational_material != null) {
 
             $query->where('educational_material', $request->input('educational_material'));
