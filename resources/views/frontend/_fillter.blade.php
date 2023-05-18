@@ -41,14 +41,15 @@
                         <label for="education_level">الوظيفة   :</label>
                         <select name="job"  class="form-control job_fillter" id="">
                         <option value="">اختر الوظيفة</option>
-                        <option value="منسقة مدرسة"  @if($request->job == 'منسقة مدرسة') selected @endif @>منسقة مدرسة</option>
-                        <option value="مشرفة تربوية"  @if($request->job == 'مشرفة تربوية') selected @endif>مشرفة تربوية</option>
-                        <option value="مساعد أو مساعدة مدير مدرسة"  @if($request->job == 'مساعد أو مساعدة مدير مدرسة') selected @endif>مساعد أو مساعدة مدير مدرسة</option>
-                        <option value="معلمة تقنية معلومات معلمة مجال أول ( لغة عربية أو تربية اسلامية )"  @if($request->job == 'معلمة تقنية معلومات معلمة مجال أول ( لغة عربية أو تربية اسلامية )') selected @endif>معلمة تقنية معلومات معلمة مجال أول ( لغة عربية أو تربية اسلامية )</option>
-                        <option value="معلمة مجال ثاني ( علوم أو رياضيات )"  @if($request->job == 'معلمة مجال ثاني ( علوم أو رياضيات )') selected @endif>معلمة مجال ثاني ( علوم أو رياضيات )</option>
-                        <option value="أخصائية اجتماعية"  @if($request->job == 'أخصائية اجتماعية') selected @endif>أخصائية اجتماعية</option>
-                        <option value="أخصائية نفسية"  @if($request->job == 'أخصائية نفسية') selected @endif>أخصائية نفسية</option>
-                        <option value="معلم" @if($request->job == 'معلم') selected @endif>معلم / معلمة</option>
+                        <option value="منسقة مدرسة"  @if($request->job == 'منسقة مدرسة') selected @endif @>منسق/ة مدرسة</option>
+                        <option value="مشرفة تربوية"  @if($request->job == 'مشرفة تربوية') selected @endif>مشرف/ة تربوية</option>
+                        <option value="مساعد أو مساعدة مدير مدرسة"  @if($request->job == 'مساعد أو مساعدة مدير مدرسة') selected @endif>مساعد/ة مدير مدرسة</option>
+                        <option value="معلم مجال أول ( لغة عربية أو تربية اسلامية )" @if($request->job == 'معلم مجال أول ( لغة عربية أو تربية اسلامية )') selected @endif>معلم/ة مجال أول ( لغة عربية أو تربية اسلامية ) </option>
+                        <option value="معلمة مجال ثاني ( علوم أو رياضيات )"  @if($request->job == 'معلمة مجال ثاني ( علوم أو رياضيات )') selected @endif>معلم/ة مجال ثاني ( علوم أو رياضيات )</option>
+                        <option value="معلم تقنية معلومات" @if($request->job == 'معلم تقنية معلومات') selected @endif>معلم/ة تقنية معلومات </option>
+                        <option value="أخصائية اجتماعية"  @if($request->job == 'أخصائية اجتماعية') selected @endif>أخصائي/ية اجتماعية</option>
+                        <option value="أخصائية نفسية"  @if($request->job == 'أخصائية نفسية') selected @endif>أخصائي/ية نفسية</option>
+                        <option value="معلم" @if($request->job == 'معلم') selected @endif>معلم/ة</option>
                     </select>
                     </div>
                 </div>
