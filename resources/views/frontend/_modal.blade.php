@@ -129,13 +129,13 @@
                     enctype="multipart/form-data" onsubmit="teacherForm(); return false;">
                     @csrf
                     <div class="mb-3">
-                        <label for="companyName" class="form-label"> صورة المعلم</label>
+                        <label for="companyName" class="form-label"> صورة الباحث عن عمل</label>
                         <input type="file" class="form-control" id="image" name="image" required>
                         <div class="invalid-feedback">
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="companyName" class="form-label"> اسم المعلم</label>
+                        <label for="companyName" class="form-label"> اسم الباحث عن عمل</label>
                         <input type="text" class="form-control" id="teacherName" name="teacherName" required>
                         <div class="invalid-feedback">
                         </div>
