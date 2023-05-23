@@ -115,12 +115,12 @@ class UserController extends Controller
     public function pay_user(Request $request){
         $user =auth('teacher')->user();
         $gateway = Omnipay::create('Thawani');
-        $gateway->setPublishKey('HGvTMLDssJghr9tlN9gr4DVYt0qyBy');
-        $gateway->setSecretKey('rRQ26GcsZzoEhbrP2HZvLYDbn9C9et');
-        $gateway->setTestMode(true-false);
+        $gateway->setPublishKey('Oekp7nl7ip7GLi46mDJKh7gq5UTXKU');
+        $gateway->setSecretKey('HXk8nlGdYza3TI3QbzmllTAkZsNicv');
+        // $gateway->setTestMode(true-false);
         $rand_number = rand(111111111111111111,999999999999999999);
         $purchase = $gateway->purchase();
-        $purchase->setAmount(12000);
+        $purchase->setAmount(38000);
         $purchase->setQuantity(1);
         $purchase->setProductName("Register in Teacher"); //Product name is required
         $purchase->setTransactionId($rand_number); //TransactionId is required
@@ -152,12 +152,12 @@ class UserController extends Controller
     public function pay_user_new(Request $request){
         $user =auth('teacher')->user();
         $gateway = Omnipay::create('Thawani');
-        $gateway->setPublishKey('HGvTMLDssJghr9tlN9gr4DVYt0qyBy');
-        $gateway->setSecretKey('rRQ26GcsZzoEhbrP2HZvLYDbn9C9et');
-        $gateway->setTestMode(true-false);
+        $gateway->setPublishKey('Oekp7nl7ip7GLi46mDJKh7gq5UTXKU');
+        $gateway->setSecretKey('HXk8nlGdYza3TI3QbzmllTAkZsNicv');
+        // $gateway->setTestMode(false);
         $rand_number = rand(111111111111111111,999999999999999999);
         $purchase = $gateway->purchase();
-        $purchase->setAmount(12000);
+        $purchase->setAmount(38000);
         $purchase->setQuantity(1);
         $purchase->setProductName("Register in Teacher"); //Product name is required
         $purchase->setTransactionId($rand_number); //TransactionId is required

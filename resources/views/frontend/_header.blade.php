@@ -13,12 +13,12 @@
                 <li><a class="nav-link scrollto " href="/">الرئيسية</a></li>
                 @if(check_login() != 1)
                 <li><a class="nav-link scrollto " data-bs-toggle="modal" data-bs-target="#companyModal"> تسجيل المدارس</a></li>
-                <li><a class="nav-link scrollto" data-bs-toggle="modal" data-bs-target="#tacherModal"> تسجيل المعلمين</a></li>
+                <li><a class="nav-link scrollto" data-bs-toggle="modal" data-bs-target="#tacherModal"> تسجيل البحاثين عن عمل</a></li>
 
                 <li><a class="nav-link scrollto" data-bs-toggle="modal" data-bs-target="#loginModal">تسجيل دخول</a></li>
 
                 @endif
-                <li><a class="nav-link scrollto" href="/#team">المعلمين</a></li>
+                <li><a class="nav-link scrollto" href="/#team">الباحثين عن عمل</a></li>
 
                 <li><a class="nav-link scrollto" href="/#services">الخدمات</a></li>
                 <li><a class="nav-link scrollto" href="/#jobs">الوظائف</a></li>

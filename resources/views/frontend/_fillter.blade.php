@@ -1,7 +1,7 @@
 @extends('layouts.index')
 @section('content')
     <div class="container " style="margin-top: 8%">
-        <h1>المعلمين</h1>
+        <h1>الباحثين عن عمل</h1>
         <form method="get">
             <div class="row">
                 <div class="col-md-3">

@@ -41,9 +41,9 @@ return [
 
 
     #THAWANI
-    'THAWANI_API_KEY' => env('THAWANI_API_KEY', 'rRQ26GcsZzoEhbrP2HZvLYDbn9C9et'),
-    'THAWANI_URL' => env('THAWANI_URL', "https://uatcheckout.thawani.om/"),
-    'THAWANI_PUBLISHABLE_KEY' => env('THAWANI_PUBLISHABLE_KEY', 'HGvTMLDssJghr9tlN9gr4DVYt0qyBy'),
+    'THAWANI_API_KEY' => env('THAWANI_API_KEY', 'HXk8nlGdYza3TI3QbzmllTAkZsNicv'),
+    'THAWANI_URL' => env('THAWANI_URL', "https://checkout.thawani.om/"),
+    'THAWANI_PUBLISHABLE_KEY' => env('THAWANI_PUBLISHABLE_KEY', 'Oekp7nl7ip7GLi46mDJKh7gq5UTXKU'),
 
     #TAP
     'TAP_CURRENCY' => env('TAP_CURRENCY',"USD"),
