@@ -121,7 +121,7 @@
         <div class="container" data-aos="fade-up">
 
             <div class="section-header">
-                <h2>المعلمين </h2>
+                <h2>الباحثين عن عمل </h2>
 
             </div>
 
