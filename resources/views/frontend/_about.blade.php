@@ -3,7 +3,7 @@
 @endphp
 
 
-<section id="cta" class="cta">
+<section id="cta" class="cta" style="margin-top: 5%">
     <div class="container" data-aos="zoom-out">
 
         <div class="row g-5">
