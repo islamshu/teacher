@@ -34,11 +34,12 @@
 <main id="main">
 
     <!-- ======= Featured Services Section ======= -->
+    @include('frontend._about')
+
     @include('frontend._featurs')
     <!-- End Featured Services Section -->
 
     <!-- ======= About Section ======= -->
-    @include('frontend._about')
     <!-- End About Section -->
 
 

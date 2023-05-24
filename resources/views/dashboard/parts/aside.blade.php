@@ -8,6 +8,11 @@
                     <span class="menu-title">سلايدر </span></a>
             </li>
             <li class="nav-item  ">
+                <a href="{{ route('aboutpage.index') }}">
+                    <i class="fa fa-h-square"></i>
+                    <span class="menu-title"> من نحن </span></a>
+            </li>
+            <li class="nav-item  ">
                 <a href="{{ route('how_it_works.index') }}">
                     <i class="fa fa-h-square"></i>
                     <span class="menu-title">كيفية عمل العمل </span></a>
@@ -22,11 +27,7 @@
                     <i class="fa fa-h-square"></i>
                     <span class="menu-title"> الميزات </span></a>
             </li>
-            <li class="nav-item  ">
-              <a href="{{ route('aboutpage.index') }}">
-                  <i class="fa fa-h-square"></i>
-                  <span class="menu-title"> من نحن </span></a>
-          </li>
+            
           <li class="nav-item  ">
             <a href="{{ route('teachers.index') }}">
                 <i class="fa fa-user"></i>
