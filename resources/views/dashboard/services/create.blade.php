@@ -54,7 +54,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="email"> الوصف  :</label>
-                                                    <textarea name="description" class="form-control" required id="" cols="30" rows="5">{{ old('description') }}</textarea>
+                                                    <textarea name="description" class="form-control"  id="" cols="30" rows="5">{{ old('description') }}</textarea>
                                                 </div>
                                             </div>
                                         </div>
