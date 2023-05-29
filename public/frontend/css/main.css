@@ -113,6 +113,10 @@ section {
     overflow: hidden;
 }
 
+.carousel {
+    margin-top: 7%
+}
+
 .section-header {
     text-align: center;
     padding-bottom: 40px;
@@ -539,6 +543,9 @@ section {
         top: 47px;
         z-index: 9999;
         right: 20px;
+    }
+    .carousel {
+        margin-top: 20%
     }
     .mobile-nav-toggle.bi-x {
         color: var(--color-white);
