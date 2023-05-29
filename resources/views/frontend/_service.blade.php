@@ -12,13 +12,7 @@
                     <div class="img">
                         <img src="{{ asset('uploads/'.$item->image) }}" class="img-fluid" alt="">
                     </div>
-                    <div class="details position-relative">
-                    
-                        {{-- <a href="#" class="stretched-link">
-                            <h3>{{ $item->title }}</h3>
-                        </a> --}}
-                        {{-- <p>{{ $item->description }}</p> --}}
-                    </div>
+                  
                 </div>
             </div>
             @endforeach
