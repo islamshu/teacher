@@ -14,9 +14,9 @@
                     </div>
                     <div class="details position-relative">
                     
-                        <a href="#" class="stretched-link">
+                        {{-- <a href="#" class="stretched-link">
                             <h3>{{ $item->title }}</h3>
-                        </a>
+                        </a> --}}
                         {{-- <p>{{ $item->description }}</p> --}}
                     </div>
                 </div>

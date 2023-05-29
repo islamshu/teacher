@@ -45,7 +45,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="email"> العنوان  :</label>
-                                                    <input type="text" name="title" class="form-control" required value="{{ old('title') }}" value="" id="">
+                                                    <input type="text" name="title" class="form-control"  value="{{ old('title') }}" value="" id="">
                                                 </div>
                                             </div>
                                           
