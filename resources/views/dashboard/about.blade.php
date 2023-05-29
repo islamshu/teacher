@@ -45,15 +45,15 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="email"> العنوان  :</label>
-                                                    <input type="text" name="title" value="{{ $about->title }}" class="form-control" value="" id="">
+                                                    <textarea name="title"  class="form-control ckeditor" id="" cols="30" rows="5">{!! $about->title !!}</textarea>
                                                 </div>
                                             </div>
-                                            <div class="col-md-9">
+                                            {{-- <div class="col-md-9">
                                                 <div class="form-group">
                                                     <label for="email"> الوصف  :</label>
                                                     <textarea name="body"  class="form-control ckeditor" id="" cols="30" rows="5">{!! $about->body !!}</textarea>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                           
                                         </div>
                                     
