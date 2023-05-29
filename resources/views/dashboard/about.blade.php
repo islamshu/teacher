@@ -42,7 +42,7 @@
                                             </div>
                                          
                                              <br>
-                                            <div class="col-md-6">
+                                            <div class="col-md-8">
                                                 <div class="form-group">
                                                     <label for="email"> العنوان  :</label>
                                                     <textarea name="title"  class="form-control ckeditor" id="" cols="30" rows="5">{!! $about->title !!}</textarea>
