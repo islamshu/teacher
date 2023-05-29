@@ -50,7 +50,7 @@
                 @endif
                
 
-                <li style="right: 40%"><a class="nav-link scrollto"   href="{{ route('logout_user') }}">تسجيل خروج</a></li>
+                <li style="right: 37%"><a class="nav-link scrollto"   href="{{ route('logout_user') }}">تسجيل خروج</a></li>
                 @endif
             </ul>
             <i class="bi bi-list mobile-nav-toggle d-none"></i>
