@@ -1,4 +1,4 @@
-<div id="myCarousel" style="margin-top:5%" class="carousel slide" data-ride="carousel">
+<div id="myCarousel"  class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
         @foreach (App\Models\Slider::where('status',1)->get() as $key=> $item)
