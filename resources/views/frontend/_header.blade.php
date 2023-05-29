@@ -3,8 +3,8 @@
 
         <a href="/" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
             <!-- Uncomment the line below if you also wish to use an image logo -->
-             {{-- <img src="{{ asset('uploads/'.get_general_value('header_logo')) }}" alt="">  --}}
-            <h1><span>.</span>{!! get_general_value('title') !!}<span>.</span></h1>
+             <img src="{{ asset('uploads/'.get_general_value('header_logo')) }}" alt=""> 
+            {{-- <h1><span>.</span>{!! get_general_value('title') !!}<span>.</span></h1> --}}
         </a>
 
         <nav id="navbar" class="navbar d-flex justify-content-center" style="padding-left:20% !important">
