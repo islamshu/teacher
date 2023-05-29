@@ -269,7 +269,7 @@ section {
 }
 
 .header .logo img {
-    max-height: 70px;
+    max-height: 50px;
     margin-right: 6px;
 }
 
@@ -540,7 +540,7 @@ section {
         line-height: 0;
         transition: 0.5s;
         position: fixed;
-        top: 47px;
+        top: 25px;
         z-index: 9999;
         right: 20px;
     }
