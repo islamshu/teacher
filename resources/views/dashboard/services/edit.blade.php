@@ -46,7 +46,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="email"> العنوان  :</label>
-                                                    <input type="text" name="title" class="form-control"  value="{{ $serive->title }}" value="" id="">
+                                                    <input type="text" name="title" class="form-control" required value="{{ $serive->title }}" value="" id="">
                                                 </div>
                                             </div>
                                           
@@ -55,7 +55,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="email"> الوصف  :</label>
-                                                    <textarea name="description" class="form-control" required id="" cols="30" rows="5">{{ $serive->description}}</textarea>
+                                                    <textarea name="description" class="form-control"  id="" cols="30" rows="5">{{ $serive->description}}</textarea>
                                                 </div>
                                             </div>
                                         </div>
