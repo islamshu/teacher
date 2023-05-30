@@ -10,6 +10,7 @@
         <nav id="navbar" class="navbar d-flex justify-content-center" style="padding-left:20% !important">
             <ul>
 
+                
                 <li><a class="nav-link scrollto " href="/">الرئيسية</a></li>
                 @if(check_login() != 1)
                 <li><a class="nav-link scrollto " data-bs-toggle="modal" data-bs-target="#companyModal"> تسجيل المدارس</a></li>
