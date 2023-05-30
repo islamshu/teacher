@@ -14,8 +14,8 @@
                 <h3>{!! $about->title !!}</h3>
                 <p> {!! $about->body !!}</p>
             </div> --}}
-
-            <div class="col-lg-8 col-md-8 order-first order-md-last d-flex align-items-center">
+            {{-- col-lg-8 col-md-8 order-first order-md-last d-flex align-items-center --}}
+            <div class="">
                 <div class="img">
                     <img src="{{ asset('uploads/' . $about->image) }}" alt="" class="img-fluid">
                 </div>
