@@ -485,6 +485,10 @@ section {
         transition: 0.3s;
         z-index: 9997;
     }
+    .image_mobile {
+        height: 400px;
+        width: 310px;
+    }
     .navbar ul {
         position: absolute;
         inset: 0;

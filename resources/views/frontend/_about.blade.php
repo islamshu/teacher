@@ -17,7 +17,7 @@
             {{-- col-lg-8 col-md-8 order-first order-md-last d-flex align-items-center --}}
             <div class="">
                 <div class="img">
-                    <img src="{{ asset('uploads/' . $about->image) }}" alt="" class="img-fluid">
+                    <img src="{{ asset('uploads/' . $about->image) }}" alt="" class="img-fluid image_mobile">
                 </div>
             </div>
 
