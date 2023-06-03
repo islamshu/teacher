@@ -14,10 +14,10 @@
                 <h3>{!! $about->title !!}</h3>
                 <p> {!! $about->body !!}</p>
             </div> --}}
-            {{-- col-lg-8 col-md-8 order-first order-md-last d-flex align-items-center --}}
-            <div class="">
+            {{-- col-lg-8 col-md-8  --}}
+            <div class="order-first order-md-last d-flex align-items-center">
                 <div class="img">
-                    <img src="{{ asset('uploads/' . $about->image) }}" alt="" class="img-fluid image_mobile">
+                    <img src="{{ asset('uploads/' . $about->image) }}" alt="" class="img-fluid ">
                 </div>
             </div>
 
