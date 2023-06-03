@@ -360,10 +360,9 @@
         const counterElement = entry.target.querySelector('.number');
 
         let currentNumber = 0;
-        const increment = Math.ceil(targetNumber / 100);
 
         const interval = setInterval(() => {
-          currentNumber += increment;
+          currentNumber += 5;
           counterElement.textContent = currentNumber.toLocaleString();
 
           if (currentNumber >= targetNumber) {
