@@ -15,7 +15,7 @@
                 <form id="submit-form" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <label for="companyName" class="form-label"> صورة المعلم</label>
+                        <label for="companyName" class="form-label"> صورة المدرسة</label>
                         <input type="file" class="form-control" id="image" name="image" required>
                         <div class="invalid-feedback">
                         </div>
