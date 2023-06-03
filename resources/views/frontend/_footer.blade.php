@@ -349,6 +349,42 @@
         }
     }
 </script>
+<script>
+    function startCounting() {
+  const statisticElements = document.querySelectorAll('.statistic');
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const targetNumber = parseInt(entry.target.querySelector('.number').getAttribute('data-target'));
+        const counterElement = entry.target.querySelector('.number');
+
+        let currentNumber = 0;
+        const increment = Math.ceil(targetNumber / 100);
+
+        const interval = setInterval(() => {
+          currentNumber += increment;
+          counterElement.textContent = currentNumber.toLocaleString();
+
+          if (currentNumber >= targetNumber) {
+            counterElement.textContent = targetNumber.toLocaleString();
+            clearInterval(interval);
+          }
+        }, 10);
+
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  statisticElements.forEach(statistic => {
+    observer.observe(statistic);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', startCounting);
+
+</script>
 
 </body>
 

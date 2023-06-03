@@ -23,3 +23,29 @@
 
     </div>
 </section>
+<section id="statistics" class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="statistic">
+            <h3>المدارس المسجلة</h3>
+            <p class="number" data-target="{{ App\Models\Teacher::where('type','school')->count() }}">0</p>
+            {{-- <p class="description">Registered users</p> --}}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="statistic">
+            <h3>عدد الباحثين عن العمل</h3>
+            <p class="number" data-target="{{ App\Models\Teacher::where('type','teacher')->count() }}">0</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="statistic">
+            <h3>عدد الباحثين الذين تم تعينهم </h3>
+            <p class="number" data-target="{{ App\Models\Teacher::where('type','teacher')->where('status','1')->count() }}">0</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
