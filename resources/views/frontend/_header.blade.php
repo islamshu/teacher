@@ -3,7 +3,7 @@
 
         <a href="/" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
             <!-- Uncomment the line below if you also wish to use an image logo -->
-             <img src="{{ asset('uploads/'.get_general_value('header_logo')) }}" width="120" height="70" alt=""> 
+             <img src="{{ asset('uploads/'.get_general_value('header_logo')) }}" width="120" height="90" alt=""> 
             {{-- <h1><span>.</span>{!! get_general_value('title') !!}<span>.</span></h1> --}}
         </a>
 
