@@ -42,7 +42,7 @@
         <div class="col-md-4">
           <div class="statistic">
             <h3>عدد الباحثين الذين تم تعينهم </h3>
-            <p class="number" data-target="{{ App\Models\Teacher::where('type','teacher')->where('status','1')->count() }}">0</p>
+            <p class="number" data-target="{{ App\Models\Teacher::where('type','teacher')->where('status',3)->count() }}">0</p>
           </div>
         </div>
       </div>
