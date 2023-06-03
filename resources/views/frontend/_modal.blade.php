@@ -41,15 +41,24 @@
                     </div>
                     <div class="mb-3">
                         <label for="companyPassword" class="form-label">كلمة المرور</label>
+                        <div class="password-wrapper">
+
                         <input type="password" class="form-control" id="companyPassword" name="companyPassword"
-                            minlength="8" required>
+                            minlength="8" required
+                            >
+                            <span class="eye-icon" onclick="togglePasswordVisibility('companyPassword')"></span>
+                        </div>
                         <div class="invalid-feedback">
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="confirmPassword" class="form-label"> تأكيد كلمة المرور</label>
+                        <div class="password-wrapper">
+
                         <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
                             minlength="8" required>
+                            <span class="eye-icon" onclick="togglePasswordVisibility('confirmPassword')"></span>
+                        </div>
                         <div class="invalid-feedback">
                         </div>
                     </div>
@@ -87,11 +96,14 @@
                         <div class="invalid-feedback">
                         </div>
                     </div>
+                    <div class="password-wrapper">
 
                     <div class="mb-3">
                         <label for="password" class="form-label">كلمة المرور</label>
                         <input type="password" class="form-control" id="password" name="password" minlength="8"
                             required>
+                            <span style="margin-top:2%" class="eye-icon" onclick="togglePasswordVisibility('password')"></span>
+                        </div>
                         <div class="invalid-feedback">
                         </div>
                     </div>
@@ -146,17 +158,25 @@
                         <div class="invalid-feedback">
                         </div>
                     </div>
+                    <div class="password-wrapper">
+
                     <div class="mb-3">
-                        <label for="companyPassword" class="form-label">كلمة المرور</label>
-                        <input type="password" class="form-control" id="companyPassword" name="teachePassword"
+                        <label for="companyPasswordd" class="form-label">كلمة المرور</label>
+                        <input type="password" class="form-control" id="companyPasswordd" name="teachePassword"
                             minlength="8" required>
+                            <span style="margin-top:2%" class="eye-icon" onclick="togglePasswordVisibility('companyPasswordd')"></span>
+                        </div>
                         <div class="invalid-feedback">
                         </div>
                     </div>
+                    <div class="password-wrapper">
+
                     <div class="mb-3">
-                        <label for="confirmPassword" class="form-label"> تأكيد كلمة المرور</label>
-                        <input type="password" class="form-control" id="confirmPassword"
+                        <label for="confirmPasswordd" class="form-label"> تأكيد كلمة المرور</label>
+                        <input type="password" class="form-control" id="confirmPasswordd"
                             name="teacheConformPassword" minlength="8" required>
+                            <span style="margin-top:2%" class="eye-icon" onclick="togglePasswordVisibility('confirmPasswordd')"></span>
+                        </div>
                         <div class="invalid-feedback">
                         </div>
                     </div>

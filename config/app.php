@@ -29,7 +29,7 @@ return [
     */
 
     'env' => env('APP_ENV', 'production'),
-    'app_version' =>1.006,
+    'app_version' =>1.007,
     
 
     /*

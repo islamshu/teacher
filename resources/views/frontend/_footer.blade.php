@@ -7,7 +7,8 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-info">
                         <h3>{!! get_general_value('title') !!}</h3>
-                        <img src="{{ asset('uploads/'.get_general_value('image')) }}" width="230" height="200" alt="">
+                        <img src="{{ asset('uploads/' . get_general_value('image')) }}" width="230" height="200"
+                            alt="">
                         <p>
 
                             <strong>رقم الهاتف:</strong>{{ get_general_value('phone_number') }}<br>
@@ -263,37 +264,37 @@
             title: 'يجب تسجيل الدخول اولا !!',
         })
     });
-    $('#job').change(function(){
+    $('#job').change(function() {
         var tec_val = $(this).val();
-        if(tec_val == 'معلم'){
-            $('#educational_material').attr('required', true);     
+        if (tec_val == 'معلم') {
+            $('#educational_material').attr('required', true);
             $("#educational_material_div").css("display", "block")
 
-            
-        }else{
+
+        } else {
             $("#educational_material_div").css("display", "none")
-            $('#educational_material').attr('required', false);   
+            $('#educational_material').attr('required', false);
         }
     });
-    $('.job_profile').change(function(){
+    $('.job_profile').change(function() {
         var tec_val = $(this).val();
-        if(tec_val == 'معلم'){
-            $('#educational_material_profile').attr('required', true);     
-            $("#educational_material_profile_div").css("display", "block"); 
-        }else{
-            $('#educational_material_profile').attr('required', false);   
-            $("#educational_material_profile_div").css("display", "none");   
-            }
-        });
+        if (tec_val == 'معلم') {
+            $('#educational_material_profile').attr('required', true);
+            $("#educational_material_profile_div").css("display", "block");
+        } else {
+            $('#educational_material_profile').attr('required', false);
+            $("#educational_material_profile_div").css("display", "none");
+        }
+    });
 
-        $('.job_fillter').change(function(){
+    $('.job_fillter').change(function() {
         var tec_val = $(this).val();
-        if(tec_val == 'معلم'){
-            $(".educational_material_fillter").css("display", "block"); 
-        }else{
-            $(".educational_material_fillter").css("display", "none");   
-            }
-        });
+        if (tec_val == 'معلم') {
+            $(".educational_material_fillter").css("display", "block");
+        } else {
+            $(".educational_material_fillter").css("display", "none");
+        }
+    });
 
 
     $(document).on('click', '.send-request', function(e) {
@@ -305,33 +306,48 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        
+
         $.ajax({
             type: 'POST',
-            url: "{{ route('add_request_job') }}" ,
-            data: { "job_id": trash_id},
+            url: "{{ route('add_request_job') }}",
+            data: {
+                "job_id": trash_id
+            },
             // processData: false,
             // contentType: false,
             success: function(response) {
                 $("#loading").hide();
 
-                if(response['success'] == 'true'){
+                if (response['success'] == 'true') {
                     Swal.fire({
-                    icon: 'success',
-                    title:response['message']
-                });
-                }else{
+                        icon: 'success',
+                        title: response['message']
+                    });
+                } else {
                     Swal.fire({
-                    icon: 'error',
-                    title:response['message'],
-                });
+                        icon: 'error',
+                        title: response['message'],
+                    });
                 }
-                
+
 
             },
-           
+
         });
     });
+
+    function togglePasswordVisibility(inputId) {
+        var passwordInput = document.getElementById(inputId);
+        var eyeIcon = passwordInput.nextElementSibling;
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            eyeIcon.classList.add("hide");
+        } else {
+            passwordInput.type = "password";
+            eyeIcon.classList.remove("hide");
+        }
+    }
 </script>
 
 </body>

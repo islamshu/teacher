@@ -29,6 +29,25 @@ a:hover {
     text-decoration: none;
 }
 
+.password-wrapper {
+    position: relative;
+}
+
+.eye-icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background: url(https://www.freeiconspng.com/thumbs/eye-icon/eye-icon-png-viewed-accomms-10.png) center/contain no-repeat;
+    cursor: pointer;
+}
+
+.eye-icon.hide {
+    background-image: url(https://www.freeiconspng.com/thumbs/eye-icon/eye-icon-png-viewed-accomms-10.png);
+}
+
 h1,
 h2,
 h3,

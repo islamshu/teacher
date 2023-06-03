@@ -44,14 +44,14 @@
                       
                     </ul>
                 </li>
-                <li style="right: 37%"><a class="nav-link scrollto "  href="{{ route('dashboard') }}">الملف الشخصي</a></li>
+                <li style="right: 34%"><a class="nav-link scrollto "  href="{{ route('dashboard') }}">الملف الشخصي</a></li>
                 @if(auth('teacher')->check() && auth('teacher')->user()->type == 'teacher' && auth('teacher')->user()->is_paid == 0 )
 
-                <li style="right: 38%" ><a class="nav-link scrollto btn btn-danger" href="{{ route('pay_user') }}">ادفع الاشتراك </a></li>
+                <li style="right: 34%" ><a class="nav-link scrollto btn btn-danger" href="{{ route('pay_user') }}">ادفع الاشتراك </a></li>
                 @endif
                
 
-                <li style="right: 37%"><a class="nav-link scrollto"   href="{{ route('logout_user') }}">تسجيل خروج</a></li>
+                <li style="right: 34%"><a class="nav-link scrollto"   href="{{ route('logout_user') }}">تسجيل خروج</a></li>
                 @endif
             </ul>
             <i class="bi bi-list mobile-nav-toggle d-none"></i>
