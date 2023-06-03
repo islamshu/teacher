@@ -29,7 +29,7 @@ use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('layouts.frontend');
-});
+})->name('home');
 Route::get('googlemeet',[MeetController::class,'createMeeting'])->name('google_meet');
 Route::post('company_register', [UserController::class, 'company_register'])->name('company_register');
 Route::post('login_user', [UserController::class, 'login_user'])->name('login_user');
@@ -103,4 +103,4 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function () {
 
 
 Auth::routes();
-Route::get('/', [HomeController::class, 'index'])->name('home');
+// Route::get('/home', [HomeController::class, 'index'])->name('home');
