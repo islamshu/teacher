@@ -103,4 +103,4 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function () {
 
 
 Auth::routes();
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');

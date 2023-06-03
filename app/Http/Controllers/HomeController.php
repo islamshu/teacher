@@ -45,6 +45,9 @@ class HomeController extends Controller
         return view('frontend.job')->with('job',$job)->with('jobs',$jobs);
 
     }
+    public function canceld_paid(){
+        return redirect()->route('home');
+    }
     public function success_paid(){
         $user = auth('teacher')->user();
         $user->is_paid = 1;
