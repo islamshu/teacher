@@ -165,8 +165,29 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                        
-                                        <div class="form-group">
+                                        {{-- <div class="mb-3">
+                                            <label for="job">الوظيفة  :</label>
+                                            <select id="job" required name="job" class="form-control">
+                                                <option value="">يرجى الاختيار</option>
+                                                <option value="منسقة مدرسة">منسق/ة مدرسة</option>
+                                                <option value="مشرفة تربوية">مشرف/ة تربوية</option>
+                                                <option value="مساعد أو مساعدة مدير مدرسة"> مساعد/ة مدير مدرسة</option>
+                                                <option value="معلم مجال أول ( لغة عربية أو تربية اسلامية )">معلم/ة مجال أول ( لغة عربية أو تربية اسلامية ) </option>
+                                                <option value="معلم تقنية معلومات">معلم/ة تقنية معلومات </option>
+                                                <option value="معلمة مجال ثاني ( علوم أو رياضيات )">معلم/ة مجال ثاني ( علوم أو رياضيات )</option>
+                                                <option value="أخصائية اجتماعية">أخصائي/ية اجتماعية</option>
+                                                <option value="أخصائية نفسية">أخصائي/ية نفسية</option>
+                                                <option value="معلم">معلم/ة</option>
+                                                
+                                                <!-- يمكن إضافة المزيد من المواد التعليمية -->
+                                            </select>
+                                            @error('job')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div> --}}
+                                        <div class="form-group"  class="educational_material">
                                             <label for="educational_material">التخصص المطلوب   </label>
                                             <select id="educational_material" name="educational_material" class="form-control">
                                                 <option value="">يرجى الاختيار</option>

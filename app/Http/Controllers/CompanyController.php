@@ -16,4 +16,9 @@ class CompanyController extends Controller
         $companys =Teacher::find($id);
         return view('dashboard.companies.show')->with('school',$companys); 
     }
+    public function destroy($id){
+        $companys =Teacher::find($id);
+        $companys->delete();
+        return redirect()->back()->with(['success'=>'تم الحذف بنجاح']);
+    }
 }
