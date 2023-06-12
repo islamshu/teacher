@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\Job;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 
@@ -18,6 +19,7 @@ class CompanyController extends Controller
     }
     public function destroy($id){
         $companys =Teacher::find($id);
+        $jobs = Job::where('user_id',$id)->delete();
         $companys->delete();
         return redirect()->back()->with(['success'=>'تم الحذف بنجاح']);
     }
