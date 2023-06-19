@@ -123,10 +123,10 @@
                 $("#loading").hide();
                 Swal.fire({
                 title: 'تم تسجيلك بنجاح ',
-                text: 'ستوجب علك دفع رسوم بقيمة 25 ريال لتمتع بخدمات الموقع',
+                text: 'لتظهر بياناتك للمدارس ولتتمتع بجميع خدمات منصة مدارسنا يتوجب عليك دفع مبلغ ٢٥ ريال',
                 showDenyButton: true,
-                confirmButtonText: 'استمرار للدفع',
-                denyButtonText: `عدم الدفع`,
+                confirmButtonText: 'الدفع الآن',
+                denyButtonText: `الدفع لاحقا`,
                 }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
