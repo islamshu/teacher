@@ -121,20 +121,21 @@
             contentType: false,
             success: function(response) {
                 $("#loading").hide();
-
                 Swal.fire({
-                    icon: 'success',
-                    title: ' تم التسجيل بنجاح!',
-                    text: 'You have successfully registered.'
+                title: 'تم تسجيلك بنجاح ',
+                text: 'ستوجب علك دفع رسوم بقيمة 25 ريال لتمتع بخدمات الموقع',
+                showDenyButton: true,
+                confirmButtonText: 'استمرار للدفع',
+                denyButtonText: `عدم الدفع`,
                 }).then((result) => {
-                    // refresh the page
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
                     location.replace(response['url']);
-
-                    // Window.location.replace(response['url']);
-
-
-                    // location.reload();
-                });
+                } else if (result.isDenied) {
+                    location.reload()
+                }
+                })
+                
             },
             error: function(response) {
                 $("#loading").hide();

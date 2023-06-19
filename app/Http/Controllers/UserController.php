@@ -120,7 +120,7 @@ class UserController extends Controller
         // $gateway->setTestMode(true-false);
         $rand_number = rand(111111111111111111,999999999999999999);
         $purchase = $gateway->purchase();
-        $purchase->setAmount(38000);
+        $purchase->setAmount(25000);
         $purchase->setQuantity(1);
         $purchase->setProductName("Register in Teacher"); //Product name is required
         $purchase->setTransactionId($rand_number); //TransactionId is required
@@ -144,8 +144,6 @@ class UserController extends Controller
         $user->save();
         return response()->json(['status'=>true,'url'=>$redirectUrl]);
 
-        // dd($redirectUrl);
-        // return response()->jso؟n(['url' => $redirectUrl], 200);
 
 
     }
@@ -157,7 +155,7 @@ class UserController extends Controller
         // $gateway->setTestMode(false);
         $rand_number = rand(111111111111111111,999999999999999999);
         $purchase = $gateway->purchase();
-        $purchase->setAmount(38000);
+        $purchase->setAmount(25000);
         $purchase->setQuantity(1);
         $purchase->setProductName("Register in Teacher"); //Product name is required
         $purchase->setTransactionId($rand_number); //TransactionId is required

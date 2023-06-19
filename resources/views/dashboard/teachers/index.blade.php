@@ -25,7 +25,7 @@
 
                                     @include('dashboard.parts._error')
                                     @include('dashboard.parts._success')
-                                    {{-- <a class="btn btn-success" href="{{ route('sliders.create') }}">اضف سلايدر</a> --}}
+                                    <a class="btn btn-success" href="{{ route('teachers.create') }}">اضف معلم جديد</a>
                                     <br>
 
 
