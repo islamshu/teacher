@@ -102,6 +102,8 @@
 
                         <button type="submit" class="btn btn-success" style="width: 40%"> استرجاع كلمة المرور </button>
                     </div>
+                    <a   data-bs-toggle="modal" data-bs-target="#loginModal" >الرجوع للتسجيل الدخول  </a>
+
                 </form>
             </div>
         </div>

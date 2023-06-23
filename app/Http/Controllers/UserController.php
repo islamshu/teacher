@@ -13,6 +13,7 @@ use Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 use Omnipay\Omnipay;
+use Illuminate\Support\Str;
 
 
 class UserController extends Controller
@@ -290,7 +291,7 @@ class UserController extends Controller
         }
 
         $user = User::where('email',$request->emailforget)->first();
-        $rand = rand(11111111111,99999999999);
+        $rand = Str::random(10);
         $password = Hash::make($rand);
         if(!$user){
             $teacher = Teacher::where('email',$request->emailforget)->first();
