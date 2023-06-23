@@ -30,7 +30,7 @@ class ForgetEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.welcome')
+        return $this->view('emails.welcom')
         ->subject('Welcome to Our Application')
         ->with('user', $this->user);
     }
