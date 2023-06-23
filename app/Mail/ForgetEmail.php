@@ -12,15 +12,17 @@ class ForgetEmail extends Mailable
     use Queueable, SerializesModels;
   
     public $user;
+    public $password;
   
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($user,$password)
     {
         $this->user = $user;
+        $this->password = $password;
     }
   
     /**
@@ -32,6 +34,7 @@ class ForgetEmail extends Mailable
     {
         return $this->view('emails.welcom')
         ->subject('Welcome to Our Application')
-        ->with('user', $this->user);
+        ->with('user', $this->user)
+        ->with('password',$this->password);
     }
 }

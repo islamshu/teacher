@@ -290,20 +290,26 @@ class UserController extends Controller
         }
 
         $user = User::where('email',$request->emailforget)->first();
+        $rand = rand(11111111111,99999999999);
+        $password = Hash::make($rand);
         if(!$user){
             $teacher = Teacher::where('email',$request->emailforget)->first();
             if(!$teacher){
                 return response()->json(['success' => 'false','message'=>'البريد الاكتروني غير متواجد في حساباتنا'], 200);
             }else{
-                Mail::to($teacher->email)->send(new ForgetEmail($teacher));
+                
+                $teacher ->password = $password;
+                $teacher->save();
+                Mail::to($teacher->email)->send(new ForgetEmail($teacher,$password));
                 return response()->json(['success' => 'true','message'=>'ـم ارسال بريد الكتوني يحتوي على كلمة المرور'], 200);
             }
        
 
             // dd($user);
         }else{
-
-            Mail::to($user->email)->send(new ForgetEmail($user));
+            $user ->password = $password;
+            $user->save();
+            Mail::to($user->email)->send(new ForgetEmail($user,$password));
             return response()->json(['success' => 'true','message'=>'ـم ارسال بريد الكتوني يحتوي على كلمة المرور'], 200);
         }
        
