@@ -10,7 +10,7 @@
     
      {{ $user->email }}  :البريد الاكتروني هو 
     <br>
-     {{ $password }}  :  كلمة المرور 
+    <span style="color: red">{{ $password }}</span>   :  كلمة المرور 
     <br>
     
     مع تحياتنا <br>
