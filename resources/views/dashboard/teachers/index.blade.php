@@ -59,6 +59,8 @@
                                                     </td> --}}
                                                     <td>
                                                         <a href="{{ route('teachers.show',$item->id) }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
+                                                        <a href="{{ route('teachers.edit',$item->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+
                                                         <form style="display: inline"
                                                         action="{{ route('teachers.destroy', $item->id) }}"
                                                         method="post">

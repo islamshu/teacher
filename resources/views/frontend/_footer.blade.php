@@ -184,6 +184,40 @@
             }
         });
     }
+    function forgitForm() {
+        $('#error-id').empty();
+        $("#loading").show();
+
+        $.ajax({
+            type: 'POST',
+            url: $('#forget-form').attr('action'),
+            data: new FormData($('#forget-form')[0]),
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                $("#loading").hide();
+
+                if(response.success =="false"){
+                    Swal.fire({
+                    icon: 'error',
+                    title: response.message 
+                })
+                    }else{
+                        Swal.fire({
+                    icon: 'success',
+                    title: response.message 
+                })
+                    }
+            },
+            error: function(response) {
+                $("#loading").hide();
+
+                // If form submission fails, display validation errors in the modal
+                $('<p>' + response.responseJSON.errors + '</p>').appendTo('#error-id');
+            }
+        });
+    }
+    
 
     function contacntForm() {
         $("#loading").show();

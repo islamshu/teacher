@@ -71,6 +71,42 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="forgetModal" tabindex="-1" aria-labelledby="forgetModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="forgetModalLabel">استرجاع كلمة المرور  </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <div class="text-center">
+                        <img src="{{ asset('uploads/' . get_general_value('image')) }}" width="230" height="200"
+                            alt="Company Logo">
+                    </div>
+                </div>
+                <div id="error-id" style="text-align: center;color: red;font-size: 20px;"></div>
+                <form id="forget-form" method="post" action="{{ route('forget_user') }}" enctype="multipart/form-data"
+                    onsubmit="forgitForm(); return false;">
+                    @csrf
+
+                    <div class="mb-3">
+                        <label for="companyEmail" class="form-label"> البريد الاكتروني</label>
+                        <input type="email" class="form-control" id="emailforget" name="emailforget" required>
+                        <div class="invalid-feedback">
+                        </div>
+                    </div>
+                  
+
+                    <div class="mb-3" style="text-align: center">
+
+                        <button type="submit" class="btn btn-success" style="width: 40%"> استرجاع كلمة المرور </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
@@ -112,11 +148,13 @@
 
                         <button type="submit" class="btn btn-success" style="width: 40%"> تسجيل دخول</button>
                     </div>
+                    <a   data-bs-toggle="modal" data-bs-target="#forgetModal" >نسيت كلمة المرور</a>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
 
 
 <div class="modal fade" id="tacherModal" tabindex="-1" aria-labelledby="tacherModalLabel" aria-hidden="true">
@@ -302,4 +340,33 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
 </div>

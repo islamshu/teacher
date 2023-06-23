@@ -65,6 +65,71 @@ class TeacherController extends Controller
         $teacher = Teacher::find($id);
         return view('dashboard.teachers.show')->with('teacher',$teacher);
     }
+    public function edit($id){
+        $teacher = Teacher::find($id);
+        return view('dashboard.teachers.edit')->with('teacher',$teacher);
+    }
+    public function update(Request $request , $id){
+        $taecher =  Teacher::find($id);
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                Rule::unique('teachers', 'email')->where(function ($query) {
+                    return $query->whereNull('deleted_at');
+                })->ignore($id),
+                Rule::unique('companies', 'email')->where(function ($query) {
+                    return $query->whereNull('deleted_at');
+                })->ignore($id),
+                Rule::unique('users', 'email')->where(function ($query) {
+                    return $query->whereNull('deleted_at');
+                })->ignore($id),
+            ],
+            'whataspp_number'=>'required',
+            'country' => 'required',
+            'years_of_experience' => 'required',
+            'job' => 'required',
+            'educational_material' =>$request->job == 'معلم'? 'required':'',
+        
+        ]);
+        if($request->password != null){
+            $request->validate([
+                'password' => 'required|string|min:8',
+                'confirm_password' => 'required|same:password'
+            ]);
+        }
+        if($request->image != null){
+            $request->validate([
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            ]);
+            $taecher->image = $request->image->store('teacher');
+
+        }
+        if($request->cv != null){
+            $request->validate([
+                'cv' => 'required|mimes:pdf',
+            ]);
+            $taecher->cv = $request->cv->store('teacher_cv');
+
+        }
+        $taecher->type = 'teacher';
+        $taecher->name = $request->name;
+        $taecher->email = $request->email;
+        $taecher->whataspp_number = $request->whataspp_number;
+        if($request->password != null){
+            $taecher->password = Hash::make($request->input('password'));
+        }
+        $taecher->country = $request->country;
+        $taecher->export_number = $request->years_of_experience;
+        $taecher->educational_material = $request->educational_material;
+        $taecher->job = $request->job;
+        $taecher->save();
+        return redirect()->route('teachers.index')->with(['success'=>'تم تعديل المعلم بنجاح']);
+    }
     public function destroy($id){
         $teacher = Teacher::find($id);
         $teacher->forceDelete();

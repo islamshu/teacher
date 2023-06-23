@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ForgetEmail;
 use App\Models\Company;
 use App\Models\Teacher;
 use App\Models\User;
@@ -9,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Validator;
 use Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 use Omnipay\Omnipay;
 
@@ -276,6 +278,31 @@ class UserController extends Controller
             return response()->json(['errors' => ' البريد الاكتروني او كلمة المرور خاطئة'], 422);
         }
     }
+    public function forget_user(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'emailforget' => 'required|email',
+        ]);
+
+        // If validation fails, return the errors as JSON
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        $user = User::where('email',$request->emailforget)->first();
+        if(!$user){
+            $user = Teacher::where('email',$request->emailforget)->first();
+            if(!$user){
+                return response()->json(['success' => 'false','message'=>'البريد الاكتروني غير متواجد في حساباتنا'], 200);
+            }
+            Mail::to($user->email)->send(new ForgetEmail($user));
+            return response()->json(['success' => 'true','message'=>'ـم ارسال بريد الكتوني يحتوي على كلمة المرور'], 200);
+
+            // dd($user);
+        }
+       
+    }
+    
     public function dashboard()
     {
         if ((auth()->check())) {

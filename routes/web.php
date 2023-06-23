@@ -33,6 +33,9 @@ Route::get('/', function () {
 Route::get('googlemeet',[MeetController::class,'createMeeting'])->name('google_meet');
 Route::post('company_register', [UserController::class, 'company_register'])->name('company_register');
 Route::post('login_user', [UserController::class, 'login_user'])->name('login_user');
+Route::post('forget_user', [UserController::class, 'forget_user'])->name('forget_user');
+
+
 Route::post('teacher_register', [UserController::class, 'teacher_register'])->name('teacher_register');
 Route::get('teachers', [HomeController::class, 'teachers'])->name('teachers');
 Route::get('jobs', [HomeController::class, 'jobs'])->name('jobs');

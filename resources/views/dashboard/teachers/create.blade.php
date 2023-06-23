@@ -110,6 +110,8 @@
                                                         <option value="أخصائية نفسية">أخصائي/ية نفسية</option>
                                                         <option value="معلم">معلم/ة</option>
                                                     </select>
+                                                    
+
                                                 </div>
                                             </div>
                                             <div class="col-md-6" id="educational_material_div" style="display: none">
@@ -152,13 +154,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="password"> كلمة المرور   :</label>
-                                                    <input type="password"  name="password"  class="form-control"  id="">
+                                                    <input type="password" required  name="password"  class="form-control"  id="">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="confirm_password"> تأكيد كلمة المرور     :</label>
-                                                    <input type="password"  name="confirm_password"  class="form-control"  id="">
+                                                    <input type="password" required name="confirm_password"  class="form-control"  id="">
                                                 </div>
                                             </div>
                                             
