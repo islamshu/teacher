@@ -68,16 +68,24 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
+                                                    <label for="email"> الوظيفة     :</label>
+                                                    <input type="text" disabled name="url" value="{{ $teacher->job }}" class="form-control" value="" id="">
+                                                </div>
+                                            </div>
+                                            @if($teacher->job == 'معلم')
+                                            <div class="col-md-6">
+                                                <div class="form-group">
                                                     <label for="email"> المادة التعليمية     :</label>
                                                     <input type="text" disabled name="url" value="{{ $teacher->educational_material }}" class="form-control" value="" id="">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            @endif
+                                            {{-- <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="email"> المرحلة التعليمية      :</label>
                                                     <input type="text"  disabled name="url" value="{{ $teacher->education_level }}" class="form-control" value="" id="">
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="email"> CV       :</label>
