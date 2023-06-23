@@ -291,14 +291,19 @@ class UserController extends Controller
 
         $user = User::where('email',$request->emailforget)->first();
         if(!$user){
-            $user = Teacher::where('email',$request->emailforget)->first();
-            if(!$user){
+            $teacher = Teacher::where('email',$request->emailforget)->first();
+            if(!$teacher){
                 return response()->json(['success' => 'false','message'=>'البريد الاكتروني غير متواجد في حساباتنا'], 200);
+            }else{
+                Mail::to($teacher->email)->send(new ForgetEmail($teacher));
+                return response()->json(['success' => 'true','message'=>'ـم ارسال بريد الكتوني يحتوي على كلمة المرور'], 200);
             }
-            Mail::to($user->email)->send(new ForgetEmail($user));
-            return response()->json(['success' => 'true','message'=>'ـم ارسال بريد الكتوني يحتوي على كلمة المرور'], 200);
+       
 
             // dd($user);
+        }else{
+            Mail::to($user->email)->send(new ForgetEmail($user));
+            return response()->json(['success' => 'true','message'=>'ـم ارسال بريد الكتوني يحتوي على كلمة المرور'], 200);
         }
        
     }
