@@ -300,7 +300,7 @@ class UserController extends Controller
                 
                 $teacher ->password = $password;
                 $teacher->save();
-                Mail::to($teacher->email)->send(new ForgetEmail($teacher,$password));
+                Mail::to($teacher->email)->send(new ForgetEmail($teacher,$rand));
                 return response()->json(['success' => 'true','message'=>'ـم ارسال بريد الكتوني يحتوي على كلمة المرور'], 200);
             }
        
@@ -309,7 +309,7 @@ class UserController extends Controller
         }else{
             $user ->password = $password;
             $user->save();
-            Mail::to($user->email)->send(new ForgetEmail($user,$password));
+            Mail::to($user->email)->send(new ForgetEmail($user,$rand));
             return response()->json(['success' => 'true','message'=>'ـم ارسال بريد الكتوني يحتوي على كلمة المرور'], 200);
         }
        
