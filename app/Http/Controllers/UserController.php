@@ -302,7 +302,7 @@ class UserController extends Controller
                 $teacher ->password = $password;
                 $teacher->save();
                 Mail::to($teacher->email)->send(new ForgetEmail($teacher,$rand));
-                return response()->json(['success' => 'true','message'=>'ـم ارسال بريد الكتوني يحتوي على كلمة المرور'], 200);
+                return response()->json(['success' => 'true','message'=>'تم ارسال بريد الكتوني يحتوي على كلمة المرور'], 200);
             }
        
 
