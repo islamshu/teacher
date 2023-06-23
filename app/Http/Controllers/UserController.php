@@ -295,6 +295,7 @@ class UserController extends Controller
             if(!$teacher){
                 return response()->json(['success' => 'false','message'=>'البريد الاكتروني غير متواجد في حساباتنا'], 200);
             }else{
+                dd('ff');
                 Mail::to($teacher->email)->send(new ForgetEmail($teacher));
                 return response()->json(['success' => 'true','message'=>'ـم ارسال بريد الكتوني يحتوي على كلمة المرور'], 200);
             }
@@ -302,6 +303,8 @@ class UserController extends Controller
 
             // dd($user);
         }else{
+            dd('aad');
+
             Mail::to($user->email)->send(new ForgetEmail($user));
             return response()->json(['success' => 'true','message'=>'ـم ارسال بريد الكتوني يحتوي على كلمة المرور'], 200);
         }
