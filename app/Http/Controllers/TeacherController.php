@@ -17,6 +17,12 @@ class TeacherController extends Controller
     public function create(){
         return view('dashboard.teachers.create');
     }
+    public function update_status_paid(Request $request){
+        $slider = Teacher::find($request->teacher_id);
+        $slider->is_paid = $request->is_paid;
+        $slider->save();
+        return $slider;
+    }
     public function store(Request $request){
         $request->validate([
             'name' => 'required|string|max:255',

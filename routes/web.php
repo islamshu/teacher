@@ -89,6 +89,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function () {
     Route::resource('how_it_works', HowItWorkController::class);
     Route::post('updateOrder', [HowItWorkController::class, 'updateOrder'])->name('menu_update');
     Route::get('update_status', [SliderController::class, 'update_status'])->name('sliders.update.status');
+    Route::get('update_status_paid', [TeacherController::class, 'update_status_paid'])->name('update_status_paid');
+
     Route::get('aboutpage', [AboutpageController::class, 'index'])->name('aboutpage.index');
     Route::post('aboutpage_edit', [AboutpageController::class, 'update'])->name('aboutpage.update');
     Route::resource('fteures', FteureController::class);

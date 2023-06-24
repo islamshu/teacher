@@ -39,6 +39,8 @@
                                                 <th>الصورة   </th>
                                                 <th>الاسم</th>
                                                 <th>البريد الاكتروني</th>
+                                                <th>حالة الدفع </th>
+
                                                 <th>الدولة </th>
 
                                                 <th>الاجراءات  </th>
@@ -52,7 +54,12 @@
                                                     <td><img src="{{ asset('uploads/'.$item->image) }}" width="70" height="50" alt=""> </td>
                                                     <td>{{ $item->name }}</td>
                                                     <td>{{ $item->email }}</td>
+                                                       <td>
+                                                        <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch allssee"
+                                                            {{ $item->is_paid == 1 ? 'checked' : '' }}>
+                                                    </td>
                                                     <th>{{ $item->country }}</th>
+
                                                     {{-- <td>
                                                         <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch allssee"
                                                             {{ $item->status == 1 ? 'checked' : '' }}>
@@ -90,5 +97,22 @@
     </div>
 @endsection
 @section('script')
-   
+<script>
+    $("#storestable").on("change", ".js-switch", function() {
+                let is_paid = $(this).prop('checked') === true ? 1 : 0;
+                let teacher_id = $(this).data('id');
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: '{{ route('update_status_paid') }}',
+                    data: {
+                        'is_paid': is_paid,
+                        'teacher_id': teacher_id
+                    },
+                    success: function(data) {
+                        console.log(data.message);
+                    }
+                });
+            });
+</script>
 @endsection
