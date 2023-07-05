@@ -32,13 +32,13 @@
                         <div class="invalid-feedback">
                         </div>
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label for="commercialRegister" class="form-label"> السجل التجاري</label>
                         <input type="file" class="form-control" id="commercialRegister" name="commercialRegister"
                             required>
                         <div class="invalid-feedback">
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="mb-3">
                         <label for="companyPassword" class="form-label">كلمة المرور</label>
                         <div class="password-wrapper">

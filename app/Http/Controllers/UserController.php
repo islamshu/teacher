@@ -40,7 +40,7 @@ class UserController extends Controller
                     return $query->whereNull('deleted_at');
                 }),
             ],
-            'commercialRegister' => 'required|mimes:pdf',
+            // 'commercialRegister' => 'required|mimes:pdf',
             'companyPassword' => 'required|string|min:8',
             'confirmPassword' => 'required|same:companyPassword'
         ]);
