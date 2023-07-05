@@ -55,14 +55,14 @@
                                                 </div>
                                             </div>
                                        
-                                           
+{{--                                            
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="email"> السجل التجاري       :</label>
                                                     <br>
                                                     <a target="_blank" href="{{ asset('uploads/'.$school->commercialRegister) }}">انقر لرؤية السجل التجاري</a>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                           
                                         </div>
                                     
