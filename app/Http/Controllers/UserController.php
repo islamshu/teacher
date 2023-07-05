@@ -54,7 +54,7 @@ class UserController extends Controller
         $company->name = $request->input('companyName');
         $company->email = $request->input('companyEmail');
         $company->password = Hash::make($request->input('companyPassword'));
-        $company->commercialRegister = $request->commercialRegister->store('commercialRegister');
+        // $company->commercialRegister = $request->commercialRegister->store('commercialRegister');
         $company->image =  $request->image->store('image');
 
         $company->save();
