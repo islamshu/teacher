@@ -58,12 +58,22 @@
                                         </div>
                                         <br>
 
+                                        
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>رسوم اشتراك المدرسين  </label>
+                                                <input type="number" name="general[subscription_fee]" class="form-control" value="{{ get_general_value('subscription_fee') }}">
+
+                                            </div>                                    
+                                        </div> 
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label>اسم الموقع </label>
                                                 <textarea name="general[title]" class="form-control ckeditor">{!! get_general_value('title') !!}</textarea>                                            
                                             </div>                                    
                                         </div> 
+
+                                        
                                         <br>
                                         <div class="row">
 
