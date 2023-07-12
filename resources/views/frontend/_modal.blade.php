@@ -85,7 +85,7 @@
                             alt="Company Logo">
                     </div>
                 </div>
-                <div id="error-id" style="text-align: center;color: red;font-size: 20px;"></div>
+                <div id="error_forget-id" style="text-align: center;color: red;font-size: 20px;"></div>
                 <form id="forget-form" method="post" action="{{ route('forget_user') }}" enctype="multipart/form-data"
                     onsubmit="forgitForm(); return false;">
                     @csrf

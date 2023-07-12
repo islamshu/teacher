@@ -185,7 +185,7 @@
         });
     }
     function forgitForm() {
-        $('#error-id').empty();
+        $('#error_forget-id').empty();
         $("#loading").show();
 
         $.ajax({
@@ -213,7 +213,7 @@
                 $("#loading").hide();
 
                 // If form submission fails, display validation errors in the modal
-                $('<p>' + response.responseJSON.errors + '</p>').appendTo('#error-id');
+                $('<p>' + response.responseJSON.errors + '</p>').appendTo('#error_forget-id');
             }
         });
     }
