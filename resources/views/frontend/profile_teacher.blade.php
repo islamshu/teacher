@@ -188,6 +188,28 @@
                                 </span>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label for="password">كلمة المرور</label>
+                            <input type="password" name="password" id="password"
+                                class="form-control @error('password') is-invalid @enderror"
+                                >
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">تأكيد كلمة المرور</label>
+                            <input type="password" name="confirm-password" id="confirm-password"
+                                class="form-control @error('confirm-password') is-invalid @enderror"
+                                >
+                            @error('confirm-password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
 
                         <button type="submit" class="btn btn-primary"> تحديث الملف الشخصي</button>
                     </form>

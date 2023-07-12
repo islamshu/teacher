@@ -223,6 +223,13 @@ class UserController extends Controller
                 'cv' => 'required|mimes:pdf',
             ]);
         }
+        if($request->password != null){
+            $request->validate([
+                'password' => 'required',
+                'confirm-password' => 'required|same:password',
+            ]);
+            $taecher->password =  Hash::make($request->password);
+        }
 
         // If validation fails, return the errors as JSON
         

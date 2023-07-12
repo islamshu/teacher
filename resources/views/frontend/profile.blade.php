@@ -95,7 +95,7 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="confirm-password">كلمة المرور</label>
+                                            <label for="confirm-password">تأكيد كلمة المرور</label>
                                             <input type="password" name="confirm-password" id="confirm-password"
                                                 class="form-control @error('confirm-password') is-invalid @enderror"
                                                 >
