@@ -342,6 +342,13 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:companies,email,' . $user->id,
         ]);
+        if($request->password != null){
+            $request->validate([
+                'password' => 'required',
+                'confirm-password' => 'required|same:password',
+            ]);
+            $user->password =  Hash::make($request->password);
+        }
         if ($request->image != null) {
             $user->image = $request->image->store('user');
         }
