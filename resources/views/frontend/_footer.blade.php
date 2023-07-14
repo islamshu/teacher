@@ -105,10 +105,53 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.js"></script>
+<script>
+    let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
 
+elems.forEach(function(html) {
+    let switchery = new Switchery(html, {
+        size: 'small'
+    });
+});
+</script>
 
-
-
+<script>
+    $('.delete-confirm').click(function(event) {
+        var form = $(this).closest("form");
+        var name = $(this).data("name");
+        event.preventDefault();
+        
+                Swal.fire({
+                title: `هل متأكد من حذف العنصر ؟`,
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    form.submit();
+                }
+            });
+    });
+</script>
+    <script>
+            $("#storestable").on("change", ".js-switch", function() {
+                        let status = $(this).prop('checked') === true ? 1 : 0;
+                        let userId = $(this).data('id');
+                        $.ajax({
+                            type: "GET",
+                            dataType: "json",
+                            url: '{{ route('job.update.status') }}',
+                            data: {
+                                'status': status,
+                                'job_id': userId
+                            },
+                            success: function(data) {
+                                console.log(data.message);
+                            }
+                        });
+                    });
+    </script>
 <script>
     function teacherForm() {
         $("#loading").show();
@@ -330,6 +373,7 @@
             $(".educational_material_fillter").css("display", "none");
         }
     });
+    
 
 
     $(document).on('click', '.send-request', function(e) {

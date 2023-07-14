@@ -115,7 +115,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title"> طلباتي </h5>
-                                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                    <table id="storestable" class="table table-striped table-bordered" style="width:100%">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -125,6 +125,9 @@
                                                 <th>تاريخ تهاية التقديم</th>
                                                 <th>التخصص</th>
                                                 <th> عدد المتقدمين</th>
+                                                <th> اخفاء/اظهار </th>
+                                                <th>حذف</th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -136,7 +139,19 @@
                                                     <td>{{ $item->end_at }}</td>
                                                     <td>{{ 'رياضيات' }}</td>
                                                     <td><a href="{{ route('teachersjob',$item->id) }}"> {{ $item->orders->count() }}</a></td>
-
+                                                    <td>
+                                                        <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch allssee"
+                                                            {{ $item->status == 1 ? 'checked' : '' }}>
+                                                    </td>
+                                                    <td>
+                                                        <form style="display: inline"
+                                                        action="{{ route('deleteJob', $item->id) }}"
+                                                        method="post">
+                                                        @method('delete') @csrf
+                                                        <button type="submit" class="btn btn-danger delete-confirm"><i
+                                                                class="fa fa-trash"></i></button>
+                                                    </form> 
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                             

@@ -56,6 +56,7 @@
                                                             {{ $item->status == 1 ? 'checked' : '' }}>
                                                     </td> --}}
                                                     <td>
+                                                        {{-- <a href="{{ route('login_school',$item->id) }}" class="btn btn-warning">الدخول كمدرسة</a> --}}
                                                         <a href="{{ route('schools.show',$item->id) }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
                                                         <form style="display: inline"
                                                         action="{{ route('schools.destroy', $item->id) }}"

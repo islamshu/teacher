@@ -18,6 +18,11 @@ class CompanyController extends Controller
     public function create(){
         return view('dashboard.companies.create'); 
     }
+    public function login_school($id){
+        $seller = Teacher::findOrFail(($id));
+        auth('teacher')->login($seller, true);
+        return redirect()->route('home');
+    }
     public function store(Request $request){
         // dd($request->all());
         $request->validate([

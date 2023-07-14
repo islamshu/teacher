@@ -16,6 +16,17 @@ class HomeController extends Controller
      *
      * @return void
      */
+    public function updatedJobStatus(Request $request){
+        $job = Job::find($request->job_id);
+        $job->status = $request->status;
+        $job->save();
+    }
+    public function deleteJob($id){
+        $job = Job::find($id);
+        $job->delete();
+        return redirect()->back()->with(['success'=>'تم حذف الوظيفة بنجاح']);
+
+    }
     public function add_request_job(Request $request){
         if(!auth('teacher')->check()){
             return response()->json(['success' => 'false','message'=>'لا يمكنك ارسال طلب ! فقط المعلمين من يمكنهم الارسال . '], 200);
