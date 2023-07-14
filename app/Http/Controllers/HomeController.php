@@ -23,6 +23,10 @@ class HomeController extends Controller
         if(auth('teacher')->user()->type == 'school'){
             return response()->json(['success' => 'false','message'=>'لا يمكنك ارسال طلب ! فقط المعلمين من يمكنهم الارسال . '], 200);
         }
+        if(auth('teacher')->user()->is_paid != 1){
+            return response()->json(['success' => 'false','message'=>'يجب عليك الدفع اولا '], 200);
+
+        }
 
         
         if(!TeacherJob::where('job_id',$request->job_id)->where('teacher_id',auth('teacher')->id())->first()){
