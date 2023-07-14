@@ -55,7 +55,7 @@ class HomeController extends Controller
     public function job($id){
         $id = decrypt($id);
         $job = Job::find($id);
-        $jobs = Job::where('id','!=',$job->id)->where('start_at','<',now())->where('end_at','>',now())->inRandomOrder()->limit(2)->get();
+        $jobs = Job::where('id','!=',$job->id)->where('status',1)->where('start_at','<',now())->where('end_at','>',now())->inRandomOrder()->limit(2)->get();
 
         return view('frontend.job')->with('job',$job)->with('jobs',$jobs);
 
@@ -157,7 +157,7 @@ class HomeController extends Controller
     }
     public function jobs(Request $request)
     {
-        $query = Job::query()->where('start_at','<',now());
+        $query = Job::query()->where('status',1)->where('start_at','<',now());
         
     
         if ($request->has('educational_material') &&  $request->educational_material != null) {
