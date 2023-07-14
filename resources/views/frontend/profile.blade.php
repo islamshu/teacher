@@ -137,7 +137,7 @@
                                                     <td>{{ $item->title }}</td>
                                                     <td>{{ $item->start_at }}</td>
                                                     <td>{{ $item->end_at }}</td>
-                                                    <td>{{ 'رياضيات' }}</td>
+                                                    <td>{{ $item->educational_material }}</td>
                                                     <td><a href="{{ route('teachersjob',$item->id) }}"> {{ $item->orders->count() }}</a></td>
                                                     <td>
                                                         <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch allssee"
@@ -164,6 +164,9 @@
                                                 <th>تاريخ تهاية التقديم</th>
                                                 <th>التخصص</th>
                                                 <th> عدد المتقدمين</th>
+                                                <th> اخفاء/اظهار </th>
+                                                <th>حذف</th>
+
                                             </tr>
                                         </tfoot>
                                     </table>
