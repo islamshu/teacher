@@ -134,8 +134,10 @@
                             </div>
                             <div class="member-info">
                                 <div class="social">
+                                    @if($item->status != 3)
                                     <a @if(check_login() != 1) class="loginalert" @else target="_blank" href="https://wa.me/{{ $item->whataspp_number }}" @endif><i
                                         class="bi bi-whatsapp"></i></a>
+                                        @endif
                                     <a @if(check_login() != 1) class="loginalert" @else href="{{ asset('uploads/' . $item->cv) }}" target="_blank" @endif><i
                                             class="bi bi-file-person-fill"></i></a>
                                             @if(school_login() ==1) <a href="{{ route('chat_user', encrypt($item->id)) }}" target="_blank" ><i
