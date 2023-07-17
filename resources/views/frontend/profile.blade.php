@@ -34,7 +34,7 @@
                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
                                 aria-controls="profile" aria-selected="false">انشاء وظيفة</a>
                         </li>
-                        
+
                     </ul>
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -86,8 +86,7 @@
                                         <div class="form-group">
                                             <label for="password">كلمة المرور</label>
                                             <input type="password" name="password" id="password"
-                                                class="form-control @error('password') is-invalid @enderror"
-                                                >
+                                                class="form-control @error('password') is-invalid @enderror">
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -97,8 +96,7 @@
                                         <div class="form-group">
                                             <label for="confirm-password">تأكيد كلمة المرور</label>
                                             <input type="password" name="confirm-password" id="confirm-password"
-                                                class="form-control @error('confirm-password') is-invalid @enderror"
-                                                >
+                                                class="form-control @error('confirm-password') is-invalid @enderror">
                                             @error('confirm-password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -110,12 +108,13 @@
                                 </div>
                             </div>
                         </div>
-                      
+
                         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title"> طلباتي </h5>
-                                    <table id="storestable" class="table table-striped table-bordered" style="width:100%">
+                                    <table id="storestable" class="table table-striped table-bordered"
+                                        style="width:100%">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -131,30 +130,32 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach (App\Models\Job::where('user_id',auth('teacher')->id())->get() as $key=> $item)
+                                            @foreach (App\Models\Job::where('user_id', auth('teacher')->id())->get() as $key => $item)
                                                 <tr>
-                                                    <td>{{ $key+1 }}</td>
+                                                    <td>{{ $key + 1 }}</td>
                                                     <td>{{ $item->title }}</td>
                                                     <td>{{ $item->start_at }}</td>
                                                     <td>{{ $item->end_at }}</td>
                                                     <td>{{ $item->educational_material }}</td>
-                                                    <td><a href="{{ route('teachersjob',$item->id) }}"> {{ $item->orders->count() }}</a></td>
+                                                    <td><a href="{{ route('teachersjob', $item->id) }}">
+                                                            {{ $item->orders->count() }}</a></td>
                                                     <td>
-                                                        <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch allssee"
+                                                        <input type="checkbox" data-id="{{ $item->id }}"
+                                                            name="status" class="js-switch allssee"
                                                             {{ $item->status == 1 ? 'checked' : '' }}>
                                                     </td>
                                                     <td>
                                                         <form style="display: inline"
-                                                        action="{{ route('deleteJob', $item->id) }}"
-                                                        method="post">
-                                                        @method('delete') @csrf
-                                                        <button type="submit" class="btn btn-danger delete-confirm"><i
-                                                                class="fa fa-trash"></i></button>
-                                                    </form> 
+                                                            action="{{ route('deleteJob', $item->id) }}" method="post">
+                                                            @method('delete') @csrf
+                                                            <button type="submit"
+                                                                class="btn btn-danger delete-confirm"><i
+                                                                    class="fa fa-trash"></i></button>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                            
+
                                         </tbody>
                                         <tfoot>
                                             <tr>
@@ -227,9 +228,10 @@
                                                 </span>
                                             @enderror
                                         </div> --}}
-                                        <div class="form-group"  class="educational_material">
-                                            <label for="educational_material">التخصص المطلوب   </label>
-                                            <select id="educational_material" name="educational_material" class="form-control">
+                                        <div class="form-group" class="educational_material">
+                                            <label for="educational_material">التخصص المطلوب </label>
+                                            <select id="educational_material" name="educational_material"
+                                                class="form-control">
                                                 <option value="">يرجى الاختيار</option>
                                                 <option value="رياض الأطفال">رياض الأطفال</option>
                                                 <option value="الرياضيات">الرياضيات</option>
@@ -241,7 +243,7 @@
                                                 <option value="الفلسفة">الفلسفة</option>
                                                 <option value="الاجتماعيات">الاجتماعيات</option>
                                                 <option value="الاقتصاد">الاقتصاد</option>
-                                                <option value="التربية الدينية">التربية الدينية</option>
+                                                <option value="التربية الاسلامية">التربية الاسلامية</option>
                                                 <option value="التربية الفنية">التربية الفنية</option>
                                                 <option value="التربية المدنية">التربية المدنية</option>
                                                 <option value="التربية الرياضية">التربية الرياضية</option>
@@ -249,13 +251,19 @@
                                                 <option value="اللغة الفرنسية">اللغة الفرنسية</option>
                                                 <option value="اللغة الألمانية">اللغة الألمانية</option>
                                                 <option value="اللغة الإسبانية">اللغة الإسبانية</option>
+                                                <option value="صعوبات التعلم">صعوبات التعلم</option>
+                                                <option value="الاجتماعيات">الاجتماعيات</option>
+                                                <option value="التربية الموسيقية">التربية الموسيقية</option>
+                                                <option value="كيمياء">كيمياء</option>
+                                                <option value="فيزياء">فيزياء</option>
+                                                <option value="أحياء">أحياء</option>
                                                 <!-- يمكن إضافة المزيد من المواد التعليمية -->
                                             </select>
                                             @error('educational_material')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label for="start_date">تاريخ بدء الطلبات </label>

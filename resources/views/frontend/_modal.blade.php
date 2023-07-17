@@ -306,7 +306,7 @@
                             <option value="الفلسفة">الفلسفة</option>
                             <option value="الاجتماعيات">الاجتماعيات</option>
                             <option value="الاقتصاد">الاقتصاد</option>
-                            <option value="التربية الدينية">التربية الدينية</option>
+                            <option value="التربية الاسلامية">التربية الاسلامية</option>
                             <option value="التربية الفنية">التربية الفنية</option>
                             <option value="التربية المدنية">التربية المدنية</option>
                             <option value="التربية الرياضية">التربية الرياضية</option>
@@ -315,7 +315,13 @@
                             <option value="اللغة الألمانية">اللغة الألمانية</option>
                             <option value="اللغة الإسبانية">اللغة الإسبانية</option>
                             <option value="مصادر تعلم">مصادر تعلم</option>
-
+                            <option value="صعوبات التعلم">صعوبات التعلم</option>
+                            <option value="الاجتماعيات">الاجتماعيات</option>
+                            <option value="التربية الموسيقية">التربية الموسيقية</option>
+                            <option value="كيمياء">كيمياء</option>
+                            <option value="فيزياء">فيزياء</option>
+                            <option value="أحياء">أحياء</option>
+                         
                             
                             <!-- يمكن إضافة المزيد من المواد التعليمية -->
                         </select>

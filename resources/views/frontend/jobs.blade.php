@@ -4,13 +4,14 @@
         <h1>الوظائف</h1>
         <form method="get">
             <div class="row">
-                
+
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="educational_material"> التخصص :</label>
                         <select id="educational_material" name="educational_material" class="form-control">
                             <option value="">يرجى الاختيار</option>
-                            <option value="رياض الأطفال" @if ($request->educational_material == 'رياض الأطفال') selected @endif>رياض الأطفال</option>
+                            <option value="رياض الأطفال" @if ($request->educational_material == 'رياض الأطفال') selected @endif>رياض الأطفال
+                            </option>
 
                             <option value="الرياضيات" @if ($request->educational_material == 'الرياضيات') selected @endif>الرياضيات</option>
                             <option value="اللغة العربية" @if ($request->educational_material == 'اللغة العربية') selected @endif>اللغة العربية
@@ -24,7 +25,7 @@
                             <option value="الاجتماعيات" @if ($request->educational_material == 'الاجتماعيات') selected @endif>الاجتماعيات
                             </option>
                             <option value="الاقتصاد" @if ($request->educational_material == 'الاقتصاد') selected @endif>الاقتصاد</option>
-                            <option value="التربية الدينية" @if ($request->educational_material == 'التربية الدينية') selected @endif>التربية
+                            <option value="التربية الاسلامية" @if ($request->educational_material == 'التربية الاسلامية') selected @endif>التربية
                                 الدينية</option>
                             <option value="التربية الفنية" @if ($request->educational_material == 'التربية الفنية') selected @endif>التربية
                                 الفنية</option>
@@ -40,11 +41,22 @@
                                 الألمانية</option>
                             <option value="اللغة الإسبانية" @if ($request->educational_material == 'اللغة الإسبانية') selected @endif>اللغة
                                 الإسبانية</option>
+
+                            <option value="صعوبات التعلم" @if ($request->educational_material == 'صعوبات التعلم') selected @endif>صعوبات التعلم
+                            </option>
+                            <option value="الاجتماعيات" @if ($request->educational_material == 'الاجتماعيات') selected @endif>الاجتماعيات
+                            </option>
+                            <option value="التربية الموسيقية" @if ($request->educational_material == 'التربية الموسيقية') selected @endif>التربية
+                                الموسيقية</option>
+                            <option value="كيمياء" @if ($request->educational_material == 'كيمياء') selected @endif>كيمياء</option>
+                            <option value="فيزياء" @if ($request->educational_material == 'فيزياء') selected @endif>فيزياء</option>
+                            <option value="أحياء" @if ($request->educational_material == 'أحياء') selected @endif>أحياء</option>
+
                             <!-- يمكن إضافة المزيد من المواد التعليمية -->
                         </select>
                     </div>
                 </div>
-                
+
                 <div class="col-md-2" style="margin-top: 30px">
                     <button type="submit" class="btn btn-warning">ابحث</button>
                 </div>
@@ -61,30 +73,36 @@
 
             <div class="row gy-5">
                 @foreach ($jobs as $item)
-                <div class="col-xl-3 col-md-4">
-        
-                    <div class="card" style="width: auto;text-align:center">
-                      <a href="{{ route('job',encrypt($item->id)) }}"><img class="card-img-top" src="{{ asset('uploads/'.$item->school->image) }}" width="300" height="200" alt="Card image cap"></a>
-                      <div id="overlay">
-                          <div class="text"> {{ $item->school->name }}</div>
-                        </div>
-                      <div class="card-body">
-                     <a href="{{ route('job',encrypt($item->id)) }}">  <p class="card-text">  عنوان الوظيفة : {{ $item->title }} </p></a> 
-                      </div>
-                      <ul class="list-group list-group-flush">
-                        <li class="list-group-item"> التخصص  : {{ $item->educational_material }}</li>
-                        <li class="list-group-item"> ينتهي الطلب في : {{ $item->end_at }}</li>
-                        <li class="list-group-item"> عدد المتقدمين حاليا : {{ $item->orders->count() }} متقدم</li>
-                      </ul>
-                      <div class="card-body">
-                        @if($item->end_at < now())
-                        <span style="color:red"> انتهى وقت التقديم للوظيفة </span>
-                        @else
-                        <button @if(check_login() != 1) class="loginalert btn btn-info" @else data-trash-id="{{$item->id}}" class="send-request btn btn-info" @endif class="card-link">انضم للوظيفة</a>
-                        @endif    
+                    <div class="col-xl-3 col-md-4">
+
+                        <div class="card" style="width: auto;text-align:center">
+                            <a href="{{ route('job', encrypt($item->id)) }}"><img class="card-img-top"
+                                    src="{{ asset('uploads/' . $item->school->image) }}" width="300" height="200"
+                                    alt="Card image cap"></a>
+                            <div id="overlay">
+                                <div class="text"> {{ $item->school->name }}</div>
+                            </div>
+                            <div class="card-body">
+                                <a href="{{ route('job', encrypt($item->id)) }}">
+                                    <p class="card-text"> عنوان الوظيفة : {{ $item->title }} </p>
+                                </a>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"> التخصص : {{ $item->educational_material }}</li>
+                                <li class="list-group-item"> ينتهي الطلب في : {{ $item->end_at }}</li>
+                                <li class="list-group-item"> عدد المتقدمين حاليا : {{ $item->orders->count() }} متقدم</li>
+                            </ul>
+                            <div class="card-body">
+                                @if ($item->end_at < now())
+                                    <span style="color:red"> انتهى وقت التقديم للوظيفة </span>
+                                @else
+                                    <button
+                                        @if (check_login() != 1) class="loginalert btn btn-info" @else data-trash-id="{{ $item->id }}" class="send-request btn btn-info" @endif
+                                        class="card-link">انضم للوظيفة</a>
+                                @endif
+                            </div>
                         </div>
                     </div>
-                  </div>
                 @endforeach
                 <div class="d-flex justify-content-center">
                     {{ $jobs->links('frontend.paginateion') }}

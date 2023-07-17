@@ -72,7 +72,7 @@
                             <option value="الاجتماعيات" @if ($request->educational_material == 'الاجتماعيات') selected @endif>الاجتماعيات
                             </option>
                             <option value="الاقتصاد" @if ($request->educational_material == 'الاقتصاد') selected @endif>الاقتصاد</option>
-                            <option value="التربية الدينية" @if ($request->educational_material == 'التربية الدينية') selected @endif>التربية
+                            <option value="التربية الاسلامية" @if ($request->educational_material == 'التربية الاسلامية') selected @endif>التربية
                                 الدينية</option>
                             <option value="التربية الفنية" @if ($request->educational_material == 'التربية الفنية') selected @endif>التربية
                                 الفنية</option>
@@ -90,6 +90,19 @@
                                 الإسبانية</option>
                                 <option value="مصادر تعلم" @if ($request->educational_material == 'مصادر تعلم') selected @endif>مصادر تعلم
                                 </option>
+                                <option value="صعوبات التعلم" @if ($request->educational_material == 'صعوبات التعلم') selected @endif>
+                                    صعوبات التعلم</option>
+                                <option value="الاجتماعيات" @if ($request->educational_material == 'الاجتماعيات') selected @endif>
+                                    الاجتماعيات</option>
+                                <option value="التربية الموسيقية" @if ($request->educational_material == 'التربية الموسيقية') selected @endif>
+                                    التربية الموسيقية</option>
+                                <option value="كيمياء" @if ($request->educational_material == 'كيمياء') selected @endif>كيمياء
+                                </option>
+                                <option value="فيزياء" @if ($request->educational_material == 'فيزياء') selected @endif>فيزياء
+                                </option>
+                                <option value="أحياء" @if ($request->educational_material == 'أحياء') selected @endif>أحياء
+                                </option>
+
                             <!-- يمكن إضافة المزيد من المواد التعليمية -->
                         </select>
                     </div>
