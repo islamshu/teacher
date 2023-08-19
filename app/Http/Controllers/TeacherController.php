@@ -67,6 +67,14 @@ class TeacherController extends Controller
         $taecher->save();
         return redirect()->route('teachers.index')->with(['success'=>'تم اضافة المعلم بنجاح']);
     }
+    public function edit_teacher_stauts(Request $request){
+        $teacher = Teacher::find($request->user_id);
+        $teacher->status = $request->new_value; 
+        $teacher->save();
+        return response()->json(['message' => 'تم تعديل الحالة بنجاح']);
+
+
+    }
     public function show($id){
         $teacher = Teacher::find($id);
         return view('dashboard.teachers.show')->with('teacher',$teacher);

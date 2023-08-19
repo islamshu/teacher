@@ -39,7 +39,9 @@
                                                 <th>الصورة   </th>
                                                 <th>الاسم</th>
                                                 <th>البريد الاكتروني</th>
+                                                <th>الحالة</th>
                                                 <th>حالة الدفع </th>
+
 
                                                 <th>الدولة </th>
 
@@ -54,6 +56,14 @@
                                                     <td><img src="{{ asset('uploads/'.$item->image) }}" width="70" height="50" alt=""> </td>
                                                     <td>{{ $item->name }}</td>
                                                     <td>{{ $item->email }}</td>
+                                                    <td>
+                                                        <select class="user-select " data-user-id="{{ $item->id }}">
+                                                            <option value="1" @if($item->status == 1) selected @endif>متاح</option>
+                                                            <option value="2" @if($item->status == 2) selected @endif>في ماحدثة مع مدرسة</option>
+                                                            <option value="3" @if($item->status == 3) selected @endif>تم تعينه</option>
+
+                                                        </select>
+                                                    </td>
                                                        <td>
                                                         <input type="checkbox" data-id="{{ $item->id }}" name="status" class="js-switch allssee"
                                                             {{ $item->is_paid == 1 ? 'checked' : '' }}>
@@ -115,4 +125,33 @@
                 });
             });
 </script>
+<script>
+$(document).ready(function() {
+    $('.user-select').change(function() {
+        var newValue = $(this).val();
+        var userId = $(this).data('user-id');
+        
+        if (confirm("هل انت متأكد من تغير الحالة")) {
+            $.ajax({
+                type: "get",
+                url: "{{ route('edit_teacher_stauts') }}", // Laravel route to handle update
+                data: {
+                    user_id: userId,
+                    new_value: newValue
+                },
+                success: function(response) {
+                    // Handle success response here
+                },
+                error: function(xhr, status, error) {
+                    // Handle error here
+                }
+            });
+        } else {
+            // Reset the select to the original value
+            $(this).val($(this).data('original-value'));
+        }
+    });
+});
+</script>
+
 @endsection

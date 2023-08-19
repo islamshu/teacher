@@ -103,7 +103,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function () {
     Route::resource('services', ServiceController::class);
     Route::resource('teachers', TeacherController::class);
     Route::resource('schools', CompanyController::class);
+    Route::get('edit_teacher_stauts', [TeacherController::class, 'edit_teacher_stauts'])->name('edit_teacher_stauts');
 
+    
     Route::resource('messages', MessageController::class);
 
     Route::get('setting', [HomeController::class, 'setting'])->name('setting');
