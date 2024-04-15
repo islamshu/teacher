@@ -20,7 +20,10 @@
                           
                           <div class="flip-card-back">
                             
-                            <h4 >{{ $item->name }}</h4><br>
+                            <h4 >{{ $item->name }}</h4>
+                            <span><button class="btn btn-{{ get_status_class_teacher($item->status) }}">{{ get_status_teacher($item->status) }}</button></span>
+                            <br>
+                            
                             <span>{{ $item->country }}</span><br>
                             <span> الوظيفة : {{ $item->job }} </span><br>
                             @if($item->job == 'معلم')
@@ -28,7 +31,6 @@
                             @endif
 
                             <span>{{ $item->export_number }} : سنوات الخبرة</span><br>
-                            <span><button class="btn btn-{{ get_status_class_teacher($item->status) }}">{{ get_status_teacher($item->status) }}</button></span>
                             <div class="social">
                                 <a @if(check_login() != 1) class="loginalert" @else target="_blank" href="https://wa.me/{{ $item->teacher->whataspp_number }}" @endif>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
@@ -36,11 +38,11 @@
                                       </svg>
                                 </a>
                                
-                                <a  @if(check_login() != 1) class="loginalert" @else href="{{ asset('uploads/' . $item->teacher->cv) }}" target="_blank" >
+                                <a  @if(check_login() != 1) class="loginalert" @else href="{{ asset('uploads/' . $item->teacher->cv) }}" target="_blank" @endif >
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-file-person-fill" viewBox="0 0 16 16">
                                         <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2m-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11"/>
                                       </svg>
-                                      @endif
+                                      
                                     </a>
                                        
                                         @if(school_login() ==1) <a href="{{ route('chat_user', encrypt($item->teacher->id)) }}" target="_blank" >

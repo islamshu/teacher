@@ -57,6 +57,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
     <style>
+        
+        
+        .discountt {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 150px; /* تعديل حسب حجم الزاوية */
+            background-color: red; /* تعديل لون الخصم */
+            color: white;
+            text-align: center;
+            padding: 10px;
+            transform: rotate(-45deg); /* زاوية الميل */
+            transform-origin: left top;
+        }
+        </style>
+    
+    <style>
         .flip-card {
             background-color: transparent;
             width: 300px;
