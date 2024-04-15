@@ -296,6 +296,7 @@ section {
 
 .slider-image {
     max-height: 650px;
+    width: 100%;
 }
 
 .header {
