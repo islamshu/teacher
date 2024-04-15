@@ -14,7 +14,7 @@
         @foreach (App\Models\Slider::where('status',1)->get() as $key=> $item)
 
       <div class="carousel-item mt-2 {{ $key == 0 ? 'active' : '' }}">
-       <a href="{{ $item->url }}"> <img class="slider-image" src="{{ asset('uploads/'.$item->image) }}" alt="Slide 1" style="width: 100%"></a>
+       <a href="{{ $item->url }}"> <img class="slider-image" src="{{ asset('uploads/'.$item->image) }}" alt="Slide 1" height="500" width="1700"></a>
       </div>
       @endforeach
   
@@ -29,5 +29,7 @@
       <span class="carousel-control-next-icon"></span>
     </a>
   </div>
+  
+  
   
  
