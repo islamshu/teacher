@@ -110,10 +110,16 @@ class UserController extends Controller
         $taecher->image = $request->image->store('teacher');
         $taecher->job = $request->job;
         $taecher->save();
-        Auth::guard('teacher')->login($taecher);
-        return $this->pay_user($request);
         
-        return response()->json(['success' => 'true'], 200);
+        Auth::guard('teacher')->login($taecher);
+        if(get_general_value('subscription_fee') == 0){
+            $taecher->is_paid = 1;
+            $taecher->save();
+        }else{
+            return $this->pay_user($request);
+        }
+        
+        return redirect()->back();
     }
     public function pay_user(Request $request){
         $user =auth('teacher')->user();

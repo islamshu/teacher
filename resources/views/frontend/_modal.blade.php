@@ -175,7 +175,7 @@
                     </div>
                 </div>
                 <div class="alert alert-warning ">
-                    {!! get_general_value('teacher_policy') !!}
+                    {!! str_replace('{amount}',' '. get_general_value('subscription_fee'). ' ريال عماني ', get_general_value('teacher_policy'))   !!}
                 </div>
                 <form id="teacher-form" method="post" action="{{ route('teacher_register') }}"
                     enctype="multipart/form-data" onsubmit="teacherForm(); return false;">
