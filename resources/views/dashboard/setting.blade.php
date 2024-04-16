@@ -62,7 +62,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label>رسوم اشتراك المدرسين  </label>
-                                                <input type="number" name="general[subscription_fee]" class="form-control" value="{{ get_general_value('subscription_fee') }}">
+                                                <input type="number" name="general[subscription_fee]" min="0" class="form-control" value="{{ get_general_value('subscription_fee') }}">
 
                                             </div>                                    
                                         </div> 
